@@ -1,0 +1,106 @@
+{
+    "name": "Infoblox",
+    "description": "Infoblox Actionable Network Intelligence controls and secures your network from the core - One unified platform including DNS, DHCP, and IPAM (DDI).",
+    "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/20094-infoblox.jpg",
+    "tags": [
+        "api provider",
+        "have api",
+        "isp",
+        "networks"
+    ],
+    "created": "2019-12-19",
+    "modified": "2019-12-19",
+    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/infoblox\/master\/apis.json",
+    "specificationVersion": "0.14",
+    "apis": [
+        {
+            "name": "Infoblox",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/20094-infoblox.jpg",
+            "humanURL": "https:\/\/infoblox.com",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/infoblox-openapi.json"
+                }
+            ]
+        }
+    ],
+    "include": [],
+    "x-common": [
+        {
+            "type": "Blog",
+            "url": "https:\/\/community.infoblox.com\/t5\/Blogs\/ct-p\/blogs"
+        },
+        {
+            "type": "Blog RSS",
+            "url": "https:\/\/community.infoblox.com\/cixhp49439\/rss\/Category?category.id=blogs&interaction.style=blog&feeds.replies=true"
+        },
+        {
+            "type": "Crunchbase",
+            "url": "https:\/\/crunchbase.com\/organization\/infoblox"
+        },
+        {
+            "type": "Email",
+            "url": "sales-sin@infoblox.com"
+        },
+        {
+            "type": "Email",
+            "url": "infojapan@infoblox.com"
+        },
+        {
+            "type": "Email",
+            "url": "GCG@infoblox.com"
+        },
+        {
+            "type": "Email",
+            "url": "sales-anz@infoblox.com"
+        },
+        {
+            "type": "Email",
+            "url": "sales-korea@infoblox.com"
+        },
+        {
+            "type": "Email",
+            "url": "sales-india@infoblox.com"
+        },
+        {
+            "type": "Email",
+            "url": "info@infoblox.com"
+        },
+        {
+            "type": "Email",
+            "url": "privacy@infoblox.com"
+        },
+        {
+            "type": "Email",
+            "url": "community@infoblox.com"
+        },
+        {
+            "type": "Email",
+            "url": "legal@Infoblox.com"
+        },
+        {
+            "type": "Github",
+            "url": "https:\/\/github.com\/Infoblox-API"
+        },
+        {
+            "type": "Github",
+            "url": "https:\/\/github.com\/Infoblox-CTO"
+        },
+        {
+            "type": "Github",
+            "url": "https:\/\/github.com\/infobloxopen"
+        },
+        {
+            "type": "Twitter",
+            "url": "https:\/\/twitter.com\/infoblox"
+        },
+        {
+            "type": "Website",
+            "url": "https:\/\/infoblox.com"
+        }
+    ]
+}
