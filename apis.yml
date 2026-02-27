@@ -1,0 +1,90 @@
+name: Infoblox
+description: Infoblox provides network services including DNS, DHCP, and IP address management (DDI) with security and automation capabilities.
+image: https://www.infoblox.com/wp-content/uploads/infoblox-logo.svg
+url: https://www.infoblox.com
+created: '2024'
+modified: '2024'
+specificationVersion: '0.18'
+apis:
+- name: Infoblox WAPI (Web API)
+  description: RESTful API for managing Infoblox DDI (DNS, DHCP, IPAM) services, network objects, and configuration.
+  image: https://www.infoblox.com/wp-content/uploads/infoblox-logo.svg
+  humanURL: https://www.infoblox.com/products/ddi/
+  baseURL: https://{grid-master}/wapi/v2.12
+  tags:
+  - DNS
+  - DHCP
+  - IPAM
+  - Network Management
+  - DDI
+  properties:
+  - type: Documentation
+    url: https://docs.infoblox.com/
+  - type: OpenAPI
+    url: https://docs.infoblox.com/space/niosapi/
+  - type: Authentication
+    url: https://docs.infoblox.com/space/niosapi/22644231/WAPI+Authentication
+  - type: Swagger
+    url: https://{grid-master}/wapidoc/
+  contact:
+  - FN: Infoblox Support
+    email: support@infoblox.com
+    url: https://www.infoblox.com/support/
+- name: Infoblox BloxOne API
+  description: Cloud-native API for Infoblox BloxOne DDI and Threat Defense services.
+  image: https://www.infoblox.com/wp-content/uploads/infoblox-logo.svg
+  humanURL: https://www.infoblox.com/products/bloxone-ddi/
+  baseURL: https://csp.infoblox.com/api
+  tags:
+  - Cloud
+  - DNS
+  - DHCP
+  - IPAM
+  - Security
+  - Threat Defense
+  properties:
+  - type: Documentation
+    url: https://docs.infoblox.com/space/BloxOneDDI/
+  - type: OpenAPI
+    url: https://csp.infoblox.com/apidoc/
+  - type: API Portal
+    url: https://csp.infoblox.com/
+  - type: Authentication
+    url: https://docs.infoblox.com/space/BloxOneDDI/35430405/Authentication
+  contact:
+  - FN: Infoblox Support
+    email: support@infoblox.com
+    url: https://www.infoblox.com/support/
+- name: Infoblox Threat Defense API
+  description: API for threat intelligence, security analytics, and DNS firewall capabilities.
+  image: https://www.infoblox.com/wp-content/uploads/infoblox-logo.svg
+  humanURL: https://www.infoblox.com/products/threat-defense/
+  baseURL: https://csp.infoblox.com/tide/api
+  tags:
+  - Security
+  - Threat Intelligence
+  - DNS Security
+  - Firewall
+  properties:
+  - type: Documentation
+    url: https://docs.infoblox.com/space/BloxOneThreatDefense/
+  - type: API Reference
+    url: https://docs.infoblox.com/space/BloxOneThreatDefense/35389219/Threat+Defense+API
+  contact:
+  - FN: Infoblox Support
+    email: support@infoblox.com
+    url: https://www.infoblox.com/support/
+maintainers:
+- FN: Infoblox
+  email: support@infoblox.com
+  url: https://www.infoblox.com
+tags:
+- DNS
+- DHCP
+- IPAM
+- DDI
+- Network Management
+- Security
+- Cloud
+- Threat Intelligence
+include: []
