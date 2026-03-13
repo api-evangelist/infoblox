@@ -1,0 +1,2098 @@
+openapi: 3.1.0
+info:
+  title: Infoblox WAPI (Web API)
+  description: >-
+    RESTful API for managing Infoblox NIOS DDI (DNS, DHCP, IPAM) services,
+    network objects, and configuration. The WAPI uses standard HTTP methods
+    for CRUD operations and supports JSON and XML input and output formats.
+    Authentication is handled via HTTP basic authentication or certificate-based
+    authentication, and sessions can be maintained using cookies returned after
+    initial authentication. The API follows a resource-oriented design where
+    each NIOS object type is accessible as a REST resource.
+  version: '2.12'
+  contact:
+    name: Infoblox Support
+    email: support@infoblox.com
+    url: https://www.infoblox.com/support/
+  termsOfService: https://www.infoblox.com/company/legal/website-terms-and-conditions/
+externalDocs:
+  description: Infoblox WAPI Documentation
+  url: https://docs.infoblox.com/space/niosapi/
+servers:
+  - url: https://{grid-master}/wapi/v2.12
+    description: Infoblox NIOS Grid Master
+    variables:
+      grid-master:
+        default: grid-master.example.com
+        description: >-
+          The hostname or IP address of the Infoblox NIOS Grid Master appliance.
+tags:
+  - name: DNS Records
+    description: >-
+      Operations for managing DNS resource records including A, AAAA, CNAME,
+      MX, PTR, TXT, SRV, and NS records.
+  - name: DNS Zones
+    description: >-
+      Operations for managing authoritative DNS zones, delegated zones,
+      forward zones, and stub zones.
+  - name: Networks
+    description: >-
+      Operations for managing IPv4 and IPv6 networks, network containers,
+      and network views.
+  - name: DHCP
+    description: >-
+      Operations for managing DHCP ranges, fixed addresses, leases,
+      and DHCP option configurations.
+  - name: IP Address Management
+    description: >-
+      Operations for managing IP addresses, querying address utilization,
+      and performing next available IP lookups.
+  - name: Grid
+    description: >-
+      Operations for managing Grid members, properties, and services.
+security:
+  - basicAuth: []
+  - cookieAuth: []
+paths:
+  /record:a:
+    get:
+      operationId: listARecords
+      summary: List DNS A records
+      description: >-
+        Retrieves a list of DNS A records from the Infoblox appliance. Supports
+        filtering by name, IP address, view, zone, and other fields. Use the
+        _return_fields parameter to specify which fields to include in the
+        response. Results can be paginated using _max_results and
+        _paging parameters.
+      tags:
+        - DNS Records
+      parameters:
+        - $ref: '#/components/parameters/ReturnFields'
+        - $ref: '#/components/parameters/MaxResults'
+        - $ref: '#/components/parameters/Paging'
+        - $ref: '#/components/parameters/PageId'
+        - name: name
+          in: query
+          description: >-
+            Filter by the fully qualified domain name of the A record.
+          schema:
+            type: string
+        - name: ipv4addr
+          in: query
+          description: >-
+            Filter by the IPv4 address of the A record.
+          schema:
+            type: string
+            format: ipv4
+        - name: view
+          in: query
+          description: >-
+            Filter by the DNS view name.
+          schema:
+            type: string
+        - name: zone
+          in: query
+          description: >-
+            Filter by the DNS zone name.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successfully retrieved list of A records.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RecordA'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createARecord
+      summary: Create a DNS A record
+      description: >-
+        Creates a new DNS A record with the specified name and IPv4 address.
+        The record is created in the specified DNS view, or the default view
+        if none is specified. Returns the object reference of the newly
+        created record.
+      tags:
+        - DNS Records
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecordACreate'
+      responses:
+        '201':
+          description: Successfully created the A record.
+          content:
+            application/json:
+              schema:
+                type: string
+                description: >-
+                  The object reference of the newly created record.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /record:a/{ref}:
+    get:
+      operationId: getARecord
+      summary: Get a DNS A record
+      description: >-
+        Retrieves a specific DNS A record by its object reference. Use the
+        _return_fields parameter to specify which fields to include in
+        the response.
+      tags:
+        - DNS Records
+      parameters:
+        - $ref: '#/components/parameters/ObjectRef'
+        - $ref: '#/components/parameters/ReturnFields'
+      responses:
+        '200':
+          description: Successfully retrieved the A record.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RecordA'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateARecord
+      summary: Update a DNS A record
+      description: >-
+        Updates an existing DNS A record identified by its object reference.
+        Only the fields included in the request body are modified. Returns
+        the object reference of the updated record.
+      tags:
+        - DNS Records
+      parameters:
+        - $ref: '#/components/parameters/ObjectRef'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecordAUpdate'
+      responses:
+        '200':
+          description: Successfully updated the A record.
+          content:
+            application/json:
+              schema:
+                type: string
+                description: >-
+                  The object reference of the updated record.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteARecord
+      summary: Delete a DNS A record
+      description: >-
+        Deletes a DNS A record identified by its object reference. Returns
+        the object reference of the deleted record.
+      tags:
+        - DNS Records
+      parameters:
+        - $ref: '#/components/parameters/ObjectRef'
+      responses:
+        '200':
+          description: Successfully deleted the A record.
+          content:
+            application/json:
+              schema:
+                type: string
+                description: >-
+                  The object reference of the deleted record.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /record:aaaa:
+    get:
+      operationId: listAAAARecords
+      summary: List DNS AAAA records
+      description: >-
+        Retrieves a list of DNS AAAA (IPv6 address) records. Supports filtering
+        by name, IPv6 address, view, and zone.
+      tags:
+        - DNS Records
+      parameters:
+        - $ref: '#/components/parameters/ReturnFields'
+        - $ref: '#/components/parameters/MaxResults'
+        - name: name
+          in: query
+          description: >-
+            Filter by the fully qualified domain name.
+          schema:
+            type: string
+        - name: ipv6addr
+          in: query
+          description: >-
+            Filter by the IPv6 address.
+          schema:
+            type: string
+            format: ipv6
+        - name: view
+          in: query
+          description: >-
+            Filter by the DNS view name.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successfully retrieved list of AAAA records.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RecordAAAA'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createAAAARecord
+      summary: Create a DNS AAAA record
+      description: >-
+        Creates a new DNS AAAA record mapping a domain name to an IPv6 address.
+      tags:
+        - DNS Records
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecordAAAACreate'
+      responses:
+        '201':
+          description: Successfully created the AAAA record.
+          content:
+            application/json:
+              schema:
+                type: string
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /record:cname:
+    get:
+      operationId: listCNAMERecords
+      summary: List DNS CNAME records
+      description: >-
+        Retrieves a list of DNS CNAME (canonical name) records. Supports
+        filtering by name, canonical name, view, and zone.
+      tags:
+        - DNS Records
+      parameters:
+        - $ref: '#/components/parameters/ReturnFields'
+        - $ref: '#/components/parameters/MaxResults'
+        - name: name
+          in: query
+          description: >-
+            Filter by the alias name.
+          schema:
+            type: string
+        - name: canonical
+          in: query
+          description: >-
+            Filter by the canonical (target) name.
+          schema:
+            type: string
+        - name: view
+          in: query
+          description: >-
+            Filter by the DNS view name.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successfully retrieved list of CNAME records.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RecordCNAME'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createCNAMERecord
+      summary: Create a DNS CNAME record
+      description: >-
+        Creates a new DNS CNAME record mapping an alias name to a canonical name.
+      tags:
+        - DNS Records
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecordCNAMECreate'
+      responses:
+        '201':
+          description: Successfully created the CNAME record.
+          content:
+            application/json:
+              schema:
+                type: string
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /record:mx:
+    get:
+      operationId: listMXRecords
+      summary: List DNS MX records
+      description: >-
+        Retrieves a list of DNS MX (mail exchange) records. Supports filtering
+        by name, mail exchanger, preference, view, and zone.
+      tags:
+        - DNS Records
+      parameters:
+        - $ref: '#/components/parameters/ReturnFields'
+        - $ref: '#/components/parameters/MaxResults'
+        - name: name
+          in: query
+          description: >-
+            Filter by the domain name.
+          schema:
+            type: string
+        - name: mail_exchanger
+          in: query
+          description: >-
+            Filter by the mail exchanger hostname.
+          schema:
+            type: string
+        - name: view
+          in: query
+          description: >-
+            Filter by the DNS view name.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successfully retrieved list of MX records.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RecordMX'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createMXRecord
+      summary: Create a DNS MX record
+      description: >-
+        Creates a new DNS MX record specifying a mail exchanger for a domain.
+      tags:
+        - DNS Records
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecordMXCreate'
+      responses:
+        '201':
+          description: Successfully created the MX record.
+          content:
+            application/json:
+              schema:
+                type: string
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /record:txt:
+    get:
+      operationId: listTXTRecords
+      summary: List DNS TXT records
+      description: >-
+        Retrieves a list of DNS TXT records. Supports filtering by name,
+        text content, view, and zone.
+      tags:
+        - DNS Records
+      parameters:
+        - $ref: '#/components/parameters/ReturnFields'
+        - $ref: '#/components/parameters/MaxResults'
+        - name: name
+          in: query
+          description: >-
+            Filter by the domain name.
+          schema:
+            type: string
+        - name: view
+          in: query
+          description: >-
+            Filter by the DNS view name.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successfully retrieved list of TXT records.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RecordTXT'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createTXTRecord
+      summary: Create a DNS TXT record
+      description: >-
+        Creates a new DNS TXT record with the specified text data.
+      tags:
+        - DNS Records
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecordTXTCreate'
+      responses:
+        '201':
+          description: Successfully created the TXT record.
+          content:
+            application/json:
+              schema:
+                type: string
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /record:ptr:
+    get:
+      operationId: listPTRRecords
+      summary: List DNS PTR records
+      description: >-
+        Retrieves a list of DNS PTR (pointer) records used for reverse DNS
+        lookups. Supports filtering by name, ptrdname, view, and zone.
+      tags:
+        - DNS Records
+      parameters:
+        - $ref: '#/components/parameters/ReturnFields'
+        - $ref: '#/components/parameters/MaxResults'
+        - name: ptrdname
+          in: query
+          description: >-
+            Filter by the domain name the PTR record points to.
+          schema:
+            type: string
+        - name: ipv4addr
+          in: query
+          description: >-
+            Filter by the IPv4 address for the PTR record.
+          schema:
+            type: string
+            format: ipv4
+        - name: view
+          in: query
+          description: >-
+            Filter by the DNS view name.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successfully retrieved list of PTR records.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RecordPTR'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createPTRRecord
+      summary: Create a DNS PTR record
+      description: >-
+        Creates a new DNS PTR record for reverse DNS resolution.
+      tags:
+        - DNS Records
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecordPTRCreate'
+      responses:
+        '201':
+          description: Successfully created the PTR record.
+          content:
+            application/json:
+              schema:
+                type: string
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /record:host:
+    get:
+      operationId: listHostRecords
+      summary: List DNS host records
+      description: >-
+        Retrieves a list of DNS host records. A host record contains the DNS
+        and DHCP data for a host, including one or more IP addresses. Supports
+        filtering by name, view, and zone.
+      tags:
+        - DNS Records
+      parameters:
+        - $ref: '#/components/parameters/ReturnFields'
+        - $ref: '#/components/parameters/MaxResults'
+        - name: name
+          in: query
+          description: >-
+            Filter by the fully qualified domain name of the host.
+          schema:
+            type: string
+        - name: view
+          in: query
+          description: >-
+            Filter by the DNS view name.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successfully retrieved list of host records.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RecordHost'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createHostRecord
+      summary: Create a DNS host record
+      description: >-
+        Creates a new DNS host record with the specified name and IP addresses.
+        A host record can contain multiple IPv4 and IPv6 addresses and
+        automatically creates the corresponding A and AAAA records.
+      tags:
+        - DNS Records
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecordHostCreate'
+      responses:
+        '201':
+          description: Successfully created the host record.
+          content:
+            application/json:
+              schema:
+                type: string
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /zone_auth:
+    get:
+      operationId: listAuthoritativeZones
+      summary: List authoritative DNS zones
+      description: >-
+        Retrieves a list of authoritative DNS zones. Supports filtering by
+        FQDN, view, and zone format (forward or reverse).
+      tags:
+        - DNS Zones
+      parameters:
+        - $ref: '#/components/parameters/ReturnFields'
+        - $ref: '#/components/parameters/MaxResults'
+        - name: fqdn
+          in: query
+          description: >-
+            Filter by the fully qualified domain name of the zone.
+          schema:
+            type: string
+        - name: view
+          in: query
+          description: >-
+            Filter by the DNS view name.
+          schema:
+            type: string
+        - name: zone_format
+          in: query
+          description: >-
+            Filter by the zone format.
+          schema:
+            type: string
+            enum:
+              - FORWARD
+              - IPV4
+              - IPV6
+      responses:
+        '200':
+          description: Successfully retrieved list of authoritative zones.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ZoneAuth'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createAuthoritativeZone
+      summary: Create an authoritative DNS zone
+      description: >-
+        Creates a new authoritative DNS zone with the specified FQDN and
+        zone format. The zone is created in the specified DNS view.
+      tags:
+        - DNS Zones
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ZoneAuthCreate'
+      responses:
+        '201':
+          description: Successfully created the authoritative zone.
+          content:
+            application/json:
+              schema:
+                type: string
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /zone_forward:
+    get:
+      operationId: listForwardZones
+      summary: List forward DNS zones
+      description: >-
+        Retrieves a list of forward DNS zones. A forward zone forwards
+        queries to specified DNS servers rather than resolving them locally.
+      tags:
+        - DNS Zones
+      parameters:
+        - $ref: '#/components/parameters/ReturnFields'
+        - $ref: '#/components/parameters/MaxResults'
+        - name: fqdn
+          in: query
+          description: >-
+            Filter by the fully qualified domain name of the forward zone.
+          schema:
+            type: string
+        - name: view
+          in: query
+          description: >-
+            Filter by the DNS view name.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successfully retrieved list of forward zones.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ZoneForward'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /network:
+    get:
+      operationId: listNetworks
+      summary: List DHCP networks
+      description: >-
+        Retrieves a list of IPv4 networks. Networks represent IP subnets and
+        can contain DHCP ranges and fixed addresses. Supports filtering by
+        network address, CIDR, network view, and comment.
+      tags:
+        - Networks
+      parameters:
+        - $ref: '#/components/parameters/ReturnFields'
+        - $ref: '#/components/parameters/MaxResults'
+        - name: network
+          in: query
+          description: >-
+            Filter by the network address in CIDR notation (e.g. 10.0.0.0/24).
+          schema:
+            type: string
+        - name: network_view
+          in: query
+          description: >-
+            Filter by the network view name.
+          schema:
+            type: string
+        - name: comment
+          in: query
+          description: >-
+            Filter by the comment associated with the network.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successfully retrieved list of networks.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Network'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createNetwork
+      summary: Create a network
+      description: >-
+        Creates a new IPv4 network with the specified CIDR address. The network
+        is created in the specified network view, or the default view if none
+        is specified.
+      tags:
+        - Networks
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NetworkCreate'
+      responses:
+        '201':
+          description: Successfully created the network.
+          content:
+            application/json:
+              schema:
+                type: string
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /networkview:
+    get:
+      operationId: listNetworkViews
+      summary: List network views
+      description: >-
+        Retrieves a list of network views. A network view provides a way to
+        separate overlapping IP address spaces into distinct logical views.
+      tags:
+        - Networks
+      parameters:
+        - $ref: '#/components/parameters/ReturnFields'
+        - $ref: '#/components/parameters/MaxResults'
+        - name: name
+          in: query
+          description: >-
+            Filter by the network view name.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successfully retrieved list of network views.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NetworkView'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /ipv4address:
+    get:
+      operationId: listIPv4Addresses
+      summary: List IPv4 addresses
+      description: >-
+        Retrieves a list of IPv4 address objects. This is a read-only object
+        that provides information about the usage and status of IPv4 addresses
+        in the Infoblox system. Supports filtering by IP address, network,
+        status, and associated names.
+      tags:
+        - IP Address Management
+      parameters:
+        - $ref: '#/components/parameters/ReturnFields'
+        - $ref: '#/components/parameters/MaxResults'
+        - name: ip_address
+          in: query
+          description: >-
+            Filter by the IPv4 address.
+          schema:
+            type: string
+            format: ipv4
+        - name: network
+          in: query
+          description: >-
+            Filter by the network in CIDR notation.
+          schema:
+            type: string
+        - name: status
+          in: query
+          description: >-
+            Filter by the IP address status.
+          schema:
+            type: string
+            enum:
+              - USED
+              - UNUSED
+        - name: network_view
+          in: query
+          description: >-
+            Filter by the network view name.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successfully retrieved list of IPv4 addresses.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/IPv4Address'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /range:
+    get:
+      operationId: listDHCPRanges
+      summary: List DHCP ranges
+      description: >-
+        Retrieves a list of DHCP range objects. A DHCP range defines a pool
+        of IP addresses from which DHCP clients can obtain leases.
+      tags:
+        - DHCP
+      parameters:
+        - $ref: '#/components/parameters/ReturnFields'
+        - $ref: '#/components/parameters/MaxResults'
+        - name: network
+          in: query
+          description: >-
+            Filter by the parent network in CIDR notation.
+          schema:
+            type: string
+        - name: start_addr
+          in: query
+          description: >-
+            Filter by the starting IP address of the range.
+          schema:
+            type: string
+            format: ipv4
+        - name: end_addr
+          in: query
+          description: >-
+            Filter by the ending IP address of the range.
+          schema:
+            type: string
+            format: ipv4
+        - name: network_view
+          in: query
+          description: >-
+            Filter by the network view name.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successfully retrieved list of DHCP ranges.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DHCPRange'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createDHCPRange
+      summary: Create a DHCP range
+      description: >-
+        Creates a new DHCP range within a specified network. The range defines
+        a contiguous block of IP addresses available for DHCP allocation.
+      tags:
+        - DHCP
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DHCPRangeCreate'
+      responses:
+        '201':
+          description: Successfully created the DHCP range.
+          content:
+            application/json:
+              schema:
+                type: string
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /fixedaddress:
+    get:
+      operationId: listFixedAddresses
+      summary: List DHCP fixed addresses
+      description: >-
+        Retrieves a list of DHCP fixed address reservations. A fixed address
+        maps a specific MAC address to a reserved IP address.
+      tags:
+        - DHCP
+      parameters:
+        - $ref: '#/components/parameters/ReturnFields'
+        - $ref: '#/components/parameters/MaxResults'
+        - name: ipv4addr
+          in: query
+          description: >-
+            Filter by the reserved IPv4 address.
+          schema:
+            type: string
+            format: ipv4
+        - name: mac
+          in: query
+          description: >-
+            Filter by the MAC address.
+          schema:
+            type: string
+        - name: network_view
+          in: query
+          description: >-
+            Filter by the network view name.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successfully retrieved list of fixed addresses.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FixedAddress'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createFixedAddress
+      summary: Create a DHCP fixed address
+      description: >-
+        Creates a new DHCP fixed address reservation mapping a MAC address
+        to a specific IPv4 address.
+      tags:
+        - DHCP
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FixedAddressCreate'
+      responses:
+        '201':
+          description: Successfully created the fixed address.
+          content:
+            application/json:
+              schema:
+                type: string
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /lease:
+    get:
+      operationId: listDHCPLeases
+      summary: List DHCP leases
+      description: >-
+        Retrieves a list of DHCP lease objects. Leases represent active
+        DHCP address assignments and include information about the client,
+        assigned address, and lease duration.
+      tags:
+        - DHCP
+      parameters:
+        - $ref: '#/components/parameters/ReturnFields'
+        - $ref: '#/components/parameters/MaxResults'
+        - name: address
+          in: query
+          description: >-
+            Filter by the leased IPv4 address.
+          schema:
+            type: string
+            format: ipv4
+        - name: network_view
+          in: query
+          description: >-
+            Filter by the network view name.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successfully retrieved list of DHCP leases.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DHCPLease'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /grid:
+    get:
+      operationId: getGrid
+      summary: Get Grid information
+      description: >-
+        Retrieves the Grid object containing configuration and status
+        information about the Infoblox Grid.
+      tags:
+        - Grid
+      parameters:
+        - $ref: '#/components/parameters/ReturnFields'
+      responses:
+        '200':
+          description: Successfully retrieved Grid information.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Grid'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /member:
+    get:
+      operationId: listMembers
+      summary: List Grid members
+      description: >-
+        Retrieves a list of Grid member objects. Each member represents an
+        Infoblox appliance that is part of the Grid.
+      tags:
+        - Grid
+      parameters:
+        - $ref: '#/components/parameters/ReturnFields'
+        - $ref: '#/components/parameters/MaxResults'
+        - name: host_name
+          in: query
+          description: >-
+            Filter by the member hostname.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successfully retrieved list of Grid members.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Member'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: >-
+        HTTP Basic Authentication using NIOS admin credentials.
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: ibapauth
+      description: >-
+        Session cookie returned after successful authentication. Pass the
+        ibapauth cookie with subsequent requests to maintain an
+        authenticated session.
+  parameters:
+    ObjectRef:
+      name: ref
+      in: path
+      required: true
+      description: >-
+        The object reference string that uniquely identifies the WAPI object.
+      schema:
+        type: string
+    ReturnFields:
+      name: _return_fields
+      in: query
+      description: >-
+        Comma-separated list of field names to include in the response.
+        Use _return_fields+ to add fields to the default set.
+      schema:
+        type: string
+    MaxResults:
+      name: _max_results
+      in: query
+      description: >-
+        The maximum number of results to return. The default is 1000.
+        Use a negative value to return all results.
+      schema:
+        type: integer
+        default: 1000
+    Paging:
+      name: _paging
+      in: query
+      description: >-
+        Set to 1 to enable result paging. When enabled, a next_page_id
+        is returned if more results are available.
+      schema:
+        type: integer
+        enum:
+          - 0
+          - 1
+    PageId:
+      name: _page_id
+      in: query
+      description: >-
+        The page identifier returned from a previous paged request.
+        Used to retrieve the next page of results.
+      schema:
+        type: string
+  responses:
+    BadRequest:
+      description: >-
+        The request was malformed or contained invalid parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: >-
+        Authentication failed or credentials were not provided.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: >-
+        The specified object reference was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    Error:
+      type: object
+      properties:
+        Error:
+          type: string
+          description: >-
+            The error type identifier.
+        code:
+          type: string
+          description: >-
+            The error code.
+        text:
+          type: string
+          description: >-
+            A human-readable error message.
+    RecordA:
+      type: object
+      properties:
+        _ref:
+          type: string
+          description: >-
+            The object reference for this A record.
+        name:
+          type: string
+          description: >-
+            The fully qualified domain name of the A record.
+        ipv4addr:
+          type: string
+          format: ipv4
+          description: >-
+            The IPv4 address mapped to the domain name.
+        view:
+          type: string
+          description: >-
+            The DNS view in which this record exists.
+        zone:
+          type: string
+          description: >-
+            The DNS zone containing this record.
+        ttl:
+          type: integer
+          description: >-
+            The time to live in seconds for the record.
+        use_ttl:
+          type: boolean
+          description: >-
+            Whether to use the TTL value specified on this record.
+        comment:
+          type: string
+          description: >-
+            A descriptive comment for the record (max 256 characters).
+          maxLength: 256
+        disable:
+          type: boolean
+          description: >-
+            Whether the record is disabled.
+    RecordACreate:
+      type: object
+      required:
+        - name
+        - ipv4addr
+      properties:
+        name:
+          type: string
+          description: >-
+            The fully qualified domain name for the A record.
+        ipv4addr:
+          type: string
+          format: ipv4
+          description: >-
+            The IPv4 address to map to the domain name. Use
+            func:nextavailableip to assign the next available IP.
+        view:
+          type: string
+          description: >-
+            The DNS view in which to create the record.
+        ttl:
+          type: integer
+          description: >-
+            The time to live in seconds.
+        use_ttl:
+          type: boolean
+          description: >-
+            Whether to use the specified TTL value.
+        comment:
+          type: string
+          description: >-
+            A descriptive comment for the record.
+          maxLength: 256
+    RecordAUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+          description: >-
+            The fully qualified domain name for the A record.
+        ipv4addr:
+          type: string
+          format: ipv4
+          description: >-
+            The IPv4 address.
+        ttl:
+          type: integer
+          description: >-
+            The time to live in seconds.
+        use_ttl:
+          type: boolean
+          description: >-
+            Whether to use the specified TTL value.
+        comment:
+          type: string
+          description: >-
+            A descriptive comment for the record.
+          maxLength: 256
+        disable:
+          type: boolean
+          description: >-
+            Whether to disable the record.
+    RecordAAAA:
+      type: object
+      properties:
+        _ref:
+          type: string
+          description: >-
+            The object reference for this AAAA record.
+        name:
+          type: string
+          description: >-
+            The fully qualified domain name.
+        ipv6addr:
+          type: string
+          format: ipv6
+          description: >-
+            The IPv6 address mapped to the domain name.
+        view:
+          type: string
+          description: >-
+            The DNS view in which this record exists.
+        ttl:
+          type: integer
+          description: >-
+            The time to live in seconds.
+        comment:
+          type: string
+          description: >-
+            A descriptive comment for the record.
+          maxLength: 256
+    RecordAAAACreate:
+      type: object
+      required:
+        - name
+        - ipv6addr
+      properties:
+        name:
+          type: string
+          description: >-
+            The fully qualified domain name.
+        ipv6addr:
+          type: string
+          format: ipv6
+          description: >-
+            The IPv6 address to map.
+        view:
+          type: string
+          description: >-
+            The DNS view in which to create the record.
+        comment:
+          type: string
+          description: >-
+            A descriptive comment.
+          maxLength: 256
+    RecordCNAME:
+      type: object
+      properties:
+        _ref:
+          type: string
+          description: >-
+            The object reference for this CNAME record.
+        name:
+          type: string
+          description: >-
+            The alias name.
+        canonical:
+          type: string
+          description: >-
+            The canonical (target) domain name.
+        view:
+          type: string
+          description: >-
+            The DNS view in which this record exists.
+        ttl:
+          type: integer
+          description: >-
+            The time to live in seconds.
+        comment:
+          type: string
+          description: >-
+            A descriptive comment.
+          maxLength: 256
+    RecordCNAMECreate:
+      type: object
+      required:
+        - name
+        - canonical
+      properties:
+        name:
+          type: string
+          description: >-
+            The alias name.
+        canonical:
+          type: string
+          description: >-
+            The canonical (target) domain name.
+        view:
+          type: string
+          description: >-
+            The DNS view.
+        comment:
+          type: string
+          description: >-
+            A descriptive comment.
+          maxLength: 256
+    RecordMX:
+      type: object
+      properties:
+        _ref:
+          type: string
+          description: >-
+            The object reference for this MX record.
+        name:
+          type: string
+          description: >-
+            The domain name.
+        mail_exchanger:
+          type: string
+          description: >-
+            The mail exchanger hostname.
+        preference:
+          type: integer
+          description: >-
+            The preference value (lower values have higher priority).
+          minimum: 0
+          maximum: 65535
+        view:
+          type: string
+          description: >-
+            The DNS view.
+        comment:
+          type: string
+          description: >-
+            A descriptive comment.
+          maxLength: 256
+    RecordMXCreate:
+      type: object
+      required:
+        - name
+        - mail_exchanger
+        - preference
+      properties:
+        name:
+          type: string
+          description: >-
+            The domain name.
+        mail_exchanger:
+          type: string
+          description: >-
+            The mail exchanger hostname.
+        preference:
+          type: integer
+          description: >-
+            The preference value.
+          minimum: 0
+          maximum: 65535
+        view:
+          type: string
+          description: >-
+            The DNS view.
+        comment:
+          type: string
+          description: >-
+            A descriptive comment.
+          maxLength: 256
+    RecordTXT:
+      type: object
+      properties:
+        _ref:
+          type: string
+          description: >-
+            The object reference for this TXT record.
+        name:
+          type: string
+          description: >-
+            The domain name.
+        text:
+          type: string
+          description: >-
+            The text data of the record.
+        view:
+          type: string
+          description: >-
+            The DNS view.
+        comment:
+          type: string
+          description: >-
+            A descriptive comment.
+          maxLength: 256
+    RecordTXTCreate:
+      type: object
+      required:
+        - name
+        - text
+      properties:
+        name:
+          type: string
+          description: >-
+            The domain name.
+        text:
+          type: string
+          description: >-
+            The text data.
+        view:
+          type: string
+          description: >-
+            The DNS view.
+        comment:
+          type: string
+          description: >-
+            A descriptive comment.
+          maxLength: 256
+    RecordPTR:
+      type: object
+      properties:
+        _ref:
+          type: string
+          description: >-
+            The object reference for this PTR record.
+        ptrdname:
+          type: string
+          description: >-
+            The domain name the PTR record points to.
+        ipv4addr:
+          type: string
+          format: ipv4
+          description: >-
+            The IPv4 address for reverse lookup.
+        view:
+          type: string
+          description: >-
+            The DNS view.
+        comment:
+          type: string
+          description: >-
+            A descriptive comment.
+          maxLength: 256
+    RecordPTRCreate:
+      type: object
+      required:
+        - ptrdname
+        - ipv4addr
+      properties:
+        ptrdname:
+          type: string
+          description: >-
+            The domain name the PTR record points to.
+        ipv4addr:
+          type: string
+          format: ipv4
+          description: >-
+            The IPv4 address.
+        view:
+          type: string
+          description: >-
+            The DNS view.
+        comment:
+          type: string
+          description: >-
+            A descriptive comment.
+          maxLength: 256
+    RecordHost:
+      type: object
+      properties:
+        _ref:
+          type: string
+          description: >-
+            The object reference for this host record.
+        name:
+          type: string
+          description: >-
+            The fully qualified domain name of the host.
+        ipv4addrs:
+          type: array
+          items:
+            type: object
+            properties:
+              _ref:
+                type: string
+                description: >-
+                  The object reference for this IPv4 address entry.
+              ipv4addr:
+                type: string
+                format: ipv4
+                description: >-
+                  The IPv4 address.
+              configure_for_dhcp:
+                type: boolean
+                description: >-
+                  Whether DHCP is configured for this address.
+              mac:
+                type: string
+                description: >-
+                  The MAC address associated with this IP.
+          description: >-
+            The list of IPv4 addresses for the host.
+        view:
+          type: string
+          description: >-
+            The DNS view.
+        comment:
+          type: string
+          description: >-
+            A descriptive comment.
+          maxLength: 256
+    RecordHostCreate:
+      type: object
+      required:
+        - name
+        - ipv4addrs
+      properties:
+        name:
+          type: string
+          description: >-
+            The fully qualified domain name of the host.
+        ipv4addrs:
+          type: array
+          items:
+            type: object
+            required:
+              - ipv4addr
+            properties:
+              ipv4addr:
+                type: string
+                description: >-
+                  The IPv4 address. Use func:nextavailableip for automatic
+                  assignment.
+              mac:
+                type: string
+                description: >-
+                  The MAC address for DHCP configuration.
+              configure_for_dhcp:
+                type: boolean
+                description: >-
+                  Whether to configure DHCP for this address.
+          description: >-
+            The list of IPv4 addresses for the host.
+        view:
+          type: string
+          description: >-
+            The DNS view.
+        comment:
+          type: string
+          description: >-
+            A descriptive comment.
+          maxLength: 256
+    ZoneAuth:
+      type: object
+      properties:
+        _ref:
+          type: string
+          description: >-
+            The object reference for this authoritative zone.
+        fqdn:
+          type: string
+          description: >-
+            The fully qualified domain name of the zone.
+        view:
+          type: string
+          description: >-
+            The DNS view containing this zone.
+        zone_format:
+          type: string
+          enum:
+            - FORWARD
+            - IPV4
+            - IPV6
+          description: >-
+            The format of the zone (forward or reverse).
+        comment:
+          type: string
+          description: >-
+            A descriptive comment.
+          maxLength: 256
+        ns_group:
+          type: string
+          description: >-
+            The name server group assigned to this zone.
+    ZoneAuthCreate:
+      type: object
+      required:
+        - fqdn
+        - zone_format
+      properties:
+        fqdn:
+          type: string
+          description: >-
+            The fully qualified domain name of the zone.
+        view:
+          type: string
+          description: >-
+            The DNS view in which to create the zone.
+        zone_format:
+          type: string
+          enum:
+            - FORWARD
+            - IPV4
+            - IPV6
+          description: >-
+            The format of the zone.
+        comment:
+          type: string
+          description: >-
+            A descriptive comment.
+          maxLength: 256
+    ZoneForward:
+      type: object
+      properties:
+        _ref:
+          type: string
+          description: >-
+            The object reference for this forward zone.
+        fqdn:
+          type: string
+          description: >-
+            The fully qualified domain name of the forward zone.
+        forward_to:
+          type: array
+          items:
+            type: object
+            properties:
+              address:
+                type: string
+                description: >-
+                  The IP address of the forwarding server.
+              name:
+                type: string
+                description: >-
+                  The name of the forwarding server.
+          description: >-
+            The list of DNS servers to forward queries to.
+        view:
+          type: string
+          description: >-
+            The DNS view.
+        comment:
+          type: string
+          description: >-
+            A descriptive comment.
+          maxLength: 256
+    Network:
+      type: object
+      properties:
+        _ref:
+          type: string
+          description: >-
+            The object reference for this network.
+        network:
+          type: string
+          description: >-
+            The network address in CIDR notation.
+        network_view:
+          type: string
+          description: >-
+            The network view containing this network.
+        comment:
+          type: string
+          description: >-
+            A descriptive comment for the network.
+          maxLength: 256
+        members:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: >-
+                  The Grid member name.
+              _struct:
+                type: string
+                description: >-
+                  The member structure type (e.g. dhcpmember).
+          description: >-
+            The list of DHCP members serving this network.
+    NetworkCreate:
+      type: object
+      required:
+        - network
+      properties:
+        network:
+          type: string
+          description: >-
+            The network address in CIDR notation (e.g. 10.0.0.0/24).
+        network_view:
+          type: string
+          description: >-
+            The network view. Defaults to the default network view.
+        comment:
+          type: string
+          description: >-
+            A descriptive comment.
+          maxLength: 256
+    NetworkView:
+      type: object
+      properties:
+        _ref:
+          type: string
+          description: >-
+            The object reference for this network view.
+        name:
+          type: string
+          description: >-
+            The name of the network view.
+        comment:
+          type: string
+          description: >-
+            A descriptive comment.
+          maxLength: 256
+        is_default:
+          type: boolean
+          description: >-
+            Whether this is the default network view.
+    IPv4Address:
+      type: object
+      properties:
+        _ref:
+          type: string
+          description: >-
+            The object reference for this IPv4 address.
+        ip_address:
+          type: string
+          format: ipv4
+          description: >-
+            The IPv4 address.
+        network:
+          type: string
+          description: >-
+            The network containing this address in CIDR notation.
+        network_view:
+          type: string
+          description: >-
+            The network view containing this address.
+        status:
+          type: string
+          enum:
+            - USED
+            - UNUSED
+          description: >-
+            The utilization status of the address.
+        names:
+          type: array
+          items:
+            type: string
+          description: >-
+            The DNS names associated with this address.
+        types:
+          type: array
+          items:
+            type: string
+          description: >-
+            The types of objects using this address (e.g. A, HOST, RESERVATION).
+        objects:
+          type: array
+          items:
+            type: string
+          description: >-
+            The object references of objects using this address.
+        mac_address:
+          type: string
+          description: >-
+            The MAC address associated with this IP if available.
+        is_conflict:
+          type: boolean
+          description: >-
+            Whether a conflict has been detected for this address.
+    DHCPRange:
+      type: object
+      properties:
+        _ref:
+          type: string
+          description: >-
+            The object reference for this DHCP range.
+        network:
+          type: string
+          description: >-
+            The parent network in CIDR notation.
+        start_addr:
+          type: string
+          format: ipv4
+          description: >-
+            The starting IP address of the range.
+        end_addr:
+          type: string
+          format: ipv4
+          description: >-
+            The ending IP address of the range.
+        network_view:
+          type: string
+          description: >-
+            The network view.
+        comment:
+          type: string
+          description: >-
+            A descriptive comment.
+          maxLength: 256
+        disable:
+          type: boolean
+          description: >-
+            Whether the DHCP range is disabled.
+    DHCPRangeCreate:
+      type: object
+      required:
+        - start_addr
+        - end_addr
+      properties:
+        network:
+          type: string
+          description: >-
+            The parent network in CIDR notation.
+        start_addr:
+          type: string
+          format: ipv4
+          description: >-
+            The starting IP address.
+        end_addr:
+          type: string
+          format: ipv4
+          description: >-
+            The ending IP address.
+        network_view:
+          type: string
+          description: >-
+            The network view.
+        comment:
+          type: string
+          description: >-
+            A descriptive comment.
+          maxLength: 256
+    FixedAddress:
+      type: object
+      properties:
+        _ref:
+          type: string
+          description: >-
+            The object reference for this fixed address.
+        ipv4addr:
+          type: string
+          format: ipv4
+          description: >-
+            The reserved IPv4 address.
+        mac:
+          type: string
+          description: >-
+            The MAC address of the client.
+        network_view:
+          type: string
+          description: >-
+            The network view.
+        comment:
+          type: string
+          description: >-
+            A descriptive comment.
+          maxLength: 256
+        disable:
+          type: boolean
+          description: >-
+            Whether the fixed address reservation is disabled.
+    FixedAddressCreate:
+      type: object
+      required:
+        - ipv4addr
+        - mac
+      properties:
+        ipv4addr:
+          type: string
+          format: ipv4
+          description: >-
+            The IPv4 address to reserve.
+        mac:
+          type: string
+          description: >-
+            The MAC address of the client.
+        network_view:
+          type: string
+          description: >-
+            The network view.
+        comment:
+          type: string
+          description: >-
+            A descriptive comment.
+          maxLength: 256
+    DHCPLease:
+      type: object
+      properties:
+        _ref:
+          type: string
+          description: >-
+            The object reference for this lease.
+        address:
+          type: string
+          format: ipv4
+          description: >-
+            The leased IPv4 address.
+        network_view:
+          type: string
+          description: >-
+            The network view.
+        binding_state:
+          type: string
+          enum:
+            - ACTIVE
+            - EXPIRED
+            - FREE
+            - RELEASED
+          description: >-
+            The current state of the DHCP lease.
+        hardware:
+          type: string
+          description: >-
+            The hardware (MAC) address of the DHCP client.
+        client_hostname:
+          type: string
+          description: >-
+            The hostname provided by the DHCP client.
+        starts:
+          type: string
+          format: date-time
+          description: >-
+            The lease start time.
+        ends:
+          type: string
+          format: date-time
+          description: >-
+            The lease expiration time.
+    Grid:
+      type: object
+      properties:
+        _ref:
+          type: string
+          description: >-
+            The object reference for the Grid.
+        name:
+          type: string
+          description: >-
+            The name of the Grid.
+        dns_resolver_setting:
+          type: object
+          description: >-
+            The DNS resolver settings for the Grid.
+        ntp_setting:
+          type: object
+          description: >-
+            The NTP settings for the Grid.
+    Member:
+      type: object
+      properties:
+        _ref:
+          type: string
+          description: >-
+            The object reference for this Grid member.
+        host_name:
+          type: string
+          description: >-
+            The hostname of the Grid member.
+        config_addr_type:
+          type: string
+          enum:
+            - IPV4
+            - IPV6
+            - BOTH
+          description: >-
+            The address type configuration.
+        platform:
+          type: string
+          description: >-
+            The hardware or virtual platform type.
+        service_status:
+          type: array
+          items:
+            type: object
+            properties:
+              service:
+                type: string
+                description: >-
+                  The service name (e.g. DNS, DHCP).
+              status:
+                type: string
+                description: >-
+                  The service status (e.g. WORKING, INACTIVE).
+          description: >-
+            The status of services running on this member.
