@@ -57,7 +57,7 @@ paths:
   /record:a:
     get:
       operationId: listARecords
-      summary: List DNS A records
+      summary: Infoblox List DNS A records
       description: >-
         Retrieves a list of DNS A records from the Infoblox appliance. Supports
         filtering by name, IP address, view, zone, and other fields. Use the
@@ -111,7 +111,7 @@ paths:
           $ref: '#/components/responses/Unauthorized'
     post:
       operationId: createARecord
-      summary: Create a DNS A record
+      summary: Infoblox Create a DNS A record
       description: >-
         Creates a new DNS A record with the specified name and IPv4 address.
         The record is created in the specified DNS view, or the default view
@@ -141,7 +141,7 @@ paths:
   /record:a/{ref}:
     get:
       operationId: getARecord
-      summary: Get a DNS A record
+      summary: Infoblox Get a DNS A record
       description: >-
         Retrieves a specific DNS A record by its object reference. Use the
         _return_fields parameter to specify which fields to include in
@@ -164,7 +164,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     put:
       operationId: updateARecord
-      summary: Update a DNS A record
+      summary: Infoblox Update a DNS A record
       description: >-
         Updates an existing DNS A record identified by its object reference.
         Only the fields included in the request body are modified. Returns
@@ -196,7 +196,7 @@ paths:
           $ref: '#/components/responses/NotFound'
     delete:
       operationId: deleteARecord
-      summary: Delete a DNS A record
+      summary: Infoblox Delete a DNS A record
       description: >-
         Deletes a DNS A record identified by its object reference. Returns
         the object reference of the deleted record.
@@ -220,7 +220,7 @@ paths:
   /record:aaaa:
     get:
       operationId: listAAAARecords
-      summary: List DNS AAAA records
+      summary: Infoblox List DNS AAAA records
       description: >-
         Retrieves a list of DNS AAAA (IPv6 address) records. Supports filtering
         by name, IPv6 address, view, and zone.
@@ -263,7 +263,7 @@ paths:
           $ref: '#/components/responses/Unauthorized'
     post:
       operationId: createAAAARecord
-      summary: Create a DNS AAAA record
+      summary: Infoblox Create a DNS AAAA record
       description: >-
         Creates a new DNS AAAA record mapping a domain name to an IPv6 address.
       tags:
@@ -288,7 +288,7 @@ paths:
   /record:cname:
     get:
       operationId: listCNAMERecords
-      summary: List DNS CNAME records
+      summary: Infoblox List DNS CNAME records
       description: >-
         Retrieves a list of DNS CNAME (canonical name) records. Supports
         filtering by name, canonical name, view, and zone.
@@ -330,7 +330,7 @@ paths:
           $ref: '#/components/responses/Unauthorized'
     post:
       operationId: createCNAMERecord
-      summary: Create a DNS CNAME record
+      summary: Infoblox Create a DNS CNAME record
       description: >-
         Creates a new DNS CNAME record mapping an alias name to a canonical name.
       tags:
@@ -355,7 +355,7 @@ paths:
   /record:mx:
     get:
       operationId: listMXRecords
-      summary: List DNS MX records
+      summary: Infoblox List DNS MX records
       description: >-
         Retrieves a list of DNS MX (mail exchange) records. Supports filtering
         by name, mail exchanger, preference, view, and zone.
@@ -397,7 +397,7 @@ paths:
           $ref: '#/components/responses/Unauthorized'
     post:
       operationId: createMXRecord
-      summary: Create a DNS MX record
+      summary: Infoblox Create a DNS MX record
       description: >-
         Creates a new DNS MX record specifying a mail exchanger for a domain.
       tags:
@@ -422,7 +422,7 @@ paths:
   /record:txt:
     get:
       operationId: listTXTRecords
-      summary: List DNS TXT records
+      summary: Infoblox List DNS TXT records
       description: >-
         Retrieves a list of DNS TXT records. Supports filtering by name,
         text content, view, and zone.
@@ -458,7 +458,7 @@ paths:
           $ref: '#/components/responses/Unauthorized'
     post:
       operationId: createTXTRecord
-      summary: Create a DNS TXT record
+      summary: Infoblox Create a DNS TXT record
       description: >-
         Creates a new DNS TXT record with the specified text data.
       tags:
@@ -483,7 +483,7 @@ paths:
   /record:ptr:
     get:
       operationId: listPTRRecords
-      summary: List DNS PTR records
+      summary: Infoblox List DNS PTR records
       description: >-
         Retrieves a list of DNS PTR (pointer) records used for reverse DNS
         lookups. Supports filtering by name, ptrdname, view, and zone.
@@ -526,7 +526,7 @@ paths:
           $ref: '#/components/responses/Unauthorized'
     post:
       operationId: createPTRRecord
-      summary: Create a DNS PTR record
+      summary: Infoblox Create a DNS PTR record
       description: >-
         Creates a new DNS PTR record for reverse DNS resolution.
       tags:
@@ -551,7 +551,7 @@ paths:
   /record:host:
     get:
       operationId: listHostRecords
-      summary: List DNS host records
+      summary: Infoblox List DNS host records
       description: >-
         Retrieves a list of DNS host records. A host record contains the DNS
         and DHCP data for a host, including one or more IP addresses. Supports
@@ -588,7 +588,7 @@ paths:
           $ref: '#/components/responses/Unauthorized'
     post:
       operationId: createHostRecord
-      summary: Create a DNS host record
+      summary: Infoblox Create a DNS host record
       description: >-
         Creates a new DNS host record with the specified name and IP addresses.
         A host record can contain multiple IPv4 and IPv6 addresses and
@@ -615,7 +615,7 @@ paths:
   /zone_auth:
     get:
       operationId: listAuthoritativeZones
-      summary: List authoritative DNS zones
+      summary: Infoblox List authoritative DNS zones
       description: >-
         Retrieves a list of authoritative DNS zones. Supports filtering by
         FQDN, view, and zone format (forward or reverse).
@@ -661,7 +661,7 @@ paths:
           $ref: '#/components/responses/Unauthorized'
     post:
       operationId: createAuthoritativeZone
-      summary: Create an authoritative DNS zone
+      summary: Infoblox Create an authoritative DNS zone
       description: >-
         Creates a new authoritative DNS zone with the specified FQDN and
         zone format. The zone is created in the specified DNS view.
@@ -687,7 +687,7 @@ paths:
   /zone_forward:
     get:
       operationId: listForwardZones
-      summary: List forward DNS zones
+      summary: Infoblox List forward DNS zones
       description: >-
         Retrieves a list of forward DNS zones. A forward zone forwards
         queries to specified DNS servers rather than resolving them locally.
@@ -724,7 +724,7 @@ paths:
   /network:
     get:
       operationId: listNetworks
-      summary: List DHCP networks
+      summary: Infoblox List DHCP networks
       description: >-
         Retrieves a list of IPv4 networks. Networks represent IP subnets and
         can contain DHCP ranges and fixed addresses. Supports filtering by
@@ -767,7 +767,7 @@ paths:
           $ref: '#/components/responses/Unauthorized'
     post:
       operationId: createNetwork
-      summary: Create a network
+      summary: Infoblox Create a network
       description: >-
         Creates a new IPv4 network with the specified CIDR address. The network
         is created in the specified network view, or the default view if none
@@ -794,7 +794,7 @@ paths:
   /networkview:
     get:
       operationId: listNetworkViews
-      summary: List network views
+      summary: Infoblox List network views
       description: >-
         Retrieves a list of network views. A network view provides a way to
         separate overlapping IP address spaces into distinct logical views.
@@ -825,7 +825,7 @@ paths:
   /ipv4address:
     get:
       operationId: listIPv4Addresses
-      summary: List IPv4 addresses
+      summary: Infoblox List IPv4 addresses
       description: >-
         Retrieves a list of IPv4 address objects. This is a read-only object
         that provides information about the usage and status of IPv4 addresses
@@ -880,7 +880,7 @@ paths:
   /range:
     get:
       operationId: listDHCPRanges
-      summary: List DHCP ranges
+      summary: Infoblox List DHCP ranges
       description: >-
         Retrieves a list of DHCP range objects. A DHCP range defines a pool
         of IP addresses from which DHCP clients can obtain leases.
@@ -930,7 +930,7 @@ paths:
           $ref: '#/components/responses/Unauthorized'
     post:
       operationId: createDHCPRange
-      summary: Create a DHCP range
+      summary: Infoblox Create a DHCP range
       description: >-
         Creates a new DHCP range within a specified network. The range defines
         a contiguous block of IP addresses available for DHCP allocation.
@@ -956,7 +956,7 @@ paths:
   /fixedaddress:
     get:
       operationId: listFixedAddresses
-      summary: List DHCP fixed addresses
+      summary: Infoblox List DHCP fixed addresses
       description: >-
         Retrieves a list of DHCP fixed address reservations. A fixed address
         maps a specific MAC address to a reserved IP address.
@@ -999,7 +999,7 @@ paths:
           $ref: '#/components/responses/Unauthorized'
     post:
       operationId: createFixedAddress
-      summary: Create a DHCP fixed address
+      summary: Infoblox Create a DHCP fixed address
       description: >-
         Creates a new DHCP fixed address reservation mapping a MAC address
         to a specific IPv4 address.
@@ -1025,7 +1025,7 @@ paths:
   /lease:
     get:
       operationId: listDHCPLeases
-      summary: List DHCP leases
+      summary: Infoblox List DHCP leases
       description: >-
         Retrieves a list of DHCP lease objects. Leases represent active
         DHCP address assignments and include information about the client,
@@ -1064,7 +1064,7 @@ paths:
   /grid:
     get:
       operationId: getGrid
-      summary: Get Grid information
+      summary: Infoblox Get Grid information
       description: >-
         Retrieves the Grid object containing configuration and status
         information about the Infoblox Grid.
@@ -1086,7 +1086,7 @@ paths:
   /member:
     get:
       operationId: listMembers
-      summary: List Grid members
+      summary: Infoblox List Grid members
       description: >-
         Retrieves a list of Grid member objects. Each member represents an
         Infoblox appliance that is part of the Grid.
