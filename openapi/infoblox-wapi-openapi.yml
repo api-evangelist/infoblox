@@ -27,6 +27,10 @@ servers:
         description: >-
           The hostname or IP address of the Infoblox NIOS Grid Master appliance.
 tags:
+  - name: DHCP
+    description: >-
+      Operations for managing DHCP ranges, fixed addresses, leases,
+      and DHCP option configurations.
   - name: DNS Records
     description: >-
       Operations for managing DNS resource records including A, AAAA, CNAME,
@@ -35,21 +39,17 @@ tags:
     description: >-
       Operations for managing authoritative DNS zones, delegated zones,
       forward zones, and stub zones.
-  - name: Networks
+  - name: Grid
     description: >-
-      Operations for managing IPv4 and IPv6 networks, network containers,
-      and network views.
-  - name: DHCP
-    description: >-
-      Operations for managing DHCP ranges, fixed addresses, leases,
-      and DHCP option configurations.
+      Operations for managing Grid members, properties, and services.
   - name: IP Address Management
     description: >-
       Operations for managing IP addresses, querying address utilization,
       and performing next available IP lookups.
-  - name: Grid
+  - name: Networks
     description: >-
-      Operations for managing Grid members, properties, and services.
+      Operations for managing IPv4 and IPv6 networks, network containers,
+      and network views.
 security:
   - basicAuth: []
   - cookieAuth: []
