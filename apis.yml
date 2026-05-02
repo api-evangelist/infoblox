@@ -1,12 +1,22 @@
+aid: infoblox
 name: Infoblox
 description: >-
-  Infoblox provides network services including DNS, DHCP, and IP address
-  management (DDI) with security and automation capabilities.
+  Infoblox is a networking and cybersecurity company providing DDI (DNS, DHCP,
+  and IPAM) solutions and protective DNS-layer security services. Its product
+  portfolio spans the Universal DDI suite for unified hybrid and multi-cloud
+  network services, NIOS DDI for on-premises deployments, NIOS-X as a Service,
+  Threat Defense for DNS-layer security, threat intelligence (TIDE) and
+  research (Dossier), and NetMRI for network change and configuration
+  management.
 image: https://www.infoblox.com/wp-content/uploads/infoblox-logo.svg
-url: https://www.infoblox.com
-created: '2024'
-modified: '2026-03-16'
-specificationVersion: '0.18'
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/infoblox/refs/heads/main/apis.yml
+created: '2024-01-15'
+modified: '2026-04-28'
+specificationVersion: '0.20'
+type: Contract
+position: Consuming
+access: 3rd-Party
 apis:
   - name: Infoblox WAPI (Web API)
     description: >-
@@ -26,6 +36,9 @@ apis:
       - type: Documentation
         url: https://docs.infoblox.com/
       - type: OpenAPI
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/infoblox/refs/heads/main/openapi/infoblox-wapi-openapi.yml
+      - type: Reference
         url: https://docs.infoblox.com/space/niosapi/
       - type: Authentication
         url: https://docs.infoblox.com/space/niosapi/22644231/WAPI+Authentication
