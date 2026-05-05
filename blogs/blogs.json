@@ -1,0 +1,13 @@
+{
+  "repo": "infoblox",
+  "feeds": [
+    {
+      "source": "https://blogs.infoblox.com/",
+      "feed_url": "https://www.infoblox.com/blog/feed/",
+      "saved": 10,
+      "title": "Infoblox Blog"
+    }
+  ],
+  "post_count": 10,
+  "fetched": "2026-05-03T23:29:36Z"
+}
