@@ -1,0 +1,1355 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Infoblox WAPI (Web API)
+  description: RESTful API for managing Infoblox NIOS DDI (DNS, DHCP, IPAM) services, network objects, and configuration.
+    The WAPI uses standard HTTP methods for CRUD operations and supports JSON and XML input and output formats. Authentication
+    is handled via HTTP basic authentication or certificate-based authentication, and sessions can be maintained using cookies
+    returned after initial authentication. The API follows a resource-oriented design where each NIOS object type is accessible
+    as a REST resource.
+  tags:
+  - Infoblox
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: infoblox
+    baseUri: https://grid-master.example.com/wapi/v2.12
+    description: Infoblox WAPI (Web API) HTTP API.
+    authentication:
+      type: basic
+      username: '{{INFOBLOX_USERNAME}}'
+      password: '{{INFOBLOX_PASSWORD}}'
+    resources:
+    - name: record-a
+      path: /record:a
+      operations:
+      - name: listarecords
+        method: GET
+        description: Infoblox List DNS A records
+        inputParameters:
+        - name: name
+          in: query
+          type: string
+          description: Filter by the fully qualified domain name of the A record.
+        - name: ipv4addr
+          in: query
+          type: string
+          description: Filter by the IPv4 address of the A record.
+        - name: view
+          in: query
+          type: string
+          description: Filter by the DNS view name.
+        - name: zone
+          in: query
+          type: string
+          description: Filter by the DNS zone name.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createarecord
+        method: POST
+        description: Infoblox Create a DNS A record
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: record-a-ref
+      path: /record:a/{ref}
+      operations:
+      - name: getarecord
+        method: GET
+        description: Infoblox Get a DNS A record
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatearecord
+        method: PUT
+        description: Infoblox Update a DNS A record
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deletearecord
+        method: DELETE
+        description: Infoblox Delete a DNS A record
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: record-aaaa
+      path: /record:aaaa
+      operations:
+      - name: listaaaarecords
+        method: GET
+        description: Infoblox List DNS AAAA records
+        inputParameters:
+        - name: name
+          in: query
+          type: string
+          description: Filter by the fully qualified domain name.
+        - name: ipv6addr
+          in: query
+          type: string
+          description: Filter by the IPv6 address.
+        - name: view
+          in: query
+          type: string
+          description: Filter by the DNS view name.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createaaaarecord
+        method: POST
+        description: Infoblox Create a DNS AAAA record
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: record-cname
+      path: /record:cname
+      operations:
+      - name: listcnamerecords
+        method: GET
+        description: Infoblox List DNS CNAME records
+        inputParameters:
+        - name: name
+          in: query
+          type: string
+          description: Filter by the alias name.
+        - name: canonical
+          in: query
+          type: string
+          description: Filter by the canonical (target) name.
+        - name: view
+          in: query
+          type: string
+          description: Filter by the DNS view name.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createcnamerecord
+        method: POST
+        description: Infoblox Create a DNS CNAME record
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: record-mx
+      path: /record:mx
+      operations:
+      - name: listmxrecords
+        method: GET
+        description: Infoblox List DNS MX records
+        inputParameters:
+        - name: name
+          in: query
+          type: string
+          description: Filter by the domain name.
+        - name: mail_exchanger
+          in: query
+          type: string
+          description: Filter by the mail exchanger hostname.
+        - name: view
+          in: query
+          type: string
+          description: Filter by the DNS view name.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createmxrecord
+        method: POST
+        description: Infoblox Create a DNS MX record
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: record-txt
+      path: /record:txt
+      operations:
+      - name: listtxtrecords
+        method: GET
+        description: Infoblox List DNS TXT records
+        inputParameters:
+        - name: name
+          in: query
+          type: string
+          description: Filter by the domain name.
+        - name: view
+          in: query
+          type: string
+          description: Filter by the DNS view name.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createtxtrecord
+        method: POST
+        description: Infoblox Create a DNS TXT record
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: record-ptr
+      path: /record:ptr
+      operations:
+      - name: listptrrecords
+        method: GET
+        description: Infoblox List DNS PTR records
+        inputParameters:
+        - name: ptrdname
+          in: query
+          type: string
+          description: Filter by the domain name the PTR record points to.
+        - name: ipv4addr
+          in: query
+          type: string
+          description: Filter by the IPv4 address for the PTR record.
+        - name: view
+          in: query
+          type: string
+          description: Filter by the DNS view name.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createptrrecord
+        method: POST
+        description: Infoblox Create a DNS PTR record
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: record-host
+      path: /record:host
+      operations:
+      - name: listhostrecords
+        method: GET
+        description: Infoblox List DNS host records
+        inputParameters:
+        - name: name
+          in: query
+          type: string
+          description: Filter by the fully qualified domain name of the host.
+        - name: view
+          in: query
+          type: string
+          description: Filter by the DNS view name.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createhostrecord
+        method: POST
+        description: Infoblox Create a DNS host record
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: zone-auth
+      path: /zone_auth
+      operations:
+      - name: listauthoritativezones
+        method: GET
+        description: Infoblox List authoritative DNS zones
+        inputParameters:
+        - name: fqdn
+          in: query
+          type: string
+          description: Filter by the fully qualified domain name of the zone.
+        - name: view
+          in: query
+          type: string
+          description: Filter by the DNS view name.
+        - name: zone_format
+          in: query
+          type: string
+          description: Filter by the zone format.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createauthoritativezone
+        method: POST
+        description: Infoblox Create an authoritative DNS zone
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: zone-forward
+      path: /zone_forward
+      operations:
+      - name: listforwardzones
+        method: GET
+        description: Infoblox List forward DNS zones
+        inputParameters:
+        - name: fqdn
+          in: query
+          type: string
+          description: Filter by the fully qualified domain name of the forward zone.
+        - name: view
+          in: query
+          type: string
+          description: Filter by the DNS view name.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: network
+      path: /network
+      operations:
+      - name: listnetworks
+        method: GET
+        description: Infoblox List DHCP networks
+        inputParameters:
+        - name: network
+          in: query
+          type: string
+          description: Filter by the network address in CIDR notation (e.g. 10.0.0.0/24).
+        - name: network_view
+          in: query
+          type: string
+          description: Filter by the network view name.
+        - name: comment
+          in: query
+          type: string
+          description: Filter by the comment associated with the network.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createnetwork
+        method: POST
+        description: Infoblox Create a network
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: networkview
+      path: /networkview
+      operations:
+      - name: listnetworkviews
+        method: GET
+        description: Infoblox List network views
+        inputParameters:
+        - name: name
+          in: query
+          type: string
+          description: Filter by the network view name.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: ipv4address
+      path: /ipv4address
+      operations:
+      - name: listipv4addresses
+        method: GET
+        description: Infoblox List IPv4 addresses
+        inputParameters:
+        - name: ip_address
+          in: query
+          type: string
+          description: Filter by the IPv4 address.
+        - name: network
+          in: query
+          type: string
+          description: Filter by the network in CIDR notation.
+        - name: status
+          in: query
+          type: string
+          description: Filter by the IP address status.
+        - name: network_view
+          in: query
+          type: string
+          description: Filter by the network view name.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: range
+      path: /range
+      operations:
+      - name: listdhcpranges
+        method: GET
+        description: Infoblox List DHCP ranges
+        inputParameters:
+        - name: network
+          in: query
+          type: string
+          description: Filter by the parent network in CIDR notation.
+        - name: start_addr
+          in: query
+          type: string
+          description: Filter by the starting IP address of the range.
+        - name: end_addr
+          in: query
+          type: string
+          description: Filter by the ending IP address of the range.
+        - name: network_view
+          in: query
+          type: string
+          description: Filter by the network view name.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createdhcprange
+        method: POST
+        description: Infoblox Create a DHCP range
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: fixedaddress
+      path: /fixedaddress
+      operations:
+      - name: listfixedaddresses
+        method: GET
+        description: Infoblox List DHCP fixed addresses
+        inputParameters:
+        - name: ipv4addr
+          in: query
+          type: string
+          description: Filter by the reserved IPv4 address.
+        - name: mac
+          in: query
+          type: string
+          description: Filter by the MAC address.
+        - name: network_view
+          in: query
+          type: string
+          description: Filter by the network view name.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createfixedaddress
+        method: POST
+        description: Infoblox Create a DHCP fixed address
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: lease
+      path: /lease
+      operations:
+      - name: listdhcpleases
+        method: GET
+        description: Infoblox List DHCP leases
+        inputParameters:
+        - name: address
+          in: query
+          type: string
+          description: Filter by the leased IPv4 address.
+        - name: network_view
+          in: query
+          type: string
+          description: Filter by the network view name.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: grid
+      path: /grid
+      operations:
+      - name: getgrid
+        method: GET
+        description: Infoblox Get Grid information
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: member
+      path: /member
+      operations:
+      - name: listmembers
+        method: GET
+        description: Infoblox List Grid members
+        inputParameters:
+        - name: host_name
+          in: query
+          type: string
+          description: Filter by the member hostname.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: infoblox-rest
+    description: REST adapter for Infoblox WAPI (Web API).
+    resources:
+    - path: /record:a
+      name: listarecords
+      operations:
+      - method: GET
+        name: listarecords
+        description: Infoblox List DNS A records
+        call: infoblox.listarecords
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /record:a
+      name: createarecord
+      operations:
+      - method: POST
+        name: createarecord
+        description: Infoblox Create a DNS A record
+        call: infoblox.createarecord
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /record:a/{ref}
+      name: getarecord
+      operations:
+      - method: GET
+        name: getarecord
+        description: Infoblox Get a DNS A record
+        call: infoblox.getarecord
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /record:a/{ref}
+      name: updatearecord
+      operations:
+      - method: PUT
+        name: updatearecord
+        description: Infoblox Update a DNS A record
+        call: infoblox.updatearecord
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /record:a/{ref}
+      name: deletearecord
+      operations:
+      - method: DELETE
+        name: deletearecord
+        description: Infoblox Delete a DNS A record
+        call: infoblox.deletearecord
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /record:aaaa
+      name: listaaaarecords
+      operations:
+      - method: GET
+        name: listaaaarecords
+        description: Infoblox List DNS AAAA records
+        call: infoblox.listaaaarecords
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /record:aaaa
+      name: createaaaarecord
+      operations:
+      - method: POST
+        name: createaaaarecord
+        description: Infoblox Create a DNS AAAA record
+        call: infoblox.createaaaarecord
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /record:cname
+      name: listcnamerecords
+      operations:
+      - method: GET
+        name: listcnamerecords
+        description: Infoblox List DNS CNAME records
+        call: infoblox.listcnamerecords
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /record:cname
+      name: createcnamerecord
+      operations:
+      - method: POST
+        name: createcnamerecord
+        description: Infoblox Create a DNS CNAME record
+        call: infoblox.createcnamerecord
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /record:mx
+      name: listmxrecords
+      operations:
+      - method: GET
+        name: listmxrecords
+        description: Infoblox List DNS MX records
+        call: infoblox.listmxrecords
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /record:mx
+      name: createmxrecord
+      operations:
+      - method: POST
+        name: createmxrecord
+        description: Infoblox Create a DNS MX record
+        call: infoblox.createmxrecord
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /record:txt
+      name: listtxtrecords
+      operations:
+      - method: GET
+        name: listtxtrecords
+        description: Infoblox List DNS TXT records
+        call: infoblox.listtxtrecords
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /record:txt
+      name: createtxtrecord
+      operations:
+      - method: POST
+        name: createtxtrecord
+        description: Infoblox Create a DNS TXT record
+        call: infoblox.createtxtrecord
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /record:ptr
+      name: listptrrecords
+      operations:
+      - method: GET
+        name: listptrrecords
+        description: Infoblox List DNS PTR records
+        call: infoblox.listptrrecords
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /record:ptr
+      name: createptrrecord
+      operations:
+      - method: POST
+        name: createptrrecord
+        description: Infoblox Create a DNS PTR record
+        call: infoblox.createptrrecord
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /record:host
+      name: listhostrecords
+      operations:
+      - method: GET
+        name: listhostrecords
+        description: Infoblox List DNS host records
+        call: infoblox.listhostrecords
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /record:host
+      name: createhostrecord
+      operations:
+      - method: POST
+        name: createhostrecord
+        description: Infoblox Create a DNS host record
+        call: infoblox.createhostrecord
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /zone_auth
+      name: listauthoritativezones
+      operations:
+      - method: GET
+        name: listauthoritativezones
+        description: Infoblox List authoritative DNS zones
+        call: infoblox.listauthoritativezones
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /zone_auth
+      name: createauthoritativezone
+      operations:
+      - method: POST
+        name: createauthoritativezone
+        description: Infoblox Create an authoritative DNS zone
+        call: infoblox.createauthoritativezone
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /zone_forward
+      name: listforwardzones
+      operations:
+      - method: GET
+        name: listforwardzones
+        description: Infoblox List forward DNS zones
+        call: infoblox.listforwardzones
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /network
+      name: listnetworks
+      operations:
+      - method: GET
+        name: listnetworks
+        description: Infoblox List DHCP networks
+        call: infoblox.listnetworks
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /network
+      name: createnetwork
+      operations:
+      - method: POST
+        name: createnetwork
+        description: Infoblox Create a network
+        call: infoblox.createnetwork
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /networkview
+      name: listnetworkviews
+      operations:
+      - method: GET
+        name: listnetworkviews
+        description: Infoblox List network views
+        call: infoblox.listnetworkviews
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /ipv4address
+      name: listipv4addresses
+      operations:
+      - method: GET
+        name: listipv4addresses
+        description: Infoblox List IPv4 addresses
+        call: infoblox.listipv4addresses
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /range
+      name: listdhcpranges
+      operations:
+      - method: GET
+        name: listdhcpranges
+        description: Infoblox List DHCP ranges
+        call: infoblox.listdhcpranges
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /range
+      name: createdhcprange
+      operations:
+      - method: POST
+        name: createdhcprange
+        description: Infoblox Create a DHCP range
+        call: infoblox.createdhcprange
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /fixedaddress
+      name: listfixedaddresses
+      operations:
+      - method: GET
+        name: listfixedaddresses
+        description: Infoblox List DHCP fixed addresses
+        call: infoblox.listfixedaddresses
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /fixedaddress
+      name: createfixedaddress
+      operations:
+      - method: POST
+        name: createfixedaddress
+        description: Infoblox Create a DHCP fixed address
+        call: infoblox.createfixedaddress
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /lease
+      name: listdhcpleases
+      operations:
+      - method: GET
+        name: listdhcpleases
+        description: Infoblox List DHCP leases
+        call: infoblox.listdhcpleases
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /grid
+      name: getgrid
+      operations:
+      - method: GET
+        name: getgrid
+        description: Infoblox Get Grid information
+        call: infoblox.getgrid
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /member
+      name: listmembers
+      operations:
+      - method: GET
+        name: listmembers
+        description: Infoblox List Grid members
+        call: infoblox.listmembers
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: infoblox-mcp
+    transport: http
+    description: MCP adapter for Infoblox WAPI (Web API) for AI agent use.
+    tools:
+    - name: listarecords
+      description: Infoblox List DNS A records
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: infoblox.listarecords
+      with:
+        name: tools.name
+        ipv4addr: tools.ipv4addr
+        view: tools.view
+        zone: tools.zone
+      inputParameters:
+      - name: name
+        type: string
+        description: Filter by the fully qualified domain name of the A record.
+      - name: ipv4addr
+        type: string
+        description: Filter by the IPv4 address of the A record.
+      - name: view
+        type: string
+        description: Filter by the DNS view name.
+      - name: zone
+        type: string
+        description: Filter by the DNS zone name.
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createarecord
+      description: Infoblox Create a DNS A record
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: infoblox.createarecord
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getarecord
+      description: Infoblox Get a DNS A record
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: infoblox.getarecord
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updatearecord
+      description: Infoblox Update a DNS A record
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: infoblox.updatearecord
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletearecord
+      description: Infoblox Delete a DNS A record
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: infoblox.deletearecord
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listaaaarecords
+      description: Infoblox List DNS AAAA records
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: infoblox.listaaaarecords
+      with:
+        name: tools.name
+        ipv6addr: tools.ipv6addr
+        view: tools.view
+      inputParameters:
+      - name: name
+        type: string
+        description: Filter by the fully qualified domain name.
+      - name: ipv6addr
+        type: string
+        description: Filter by the IPv6 address.
+      - name: view
+        type: string
+        description: Filter by the DNS view name.
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createaaaarecord
+      description: Infoblox Create a DNS AAAA record
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: infoblox.createaaaarecord
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listcnamerecords
+      description: Infoblox List DNS CNAME records
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: infoblox.listcnamerecords
+      with:
+        name: tools.name
+        canonical: tools.canonical
+        view: tools.view
+      inputParameters:
+      - name: name
+        type: string
+        description: Filter by the alias name.
+      - name: canonical
+        type: string
+        description: Filter by the canonical (target) name.
+      - name: view
+        type: string
+        description: Filter by the DNS view name.
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createcnamerecord
+      description: Infoblox Create a DNS CNAME record
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: infoblox.createcnamerecord
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listmxrecords
+      description: Infoblox List DNS MX records
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: infoblox.listmxrecords
+      with:
+        name: tools.name
+        mail_exchanger: tools.mail_exchanger
+        view: tools.view
+      inputParameters:
+      - name: name
+        type: string
+        description: Filter by the domain name.
+      - name: mail_exchanger
+        type: string
+        description: Filter by the mail exchanger hostname.
+      - name: view
+        type: string
+        description: Filter by the DNS view name.
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createmxrecord
+      description: Infoblox Create a DNS MX record
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: infoblox.createmxrecord
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listtxtrecords
+      description: Infoblox List DNS TXT records
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: infoblox.listtxtrecords
+      with:
+        name: tools.name
+        view: tools.view
+      inputParameters:
+      - name: name
+        type: string
+        description: Filter by the domain name.
+      - name: view
+        type: string
+        description: Filter by the DNS view name.
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createtxtrecord
+      description: Infoblox Create a DNS TXT record
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: infoblox.createtxtrecord
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listptrrecords
+      description: Infoblox List DNS PTR records
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: infoblox.listptrrecords
+      with:
+        ptrdname: tools.ptrdname
+        ipv4addr: tools.ipv4addr
+        view: tools.view
+      inputParameters:
+      - name: ptrdname
+        type: string
+        description: Filter by the domain name the PTR record points to.
+      - name: ipv4addr
+        type: string
+        description: Filter by the IPv4 address for the PTR record.
+      - name: view
+        type: string
+        description: Filter by the DNS view name.
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createptrrecord
+      description: Infoblox Create a DNS PTR record
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: infoblox.createptrrecord
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listhostrecords
+      description: Infoblox List DNS host records
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: infoblox.listhostrecords
+      with:
+        name: tools.name
+        view: tools.view
+      inputParameters:
+      - name: name
+        type: string
+        description: Filter by the fully qualified domain name of the host.
+      - name: view
+        type: string
+        description: Filter by the DNS view name.
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createhostrecord
+      description: Infoblox Create a DNS host record
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: infoblox.createhostrecord
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listauthoritativezones
+      description: Infoblox List authoritative DNS zones
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: infoblox.listauthoritativezones
+      with:
+        fqdn: tools.fqdn
+        view: tools.view
+        zone_format: tools.zone_format
+      inputParameters:
+      - name: fqdn
+        type: string
+        description: Filter by the fully qualified domain name of the zone.
+      - name: view
+        type: string
+        description: Filter by the DNS view name.
+      - name: zone_format
+        type: string
+        description: Filter by the zone format.
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createauthoritativezone
+      description: Infoblox Create an authoritative DNS zone
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: infoblox.createauthoritativezone
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listforwardzones
+      description: Infoblox List forward DNS zones
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: infoblox.listforwardzones
+      with:
+        fqdn: tools.fqdn
+        view: tools.view
+      inputParameters:
+      - name: fqdn
+        type: string
+        description: Filter by the fully qualified domain name of the forward zone.
+      - name: view
+        type: string
+        description: Filter by the DNS view name.
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listnetworks
+      description: Infoblox List DHCP networks
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: infoblox.listnetworks
+      with:
+        network: tools.network
+        network_view: tools.network_view
+        comment: tools.comment
+      inputParameters:
+      - name: network
+        type: string
+        description: Filter by the network address in CIDR notation (e.g. 10.0.0.0/24).
+      - name: network_view
+        type: string
+        description: Filter by the network view name.
+      - name: comment
+        type: string
+        description: Filter by the comment associated with the network.
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createnetwork
+      description: Infoblox Create a network
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: infoblox.createnetwork
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listnetworkviews
+      description: Infoblox List network views
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: infoblox.listnetworkviews
+      with:
+        name: tools.name
+      inputParameters:
+      - name: name
+        type: string
+        description: Filter by the network view name.
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listipv4addresses
+      description: Infoblox List IPv4 addresses
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: infoblox.listipv4addresses
+      with:
+        ip_address: tools.ip_address
+        network: tools.network
+        status: tools.status
+        network_view: tools.network_view
+      inputParameters:
+      - name: ip_address
+        type: string
+        description: Filter by the IPv4 address.
+      - name: network
+        type: string
+        description: Filter by the network in CIDR notation.
+      - name: status
+        type: string
+        description: Filter by the IP address status.
+      - name: network_view
+        type: string
+        description: Filter by the network view name.
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listdhcpranges
+      description: Infoblox List DHCP ranges
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: infoblox.listdhcpranges
+      with:
+        network: tools.network
+        start_addr: tools.start_addr
+        end_addr: tools.end_addr
+        network_view: tools.network_view
+      inputParameters:
+      - name: network
+        type: string
+        description: Filter by the parent network in CIDR notation.
+      - name: start_addr
+        type: string
+        description: Filter by the starting IP address of the range.
+      - name: end_addr
+        type: string
+        description: Filter by the ending IP address of the range.
+      - name: network_view
+        type: string
+        description: Filter by the network view name.
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createdhcprange
+      description: Infoblox Create a DHCP range
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: infoblox.createdhcprange
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listfixedaddresses
+      description: Infoblox List DHCP fixed addresses
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: infoblox.listfixedaddresses
+      with:
+        ipv4addr: tools.ipv4addr
+        mac: tools.mac
+        network_view: tools.network_view
+      inputParameters:
+      - name: ipv4addr
+        type: string
+        description: Filter by the reserved IPv4 address.
+      - name: mac
+        type: string
+        description: Filter by the MAC address.
+      - name: network_view
+        type: string
+        description: Filter by the network view name.
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createfixedaddress
+      description: Infoblox Create a DHCP fixed address
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: infoblox.createfixedaddress
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listdhcpleases
+      description: Infoblox List DHCP leases
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: infoblox.listdhcpleases
+      with:
+        address: tools.address
+        network_view: tools.network_view
+      inputParameters:
+      - name: address
+        type: string
+        description: Filter by the leased IPv4 address.
+      - name: network_view
+        type: string
+        description: Filter by the network view name.
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getgrid
+      description: Infoblox Get Grid information
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: infoblox.getgrid
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listmembers
+      description: Infoblox List Grid members
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: infoblox.listmembers
+      with:
+        host_name: tools.host_name
+      inputParameters:
+      - name: host_name
+        type: string
+        description: Filter by the member hostname.
+      outputParameters:
+      - type: object
+        mapping: $.
+binds:
+- namespace: env
+  keys:
+    INFOBLOX_USERNAME: INFOBLOX_USERNAME
+    INFOBLOX_PASSWORD: INFOBLOX_PASSWORD
