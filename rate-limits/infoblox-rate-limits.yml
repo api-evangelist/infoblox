@@ -4,169 +4,50 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Infoblox
 providerId: infoblox
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
 tags:
-  - Cloud
   - DDI
-  - DHCP
   - DNS
+  - DHCP
   - IPAM
   - Network Management
-  - Security
-  - Threat Intelligence
   - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the Infoblox API surface. Captures per-tier quotas,
-  burst behavior, response signaling, and recovery semantics. Defaults are scaffold values to be replaced
-  with published provider limits.
-headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
+description: Infoblox does not publish public per-second rate-limit numbers for its WAPI (NIOS) or Cloud
+  Services Portal APIs. Throughput on NIOS Grid is bounded by Grid Master sizing and concurrent WAPI
+  session limits; Cloud Services Portal APIs operate under Infoblox-managed shared infrastructure with
+  fair-use throttling. Specific limits are workload-dependent and best obtained from the customer's
+  account team.
+notes: Numbers below are intentionally string-typed; replace with quotes from Infoblox documentation
+  or sales engineers.
 responseCodes:
   throttled: 429
-  quotaExceeded: 429
   serviceUnavailable: 503
 limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
+  - name: NIOS WAPI throughput
+    scope: grid-master
+    metric: varies
+    limit: governed by Grid Master appliance sizing and concurrent session limits
     applies:
-      - Infoblox WAPI (Web API)
-      - Infoblox BloxOne API
-      - Infoblox BloxOne DNS Configuration API
-      - Infoblox BloxOne DNS Data API
-      - Infoblox BloxOne IPAM/DHCP API
-      - Infoblox BloxOne DDI Keys API
-      - Infoblox BloxOne Anycast Configuration API
-      - Infoblox BloxOne Infrastructure Management API
-      - Infoblox BloxOne Host Activation API
-      - Infoblox BloxOne DNS Forwarding Proxy API
-      - Infoblox BloxOne Firewall API
-      - Infoblox BloxOne Redirect API
-      - Infoblox BloxOne Upgrade Policy API
-      - Infoblox Threat Defense API
-      - Infoblox TIDE API
-      - Infoblox Dossier API
-      - Infoblox NetMRI API
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
+      - Infoblox NIOS WAPI
+  - name: Cloud Services Portal API throughput
+    scope: tenant
+    metric: varies
+    limit: shared-infrastructure fair-use; consult Infoblox CSP documentation
     applies:
-      - Infoblox WAPI (Web API)
-      - Infoblox BloxOne API
-      - Infoblox BloxOne DNS Configuration API
-      - Infoblox BloxOne DNS Data API
-      - Infoblox BloxOne IPAM/DHCP API
-      - Infoblox BloxOne DDI Keys API
-      - Infoblox BloxOne Anycast Configuration API
-      - Infoblox BloxOne Infrastructure Management API
-      - Infoblox BloxOne Host Activation API
-      - Infoblox BloxOne DNS Forwarding Proxy API
-      - Infoblox BloxOne Firewall API
-      - Infoblox BloxOne Redirect API
-      - Infoblox BloxOne Upgrade Policy API
-      - Infoblox Threat Defense API
-      - Infoblox TIDE API
-      - Infoblox Dossier API
-      - Infoblox NetMRI API
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - Infoblox WAPI (Web API)
-      - Infoblox BloxOne API
-      - Infoblox BloxOne DNS Configuration API
-      - Infoblox BloxOne DNS Data API
-      - Infoblox BloxOne IPAM/DHCP API
-      - Infoblox BloxOne DDI Keys API
-      - Infoblox BloxOne Anycast Configuration API
-      - Infoblox BloxOne Infrastructure Management API
-      - Infoblox BloxOne Host Activation API
-      - Infoblox BloxOne DNS Forwarding Proxy API
-      - Infoblox BloxOne Firewall API
-      - Infoblox BloxOne Redirect API
-      - Infoblox BloxOne Upgrade Policy API
-      - Infoblox Threat Defense API
-      - Infoblox TIDE API
-      - Infoblox Dossier API
-      - Infoblox NetMRI API
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - Infoblox WAPI (Web API)
-      - Infoblox BloxOne API
-      - Infoblox BloxOne DNS Configuration API
-      - Infoblox BloxOne DNS Data API
-      - Infoblox BloxOne IPAM/DHCP API
-      - Infoblox BloxOne DDI Keys API
-      - Infoblox BloxOne Anycast Configuration API
-      - Infoblox BloxOne Infrastructure Management API
-      - Infoblox BloxOne Host Activation API
-      - Infoblox BloxOne DNS Forwarding Proxy API
-      - Infoblox BloxOne Firewall API
-      - Infoblox BloxOne Redirect API
-      - Infoblox BloxOne Upgrade Policy API
-      - Infoblox Threat Defense API
-      - Infoblox TIDE API
-      - Infoblox Dossier API
-      - Infoblox NetMRI API
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - Infoblox WAPI (Web API)
-      - Infoblox BloxOne API
-      - Infoblox BloxOne DNS Configuration API
-      - Infoblox BloxOne DNS Data API
-      - Infoblox BloxOne IPAM/DHCP API
-      - Infoblox BloxOne DDI Keys API
-      - Infoblox BloxOne Anycast Configuration API
-      - Infoblox BloxOne Infrastructure Management API
-      - Infoblox BloxOne Host Activation API
-      - Infoblox BloxOne DNS Forwarding Proxy API
-      - Infoblox BloxOne Firewall API
-      - Infoblox BloxOne Redirect API
-      - Infoblox BloxOne Upgrade Policy API
-      - Infoblox Threat Defense API
-      - Infoblox TIDE API
-      - Infoblox Dossier API
-      - Infoblox NetMRI API
+      - Infoblox Cloud Services Portal API
 policies:
   - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
+    description: Clients receiving 429 or 503 should implement exponential backoff with jitter and honor
+      Retry-After when present.
+  - name: Session Reuse
+    description: NIOS WAPI clients should reuse cookie-based sessions across requests rather than authenticating
+      per call to avoid login throttling.
+  - name: Bulk Operations
+    description: Use _ref-based bulk operations and CSV import where available rather than high-volume
+      individual API calls.
   - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+    description: Infoblox reserves the right to throttle traffic that materially impacts shared infrastructure.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

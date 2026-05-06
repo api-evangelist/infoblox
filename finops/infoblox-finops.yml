@@ -1,5 +1,6 @@
 specification: FinOps Framework
 specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
 alignedWith:
   framework: FinOps Foundation Framework
   frameworkUrl: https://www.finops.org/framework/
@@ -8,264 +9,120 @@ alignedWith:
   dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
 provider: Infoblox
 providerId: infoblox
-publisherName: Infoblox
-serviceCategory: API
+publisherName: Infoblox Inc.
+serviceCategory: Network Services + Security
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
 tags:
-  - Cloud
   - DDI
-  - DHCP
   - DNS
+  - DHCP
   - IPAM
   - Network Management
-  - Security
-  - Threat Intelligence
   - FinOps
-  - Cost Management
   - FOCUS
-description: FinOps framework definition for the Infoblox API surface. Provides a FOCUS-aligned mapping
-  for cost allocation, usage measurement, and unit-economics reporting across the provider's APIs.
+description: FOCUS-aligned FinOps shape for Infoblox. Billing is enterprise subscription (per-protected-asset
+  / per-appliance, annual) plus support; APIs are bundled. FinOps practice for Infoblox focuses on entitlement
+  utilization, environment consolidation, and renewal-cycle right-sizing rather than per-API-call accounting.
+notes: No public per-call or per-query meter; meters below describe the business-level cost drivers (assets,
+  appliances, queries protected). Reconcile against the customer's own Infoblox subscription and CSP usage
+  reports.
+sources:
+  - https://www.infoblox.com/products/
+  - https://www.infoblox.com/company/contact-us/
 principles:
   - name: Visibility
-    description: Make API consumption costs visible to engineering, product, and finance teams in near
-      real-time.
+    description: Use the Infoblox Cloud Services Portal to see protected-asset counts, query volume,
+      threat-intel hits, and licensed-feature utilization across the Universal DDI suite.
   - name: Allocation
-    description: Tag every chargeable API call with the consuming team, environment, application, and
-      feature so cost can be allocated.
+    description: Tag managed assets in Universal DDI and NIOS by business unit / data center / cloud
+      account so renewal cost can be attributed; map appliances to cost centers in CMDB.
   - name: Optimization
-    description: Continuously evaluate request patterns, caching, batching, and tier selection to reduce
-      cost per useful unit of work.
+    description: Right-size protected-asset counts at renewal; consolidate redundant on-prem NIOS appliances
+      into cloud-managed Universal DDI; retire stale extensible attributes and unused IPAM networks.
   - name: Accountability
-    description: Establish budget owners and chargeback or showback flows for each consuming team.
+    description: Designate a Network Services owner with annual Infoblox-renewal budget; review utilization
+      and growth quarterly with the Infoblox Customer Success team.
 domains:
   - name: Understand Usage and Cost
     capabilities:
       - Data Ingestion
       - Allocation
       - Reporting and Analytics
-      - Anomaly Management
   - name: Quantify Business Value
     capabilities:
       - Planning and Estimating
       - Forecasting
       - Budgeting
       - Benchmarking
-      - Unit Economics
   - name: Optimize Usage and Cost
     capabilities:
       - Architecting for Cloud
-      - Rate Optimization
       - Workload Optimization
-      - Cloud Sustainability
       - Licensing and SaaS
   - name: Manage the FinOps Practice
     capabilities:
-      - FinOps Practice Operations
-      - FinOps Education and Enablement
       - Invoicing and Chargeback
       - Onboarding Workloads
-      - Intersecting Disciplines
 billingModel:
-  pricingCategory: Usage-Based
-  billingFrequency: Monthly
+  pricingCategory: Enterprise Subscription
+  billingFrequency: Annual
   billingCurrency: USD
   chargeCategories:
-    - Usage
     - Purchase
     - Tax
-    - Credit
     - Adjustment
   chargeFrequency: Recurring
 focusColumns:
-  ServiceName: Infoblox
-  ServiceCategory: Developer Tools / API
+  ServiceName: Infoblox Universal DDI / NIOS / Threat Defense
+  ServiceCategory: Network Services + Security
   ProviderName: Infoblox
-  PublisherName: Infoblox
-  InvoiceIssuerName: Infoblox
-  PricingCategory: Usage-Based
-  PricingUnit: request
+  PublisherName: Infoblox Inc.
+  InvoiceIssuerName: Infoblox Inc.
+  PricingCategory: Subscription
+  PricingUnit: protected-asset-year
   BillingCurrency: USD
-  ChargeCategory: Usage
+  ChargeCategory: Purchase
 meters:
-  - name: api_requests
-    description: Count of billable API requests
-    unit: request
-    aggregation: sum
+  - name: protected_assets
+    description: Count of assets / endpoints / IP space under management or protection
+    unit: asset-month
+    aggregation: max
     dimensions:
-      - api
-      - endpoint
-      - tier
+      - product_line
       - region
-      - consumer
-  - name: data_egress
-    description: Bytes returned over the network in API responses
-    unit: GB
+      - business_unit
+  - name: appliances
+    description: NIOS appliances (physical or virtual) under license
+    unit: appliance-month
+    aggregation: max
+    dimensions:
+      - model
+      - data_center
+  - name: dns_queries_protected
+    description: DNS queries protected by Threat Defense
+    unit: query
     aggregation: sum
     dimensions:
-      - api
       - region
-      - consumer
-  - name: compute_seconds
-    description: Server-side compute consumed by the request, where applicable
-    unit: second
-    aggregation: sum
-    dimensions:
-      - api
-      - endpoint
-      - tier
+      - threat_category
 apis:
-  - name: Infoblox WAPI (Web API)
-    baseURL: https://{grid-master}/wapi/v2.12
-    tags:
-      - DDI
-      - DHCP
-      - DNS
-      - IPAM
-      - Network Management
-    serviceName: Infoblox WAPI (Web API)
-    serviceCategory: API
-  - name: Infoblox BloxOne API
+  - name: Infoblox Universal DDI API
     baseURL: https://csp.infoblox.com/api
-    tags:
-      - Cloud
-      - DHCP
-      - DNS
-      - IPAM
-      - Security
-      - Threat Defense
-    serviceName: Infoblox BloxOne API
     serviceCategory: API
-  - name: Infoblox BloxOne DNS Configuration API
-    baseURL: https://csp.infoblox.com/api/ddi/v1
-    tags:
-      - Cloud
-      - Configuration
-      - DNS
-    serviceName: Infoblox BloxOne DNS Configuration API
+  - name: Infoblox NIOS WAPI
+    baseURL: https://{grid-master}/wapi/v2.x
     serviceCategory: API
-  - name: Infoblox BloxOne DNS Data API
-    baseURL: https://csp.infoblox.com/api/ddi/v1
-    tags:
-      - Cloud
-      - DNS
-      - Records
-    serviceName: Infoblox BloxOne DNS Data API
-    serviceCategory: API
-  - name: Infoblox BloxOne IPAM/DHCP API
-    baseURL: https://csp.infoblox.com/api/ddi/v1
-    tags:
-      - Cloud
-      - DHCP
-      - IPAM
-      - Network Management
-    serviceName: Infoblox BloxOne IPAM/DHCP API
-    serviceCategory: API
-  - name: Infoblox BloxOne DDI Keys API
-    baseURL: https://csp.infoblox.com/api/ddi/v1
-    tags:
-      - Authentication
-      - DNS Security
-      - Keys
-    serviceName: Infoblox BloxOne DDI Keys API
-    serviceCategory: API
-  - name: Infoblox BloxOne Anycast Configuration API
-    baseURL: https://csp.infoblox.com/api/anycast/v1
-    tags:
-      - Anycast
-      - High Availability
-      - Network Management
-    serviceName: Infoblox BloxOne Anycast Configuration API
-    serviceCategory: API
-  - name: Infoblox BloxOne Infrastructure Management API
-    baseURL: https://csp.infoblox.com/api/infra/v1
-    tags:
-      - Cloud
-      - Infrastructure
-      - Management
-    serviceName: Infoblox BloxOne Infrastructure Management API
-    serviceCategory: API
-  - name: Infoblox BloxOne Host Activation API
-    baseURL: https://csp.infoblox.com/api/host_app/v1
-    tags:
-      - Host Activation
-      - Infrastructure
-      - Provisioning
-    serviceName: Infoblox BloxOne Host Activation API
-    serviceCategory: API
-  - name: Infoblox BloxOne DNS Forwarding Proxy API
-    baseURL: https://csp.infoblox.com/api/atcdfp/v1
-    tags:
-      - DNS
-      - Forwarding Proxy
-      - Security
-    serviceName: Infoblox BloxOne DNS Forwarding Proxy API
-    serviceCategory: API
-  - name: Infoblox BloxOne Firewall API
-    baseURL: https://csp.infoblox.com/api/atcfw/v1
-    tags:
-      - Firewall
-      - Security
-      - Threat Defense
-    serviceName: Infoblox BloxOne Firewall API
-    serviceCategory: API
-  - name: Infoblox BloxOne Redirect API
-    baseURL: https://csp.infoblox.com/api/atcfw/v1
-    tags:
-      - Redirect
-      - Security
-      - Threat Defense
-    serviceName: Infoblox BloxOne Redirect API
-    serviceCategory: API
-  - name: Infoblox BloxOne Upgrade Policy API
-    baseURL: https://csp.infoblox.com/api/upgrade_policy/v1
-    tags:
-      - Infrastructure
-      - Policy
-      - Upgrade
-    serviceName: Infoblox BloxOne Upgrade Policy API
-    serviceCategory: API
-  - name: Infoblox Threat Defense API
-    baseURL: https://csp.infoblox.com/tide/api
-    tags:
-      - DNS Security
-      - Firewall
-      - Security
-      - Threat Intelligence
-    serviceName: Infoblox Threat Defense API
-    serviceCategory: API
-  - name: Infoblox TIDE API
-    baseURL: https://csp.infoblox.com/tide/api
-    tags:
-      - Indicators
-      - Security
-      - Threat Intelligence
-      - TIDE
-    serviceName: Infoblox TIDE API
-    serviceCategory: API
-  - name: Infoblox Dossier API
-    baseURL: https://csp.infoblox.com/tide/api
-    tags:
-      - Dossier
-      - Research
-      - Security
-      - Threat Intelligence
-    serviceName: Infoblox Dossier API
-    serviceCategory: API
-  - name: Infoblox NetMRI API
-    baseURL: https://{netmri-server}/api
-    tags:
-      - Compliance
-      - Configuration Management
-      - Network Automation
-    serviceName: Infoblox NetMRI API
+  - name: Infoblox Cloud Services Portal API
+    baseURL: https://csp.infoblox.com/api
     serviceCategory: API
 unitEconomics:
-  - name: Cost per 1K Requests
-    metric: billed_cost / (api_requests / 1000)
+  - name: Cost per Protected Asset
+    metric: billed_cost / protected_assets
     target: TBD
-  - name: Cost per Active Consumer
-    metric: billed_cost / active_consumers
+  - name: Cost per Million DNS Queries Protected
+    metric: billed_cost / (dns_queries_protected / 1000000)
     target: TBD
 maintainers:
   - FN: Kin Lane
