@@ -3,11 +3,11 @@
   "feeds": [
     {
       "source": "https://blogs.infoblox.com/",
-      "feed_url": "https://www.infoblox.com/blog/feed/",
-      "saved": 10,
-      "title": "Infoblox Blog"
+      "feed_url": "https://blogs.infoblox.com/feed/",
+      "title": "Infoblox Blog",
+      "saved": 2
     }
   ],
-  "post_count": 10,
-  "fetched": "2026-05-03T23:29:36Z"
+  "post_count": 12,
+  "fetched": "2026-05-09T20:17:51Z"
 }
