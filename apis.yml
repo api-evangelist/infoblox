@@ -455,6 +455,14 @@ common:
     url: https://docs.infoblox.com/space/BloxOneInfrastructure/332366018/BloxOne+Release+Notes
   - type: Console
     url: https://csp.infoblox.com/
+  - type: Integrations
+    url: https://www.infoblox.com/partners/
+integrations:
+  - name: Technology Ecosystem
+  - name: Infoblox for Microsoft
+  - name: Infoblox for AWS
+  - name: Infoblox for Google
+  - name: Managed Service Providers
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
