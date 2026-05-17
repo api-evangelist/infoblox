@@ -14,7 +14,7 @@ url: >-
 created: '2024-01-15'
 modified: '2026-04-28'
 specificationVersion: '0.20'
-type: Contract
+kind: contract
 position: Consuming
 access: 3rd-Party
 apis:
@@ -46,7 +46,7 @@ apis:
         url: https://{grid-master}/wapidoc/
       - type: Reference
         url: https://docs.infoblox.com/space/nios90/156664532/Using+NIOS+APIs
-      - type: Change Log
+      - type: ChangeLog
         url: https://docs.infoblox.com/space/nios90/318210347/What's+New
       - type: Client Libraries
         url: https://github.com/infobloxopen/infoblox-go-client
@@ -78,11 +78,11 @@ apis:
         url: https://csp.infoblox.com/
       - type: Authentication
         url: https://docs.infoblox.com/space/BloxOneDDI/35430405/Authentication
-      - type: Getting Started
+      - type: GettingStarted
         url: https://www.infoblox.com/developer-portal/getting-started/
       - type: Reference
         url: https://docs.infoblox.com/space/BloxOneDDI/186745633/Universal+DDI+API+Guide
-      - type: Change Log
+      - type: ChangeLog
         url: https://docs.infoblox.com/space/BloxOneInfrastructure/332366018/BloxOne+Release+Notes
     contact:
       - FN: Infoblox Support
@@ -347,11 +347,11 @@ apis:
     properties:
       - type: Documentation
         url: https://docs.infoblox.com/space/BloxOneThreatDefense/
-      - type: API Reference
+      - type: APIReference
         url: https://docs.infoblox.com/space/BloxOneThreatDefense/35389219/Threat+Defense+API
-      - type: Getting Started
+      - type: GettingStarted
         url: https://docs.infoblox.com/space/BloxOneThreatDefense/35369274
-      - type: Change Log
+      - type: ChangeLog
         url: https://docs.infoblox.com/display/BloxOneThreatDefense/What's+New+in+Infoblox+Threat+Defense
     contact:
       - FN: Infoblox Support
@@ -375,7 +375,7 @@ apis:
     properties:
       - type: Documentation
         url: https://csp.infoblox.com/apidoc/?url=https%3A%2F%2Fcsp.infoblox.com%2Fapidoc%2Fdocs%2FTIDEData
-      - type: Getting Started
+      - type: GettingStarted
         url: https://docs.infoblox.com/display/BloxOneThreatDefense/Infoblox+Quick+Start+Guide+for++Dossier+and+TIDE
       - type: Reference
         url: https://docs.infoblox.com/space/BloxOneThreatDefense/230394127/Infoblox+TIDE+API+FAQs+Guide
@@ -400,7 +400,7 @@ apis:
     properties:
       - type: Documentation
         url: https://docs.infoblox.com/display/BloxOneThreatDefense/Infoblox+Dossier+User+Guide
-      - type: Getting Started
+      - type: GettingStarted
         url: https://docs.infoblox.com/display/BloxOneThreatDefense/Infoblox+Quick+Start+Guide+for++Dossier+and+TIDE
     contact:
       - FN: Infoblox Support
@@ -431,7 +431,7 @@ apis:
 common:
   - type: Portal
     url: https://www.infoblox.com/developer-portal/
-  - type: Getting Started
+  - type: GettingStarted
     url: https://www.infoblox.com/developer-portal/getting-started/
   - type: Documentation
     url: https://docs.infoblox.com/
@@ -439,19 +439,19 @@ common:
     url: https://blogs.infoblox.com/
   - type: Community
     url: https://community.infoblox.com/
-  - type: Status
+  - type: StatusPage
     url: https://status.infoblox.com/
   - type: Support
     url: https://www.infoblox.com/support/
   - type: Website
     url: https://www.infoblox.com/
-  - type: Privacy Policy
+  - type: PrivacyPolicy
     url: https://www.infoblox.com/company/legal/privacy-policy/
-  - type: Terms of Service
+  - type: TermsOfService
     url: https://www.infoblox.com/company/legal/website-terms-and-conditions/
-  - type: GitHub Organization
+  - type: GitHubOrganization
     url: https://github.com/infobloxopen
-  - type: Change Log
+  - type: ChangeLog
     url: https://docs.infoblox.com/space/BloxOneInfrastructure/332366018/BloxOne+Release+Notes
   - type: Console
     url: https://csp.infoblox.com/
