@@ -1,0 +1,269 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Infoblox WAPI (Web API) — DHCP
+  description: 'Infoblox WAPI (Web API) — DHCP. 5 operations. Lead operation: Infoblox List DHCP fixed addresses. Self-contained
+    Naftiko capability covering one Infoblox business surface.'
+  tags:
+  - Infoblox
+  - DHCP
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    INFOBLOX_API_KEY: INFOBLOX_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: wapi-dhcp
+    baseUri: https://{grid-master}/wapi/v2.12
+    description: Infoblox WAPI (Web API) — DHCP business capability. Self-contained, no shared references.
+    resources:
+    - name: fixedaddress
+      path: /fixedaddress
+      operations:
+      - name: listfixedaddresses
+        method: GET
+        description: Infoblox List DHCP fixed addresses
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ipv4addr
+          in: query
+          type: string
+          description: Filter by the reserved IPv4 address.
+        - name: mac
+          in: query
+          type: string
+          description: Filter by the MAC address.
+        - name: network_view
+          in: query
+          type: string
+          description: Filter by the network view name.
+      - name: createfixedaddress
+        method: POST
+        description: Infoblox Create a DHCP fixed address
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: lease
+      path: /lease
+      operations:
+      - name: listdhcpleases
+        method: GET
+        description: Infoblox List DHCP leases
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: address
+          in: query
+          type: string
+          description: Filter by the leased IPv4 address.
+        - name: network_view
+          in: query
+          type: string
+          description: Filter by the network view name.
+    - name: range
+      path: /range
+      operations:
+      - name: listdhcpranges
+        method: GET
+        description: Infoblox List DHCP ranges
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: network
+          in: query
+          type: string
+          description: Filter by the parent network in CIDR notation.
+        - name: start_addr
+          in: query
+          type: string
+          description: Filter by the starting IP address of the range.
+        - name: end_addr
+          in: query
+          type: string
+          description: Filter by the ending IP address of the range.
+        - name: network_view
+          in: query
+          type: string
+          description: Filter by the network view name.
+      - name: createdhcprange
+        method: POST
+        description: Infoblox Create a DHCP range
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: apikey
+      key: ibapauth
+      value: '{{env.INFOBLOX_API_KEY}}'
+      placement: cookie
+  exposes:
+  - type: rest
+    namespace: wapi-dhcp-rest
+    port: 8080
+    description: REST adapter for Infoblox WAPI (Web API) — DHCP. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/fixedaddress
+      name: fixedaddress
+      description: REST surface for fixedaddress.
+      operations:
+      - method: GET
+        name: listfixedaddresses
+        description: Infoblox List DHCP fixed addresses
+        call: wapi-dhcp.listfixedaddresses
+        with:
+          ipv4addr: rest.ipv4addr
+          mac: rest.mac
+          network_view: rest.network_view
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createfixedaddress
+        description: Infoblox Create a DHCP fixed address
+        call: wapi-dhcp.createfixedaddress
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/lease
+      name: lease
+      description: REST surface for lease.
+      operations:
+      - method: GET
+        name: listdhcpleases
+        description: Infoblox List DHCP leases
+        call: wapi-dhcp.listdhcpleases
+        with:
+          address: rest.address
+          network_view: rest.network_view
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/range
+      name: range
+      description: REST surface for range.
+      operations:
+      - method: GET
+        name: listdhcpranges
+        description: Infoblox List DHCP ranges
+        call: wapi-dhcp.listdhcpranges
+        with:
+          network: rest.network
+          start_addr: rest.start_addr
+          end_addr: rest.end_addr
+          network_view: rest.network_view
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createdhcprange
+        description: Infoblox Create a DHCP range
+        call: wapi-dhcp.createdhcprange
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: wapi-dhcp-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Infoblox WAPI (Web API) — DHCP. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: infoblox-list-dhcp-fixed-addresses
+      description: Infoblox List DHCP fixed addresses
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: wapi-dhcp.listfixedaddresses
+      with:
+        ipv4addr: tools.ipv4addr
+        mac: tools.mac
+        network_view: tools.network_view
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: infoblox-create-dhcp-fixed-address
+      description: Infoblox Create a DHCP fixed address
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: wapi-dhcp.createfixedaddress
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: infoblox-list-dhcp-leases
+      description: Infoblox List DHCP leases
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: wapi-dhcp.listdhcpleases
+      with:
+        address: tools.address
+        network_view: tools.network_view
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: infoblox-list-dhcp-ranges
+      description: Infoblox List DHCP ranges
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: wapi-dhcp.listdhcpranges
+      with:
+        network: tools.network
+        start_addr: tools.start_addr
+        end_addr: tools.end_addr
+        network_view: tools.network_view
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: infoblox-create-dhcp-range
+      description: Infoblox Create a DHCP range
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: wapi-dhcp.createdhcprange
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

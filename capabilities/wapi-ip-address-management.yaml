@@ -1,0 +1,99 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Infoblox WAPI (Web API) — IP Address Management
+  description: 'Infoblox WAPI (Web API) — IP Address Management. 1 operations. Lead operation: Infoblox List IPv4 addresses.
+    Self-contained Naftiko capability covering one Infoblox business surface.'
+  tags:
+  - Infoblox
+  - IP Address Management
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    INFOBLOX_API_KEY: INFOBLOX_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: wapi-ip-address-management
+    baseUri: https://{grid-master}/wapi/v2.12
+    description: Infoblox WAPI (Web API) — IP Address Management business capability. Self-contained, no shared references.
+    resources:
+    - name: ipv4address
+      path: /ipv4address
+      operations:
+      - name: listipv4addresses
+        method: GET
+        description: Infoblox List IPv4 addresses
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ip_address
+          in: query
+          type: string
+          description: Filter by the IPv4 address.
+        - name: network
+          in: query
+          type: string
+          description: Filter by the network in CIDR notation.
+        - name: status
+          in: query
+          type: string
+          description: Filter by the IP address status.
+        - name: network_view
+          in: query
+          type: string
+          description: Filter by the network view name.
+    authentication:
+      type: apikey
+      key: ibapauth
+      value: '{{env.INFOBLOX_API_KEY}}'
+      placement: cookie
+  exposes:
+  - type: rest
+    namespace: wapi-ip-address-management-rest
+    port: 8080
+    description: REST adapter for Infoblox WAPI (Web API) — IP Address Management. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/ipv4address
+      name: ipv4address
+      description: REST surface for ipv4address.
+      operations:
+      - method: GET
+        name: listipv4addresses
+        description: Infoblox List IPv4 addresses
+        call: wapi-ip-address-management.listipv4addresses
+        with:
+          ip_address: rest.ip_address
+          network: rest.network
+          status: rest.status
+          network_view: rest.network_view
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: wapi-ip-address-management-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Infoblox WAPI (Web API) — IP Address Management. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: infoblox-list-ipv4-addresses
+      description: Infoblox List IPv4 addresses
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: wapi-ip-address-management.listipv4addresses
+      with:
+        ip_address: tools.ip_address
+        network: tools.network
+        status: tools.status
+        network_view: tools.network_view
+      outputParameters:
+      - type: object
+        mapping: $.

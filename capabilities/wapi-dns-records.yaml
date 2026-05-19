@@ -1,0 +1,742 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Infoblox WAPI (Web API) — DNS Records
+  description: 'Infoblox WAPI (Web API) — DNS Records. 17 operations. Lead operation: Infoblox List DNS A records. Self-contained
+    Naftiko capability covering one Infoblox business surface.'
+  tags:
+  - Infoblox
+  - DNS Records
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    INFOBLOX_API_KEY: INFOBLOX_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: wapi-dns-records
+    baseUri: https://{grid-master}/wapi/v2.12
+    description: Infoblox WAPI (Web API) — DNS Records business capability. Self-contained, no shared references.
+    resources:
+    - name: record:a
+      path: /record:a
+      operations:
+      - name: listarecords
+        method: GET
+        description: Infoblox List DNS A records
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: query
+          type: string
+          description: Filter by the fully qualified domain name of the A record.
+        - name: ipv4addr
+          in: query
+          type: string
+          description: Filter by the IPv4 address of the A record.
+        - name: view
+          in: query
+          type: string
+          description: Filter by the DNS view name.
+        - name: zone
+          in: query
+          type: string
+          description: Filter by the DNS zone name.
+      - name: createarecord
+        method: POST
+        description: Infoblox Create a DNS A record
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: record:a-ref
+      path: /record:a/{ref}
+      operations:
+      - name: getarecord
+        method: GET
+        description: Infoblox Get a DNS A record
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatearecord
+        method: PUT
+        description: Infoblox Update a DNS A record
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletearecord
+        method: DELETE
+        description: Infoblox Delete a DNS A record
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: record:aaaa
+      path: /record:aaaa
+      operations:
+      - name: listaaaarecords
+        method: GET
+        description: Infoblox List DNS AAAA records
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: query
+          type: string
+          description: Filter by the fully qualified domain name.
+        - name: ipv6addr
+          in: query
+          type: string
+          description: Filter by the IPv6 address.
+        - name: view
+          in: query
+          type: string
+          description: Filter by the DNS view name.
+      - name: createaaaarecord
+        method: POST
+        description: Infoblox Create a DNS AAAA record
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: record:cname
+      path: /record:cname
+      operations:
+      - name: listcnamerecords
+        method: GET
+        description: Infoblox List DNS CNAME records
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: query
+          type: string
+          description: Filter by the alias name.
+        - name: canonical
+          in: query
+          type: string
+          description: Filter by the canonical (target) name.
+        - name: view
+          in: query
+          type: string
+          description: Filter by the DNS view name.
+      - name: createcnamerecord
+        method: POST
+        description: Infoblox Create a DNS CNAME record
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: record:host
+      path: /record:host
+      operations:
+      - name: listhostrecords
+        method: GET
+        description: Infoblox List DNS host records
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: query
+          type: string
+          description: Filter by the fully qualified domain name of the host.
+        - name: view
+          in: query
+          type: string
+          description: Filter by the DNS view name.
+      - name: createhostrecord
+        method: POST
+        description: Infoblox Create a DNS host record
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: record:mx
+      path: /record:mx
+      operations:
+      - name: listmxrecords
+        method: GET
+        description: Infoblox List DNS MX records
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: query
+          type: string
+          description: Filter by the domain name.
+        - name: mail_exchanger
+          in: query
+          type: string
+          description: Filter by the mail exchanger hostname.
+        - name: view
+          in: query
+          type: string
+          description: Filter by the DNS view name.
+      - name: createmxrecord
+        method: POST
+        description: Infoblox Create a DNS MX record
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: record:ptr
+      path: /record:ptr
+      operations:
+      - name: listptrrecords
+        method: GET
+        description: Infoblox List DNS PTR records
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ptrdname
+          in: query
+          type: string
+          description: Filter by the domain name the PTR record points to.
+        - name: ipv4addr
+          in: query
+          type: string
+          description: Filter by the IPv4 address for the PTR record.
+        - name: view
+          in: query
+          type: string
+          description: Filter by the DNS view name.
+      - name: createptrrecord
+        method: POST
+        description: Infoblox Create a DNS PTR record
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: record:txt
+      path: /record:txt
+      operations:
+      - name: listtxtrecords
+        method: GET
+        description: Infoblox List DNS TXT records
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: query
+          type: string
+          description: Filter by the domain name.
+        - name: view
+          in: query
+          type: string
+          description: Filter by the DNS view name.
+      - name: createtxtrecord
+        method: POST
+        description: Infoblox Create a DNS TXT record
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: apikey
+      key: ibapauth
+      value: '{{env.INFOBLOX_API_KEY}}'
+      placement: cookie
+  exposes:
+  - type: rest
+    namespace: wapi-dns-records-rest
+    port: 8080
+    description: REST adapter for Infoblox WAPI (Web API) — DNS Records. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/record-a
+      name: record-a
+      description: REST surface for record:a.
+      operations:
+      - method: GET
+        name: listarecords
+        description: Infoblox List DNS A records
+        call: wapi-dns-records.listarecords
+        with:
+          name: rest.name
+          ipv4addr: rest.ipv4addr
+          view: rest.view
+          zone: rest.zone
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createarecord
+        description: Infoblox Create a DNS A record
+        call: wapi-dns-records.createarecord
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/record-a/{ref}
+      name: record-a-ref
+      description: REST surface for record:a-ref.
+      operations:
+      - method: GET
+        name: getarecord
+        description: Infoblox Get a DNS A record
+        call: wapi-dns-records.getarecord
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatearecord
+        description: Infoblox Update a DNS A record
+        call: wapi-dns-records.updatearecord
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletearecord
+        description: Infoblox Delete a DNS A record
+        call: wapi-dns-records.deletearecord
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/record-aaaa
+      name: record-aaaa
+      description: REST surface for record:aaaa.
+      operations:
+      - method: GET
+        name: listaaaarecords
+        description: Infoblox List DNS AAAA records
+        call: wapi-dns-records.listaaaarecords
+        with:
+          name: rest.name
+          ipv6addr: rest.ipv6addr
+          view: rest.view
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createaaaarecord
+        description: Infoblox Create a DNS AAAA record
+        call: wapi-dns-records.createaaaarecord
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/record-cname
+      name: record-cname
+      description: REST surface for record:cname.
+      operations:
+      - method: GET
+        name: listcnamerecords
+        description: Infoblox List DNS CNAME records
+        call: wapi-dns-records.listcnamerecords
+        with:
+          name: rest.name
+          canonical: rest.canonical
+          view: rest.view
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createcnamerecord
+        description: Infoblox Create a DNS CNAME record
+        call: wapi-dns-records.createcnamerecord
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/record-host
+      name: record-host
+      description: REST surface for record:host.
+      operations:
+      - method: GET
+        name: listhostrecords
+        description: Infoblox List DNS host records
+        call: wapi-dns-records.listhostrecords
+        with:
+          name: rest.name
+          view: rest.view
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createhostrecord
+        description: Infoblox Create a DNS host record
+        call: wapi-dns-records.createhostrecord
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/record-mx
+      name: record-mx
+      description: REST surface for record:mx.
+      operations:
+      - method: GET
+        name: listmxrecords
+        description: Infoblox List DNS MX records
+        call: wapi-dns-records.listmxrecords
+        with:
+          name: rest.name
+          mail_exchanger: rest.mail_exchanger
+          view: rest.view
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createmxrecord
+        description: Infoblox Create a DNS MX record
+        call: wapi-dns-records.createmxrecord
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/record-ptr
+      name: record-ptr
+      description: REST surface for record:ptr.
+      operations:
+      - method: GET
+        name: listptrrecords
+        description: Infoblox List DNS PTR records
+        call: wapi-dns-records.listptrrecords
+        with:
+          ptrdname: rest.ptrdname
+          ipv4addr: rest.ipv4addr
+          view: rest.view
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createptrrecord
+        description: Infoblox Create a DNS PTR record
+        call: wapi-dns-records.createptrrecord
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/record-txt
+      name: record-txt
+      description: REST surface for record:txt.
+      operations:
+      - method: GET
+        name: listtxtrecords
+        description: Infoblox List DNS TXT records
+        call: wapi-dns-records.listtxtrecords
+        with:
+          name: rest.name
+          view: rest.view
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createtxtrecord
+        description: Infoblox Create a DNS TXT record
+        call: wapi-dns-records.createtxtrecord
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: wapi-dns-records-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Infoblox WAPI (Web API) — DNS Records. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: infoblox-list-dns-records
+      description: Infoblox List DNS A records
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: wapi-dns-records.listarecords
+      with:
+        name: tools.name
+        ipv4addr: tools.ipv4addr
+        view: tools.view
+        zone: tools.zone
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: infoblox-create-dns-record
+      description: Infoblox Create a DNS A record
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: wapi-dns-records.createarecord
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: infoblox-get-dns-record
+      description: Infoblox Get a DNS A record
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: wapi-dns-records.getarecord
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: infoblox-update-dns-record
+      description: Infoblox Update a DNS A record
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: wapi-dns-records.updatearecord
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: infoblox-delete-dns-record
+      description: Infoblox Delete a DNS A record
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: wapi-dns-records.deletearecord
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: infoblox-list-dns-aaaa-records
+      description: Infoblox List DNS AAAA records
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: wapi-dns-records.listaaaarecords
+      with:
+        name: tools.name
+        ipv6addr: tools.ipv6addr
+        view: tools.view
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: infoblox-create-dns-aaaa-record
+      description: Infoblox Create a DNS AAAA record
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: wapi-dns-records.createaaaarecord
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: infoblox-list-dns-cname-records
+      description: Infoblox List DNS CNAME records
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: wapi-dns-records.listcnamerecords
+      with:
+        name: tools.name
+        canonical: tools.canonical
+        view: tools.view
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: infoblox-create-dns-cname-record
+      description: Infoblox Create a DNS CNAME record
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: wapi-dns-records.createcnamerecord
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: infoblox-list-dns-host-records
+      description: Infoblox List DNS host records
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: wapi-dns-records.listhostrecords
+      with:
+        name: tools.name
+        view: tools.view
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: infoblox-create-dns-host-record
+      description: Infoblox Create a DNS host record
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: wapi-dns-records.createhostrecord
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: infoblox-list-dns-mx-records
+      description: Infoblox List DNS MX records
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: wapi-dns-records.listmxrecords
+      with:
+        name: tools.name
+        mail_exchanger: tools.mail_exchanger
+        view: tools.view
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: infoblox-create-dns-mx-record
+      description: Infoblox Create a DNS MX record
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: wapi-dns-records.createmxrecord
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: infoblox-list-dns-ptr-records
+      description: Infoblox List DNS PTR records
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: wapi-dns-records.listptrrecords
+      with:
+        ptrdname: tools.ptrdname
+        ipv4addr: tools.ipv4addr
+        view: tools.view
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: infoblox-create-dns-ptr-record
+      description: Infoblox Create a DNS PTR record
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: wapi-dns-records.createptrrecord
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: infoblox-list-dns-txt-records
+      description: Infoblox List DNS TXT records
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: wapi-dns-records.listtxtrecords
+      with:
+        name: tools.name
+        view: tools.view
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: infoblox-create-dns-txt-record
+      description: Infoblox Create a DNS TXT record
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: wapi-dns-records.createtxtrecord
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

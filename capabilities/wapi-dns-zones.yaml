@@ -1,0 +1,175 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Infoblox WAPI (Web API) — DNS Zones
+  description: 'Infoblox WAPI (Web API) — DNS Zones. 3 operations. Lead operation: Infoblox List authoritative DNS zones.
+    Self-contained Naftiko capability covering one Infoblox business surface.'
+  tags:
+  - Infoblox
+  - DNS Zones
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    INFOBLOX_API_KEY: INFOBLOX_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: wapi-dns-zones
+    baseUri: https://{grid-master}/wapi/v2.12
+    description: Infoblox WAPI (Web API) — DNS Zones business capability. Self-contained, no shared references.
+    resources:
+    - name: zone_auth
+      path: /zone_auth
+      operations:
+      - name: listauthoritativezones
+        method: GET
+        description: Infoblox List authoritative DNS zones
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fqdn
+          in: query
+          type: string
+          description: Filter by the fully qualified domain name of the zone.
+        - name: view
+          in: query
+          type: string
+          description: Filter by the DNS view name.
+        - name: zone_format
+          in: query
+          type: string
+          description: Filter by the zone format.
+      - name: createauthoritativezone
+        method: POST
+        description: Infoblox Create an authoritative DNS zone
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: zone_forward
+      path: /zone_forward
+      operations:
+      - name: listforwardzones
+        method: GET
+        description: Infoblox List forward DNS zones
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fqdn
+          in: query
+          type: string
+          description: Filter by the fully qualified domain name of the forward zone.
+        - name: view
+          in: query
+          type: string
+          description: Filter by the DNS view name.
+    authentication:
+      type: apikey
+      key: ibapauth
+      value: '{{env.INFOBLOX_API_KEY}}'
+      placement: cookie
+  exposes:
+  - type: rest
+    namespace: wapi-dns-zones-rest
+    port: 8080
+    description: REST adapter for Infoblox WAPI (Web API) — DNS Zones. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/zone-auth
+      name: zone-auth
+      description: REST surface for zone_auth.
+      operations:
+      - method: GET
+        name: listauthoritativezones
+        description: Infoblox List authoritative DNS zones
+        call: wapi-dns-zones.listauthoritativezones
+        with:
+          fqdn: rest.fqdn
+          view: rest.view
+          zone_format: rest.zone_format
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createauthoritativezone
+        description: Infoblox Create an authoritative DNS zone
+        call: wapi-dns-zones.createauthoritativezone
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/zone-forward
+      name: zone-forward
+      description: REST surface for zone_forward.
+      operations:
+      - method: GET
+        name: listforwardzones
+        description: Infoblox List forward DNS zones
+        call: wapi-dns-zones.listforwardzones
+        with:
+          fqdn: rest.fqdn
+          view: rest.view
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: wapi-dns-zones-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Infoblox WAPI (Web API) — DNS Zones. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: infoblox-list-authoritative-dns-zones
+      description: Infoblox List authoritative DNS zones
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: wapi-dns-zones.listauthoritativezones
+      with:
+        fqdn: tools.fqdn
+        view: tools.view
+        zone_format: tools.zone_format
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: infoblox-create-authoritative-dns-zone
+      description: Infoblox Create an authoritative DNS zone
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: wapi-dns-zones.createauthoritativezone
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: infoblox-list-forward-dns-zones
+      description: Infoblox List forward DNS zones
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: wapi-dns-zones.listforwardzones
+      with:
+        fqdn: tools.fqdn
+        view: tools.view
+      outputParameters:
+      - type: object
+        mapping: $.
