@@ -1,0 +1,504 @@
+{
+  "provider": "Infoblox",
+  "providerId": "infoblox",
+  "kind": "json-structure",
+  "description": "Structural overview of the Infoblox API surface; extracted from openapi/.",
+  "schemaCount": 30,
+  "operationCount": 31,
+  "schemas": [
+    {
+      "name": "Error",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "RecordA",
+      "type": "object",
+      "propertyCount": 9,
+      "required": []
+    },
+    {
+      "name": "RecordACreate",
+      "type": "object",
+      "propertyCount": 6,
+      "required": [
+        "name",
+        "ipv4addr"
+      ]
+    },
+    {
+      "name": "RecordAUpdate",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "RecordAAAA",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "RecordAAAACreate",
+      "type": "object",
+      "propertyCount": 4,
+      "required": [
+        "name",
+        "ipv6addr"
+      ]
+    },
+    {
+      "name": "RecordCNAME",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "RecordCNAMECreate",
+      "type": "object",
+      "propertyCount": 4,
+      "required": [
+        "name",
+        "canonical"
+      ]
+    },
+    {
+      "name": "RecordMX",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "RecordMXCreate",
+      "type": "object",
+      "propertyCount": 5,
+      "required": [
+        "name",
+        "mail_exchanger",
+        "preference"
+      ]
+    },
+    {
+      "name": "RecordTXT",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "RecordTXTCreate",
+      "type": "object",
+      "propertyCount": 4,
+      "required": [
+        "name",
+        "text"
+      ]
+    },
+    {
+      "name": "RecordPTR",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "RecordPTRCreate",
+      "type": "object",
+      "propertyCount": 4,
+      "required": [
+        "ptrdname",
+        "ipv4addr"
+      ]
+    },
+    {
+      "name": "RecordHost",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "RecordHostCreate",
+      "type": "object",
+      "propertyCount": 4,
+      "required": [
+        "name",
+        "ipv4addrs"
+      ]
+    },
+    {
+      "name": "ZoneAuth",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "ZoneAuthCreate",
+      "type": "object",
+      "propertyCount": 4,
+      "required": [
+        "fqdn",
+        "zone_format"
+      ]
+    },
+    {
+      "name": "ZoneForward",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "Network",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "NetworkCreate",
+      "type": "object",
+      "propertyCount": 3,
+      "required": [
+        "network"
+      ]
+    },
+    {
+      "name": "NetworkView",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "IPv4Address",
+      "type": "object",
+      "propertyCount": 10,
+      "required": []
+    },
+    {
+      "name": "DHCPRange",
+      "type": "object",
+      "propertyCount": 7,
+      "required": []
+    },
+    {
+      "name": "DHCPRangeCreate",
+      "type": "object",
+      "propertyCount": 5,
+      "required": [
+        "start_addr",
+        "end_addr"
+      ]
+    },
+    {
+      "name": "FixedAddress",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "FixedAddressCreate",
+      "type": "object",
+      "propertyCount": 4,
+      "required": [
+        "ipv4addr",
+        "mac"
+      ]
+    },
+    {
+      "name": "DHCPLease",
+      "type": "object",
+      "propertyCount": 8,
+      "required": []
+    },
+    {
+      "name": "Grid",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "Member",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    }
+  ],
+  "operations": [
+    {
+      "method": "GET",
+      "path": "/record:a",
+      "operationId": "listARecords",
+      "summary": "Infoblox List DNS A records",
+      "tags": [
+        "DNS Records"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/record:a",
+      "operationId": "createARecord",
+      "summary": "Infoblox Create a DNS A record",
+      "tags": [
+        "DNS Records"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/record:a/{ref}",
+      "operationId": "getARecord",
+      "summary": "Infoblox Get a DNS A record",
+      "tags": [
+        "DNS Records"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/record:a/{ref}",
+      "operationId": "updateARecord",
+      "summary": "Infoblox Update a DNS A record",
+      "tags": [
+        "DNS Records"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/record:a/{ref}",
+      "operationId": "deleteARecord",
+      "summary": "Infoblox Delete a DNS A record",
+      "tags": [
+        "DNS Records"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/record:aaaa",
+      "operationId": "listAAAARecords",
+      "summary": "Infoblox List DNS AAAA records",
+      "tags": [
+        "DNS Records"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/record:aaaa",
+      "operationId": "createAAAARecord",
+      "summary": "Infoblox Create a DNS AAAA record",
+      "tags": [
+        "DNS Records"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/record:cname",
+      "operationId": "listCNAMERecords",
+      "summary": "Infoblox List DNS CNAME records",
+      "tags": [
+        "DNS Records"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/record:cname",
+      "operationId": "createCNAMERecord",
+      "summary": "Infoblox Create a DNS CNAME record",
+      "tags": [
+        "DNS Records"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/record:mx",
+      "operationId": "listMXRecords",
+      "summary": "Infoblox List DNS MX records",
+      "tags": [
+        "DNS Records"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/record:mx",
+      "operationId": "createMXRecord",
+      "summary": "Infoblox Create a DNS MX record",
+      "tags": [
+        "DNS Records"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/record:txt",
+      "operationId": "listTXTRecords",
+      "summary": "Infoblox List DNS TXT records",
+      "tags": [
+        "DNS Records"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/record:txt",
+      "operationId": "createTXTRecord",
+      "summary": "Infoblox Create a DNS TXT record",
+      "tags": [
+        "DNS Records"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/record:ptr",
+      "operationId": "listPTRRecords",
+      "summary": "Infoblox List DNS PTR records",
+      "tags": [
+        "DNS Records"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/record:ptr",
+      "operationId": "createPTRRecord",
+      "summary": "Infoblox Create a DNS PTR record",
+      "tags": [
+        "DNS Records"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/record:host",
+      "operationId": "listHostRecords",
+      "summary": "Infoblox List DNS host records",
+      "tags": [
+        "DNS Records"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/record:host",
+      "operationId": "createHostRecord",
+      "summary": "Infoblox Create a DNS host record",
+      "tags": [
+        "DNS Records"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/zone_auth",
+      "operationId": "listAuthoritativeZones",
+      "summary": "Infoblox List authoritative DNS zones",
+      "tags": [
+        "DNS Zones"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/zone_auth",
+      "operationId": "createAuthoritativeZone",
+      "summary": "Infoblox Create an authoritative DNS zone",
+      "tags": [
+        "DNS Zones"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/zone_forward",
+      "operationId": "listForwardZones",
+      "summary": "Infoblox List forward DNS zones",
+      "tags": [
+        "DNS Zones"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/network",
+      "operationId": "listNetworks",
+      "summary": "Infoblox List DHCP networks",
+      "tags": [
+        "Networks"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/network",
+      "operationId": "createNetwork",
+      "summary": "Infoblox Create a network",
+      "tags": [
+        "Networks"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/networkview",
+      "operationId": "listNetworkViews",
+      "summary": "Infoblox List network views",
+      "tags": [
+        "Networks"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/ipv4address",
+      "operationId": "listIPv4Addresses",
+      "summary": "Infoblox List IPv4 addresses",
+      "tags": [
+        "IP Address Management"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/range",
+      "operationId": "listDHCPRanges",
+      "summary": "Infoblox List DHCP ranges",
+      "tags": [
+        "DHCP"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/range",
+      "operationId": "createDHCPRange",
+      "summary": "Infoblox Create a DHCP range",
+      "tags": [
+        "DHCP"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/fixedaddress",
+      "operationId": "listFixedAddresses",
+      "summary": "Infoblox List DHCP fixed addresses",
+      "tags": [
+        "DHCP"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/fixedaddress",
+      "operationId": "createFixedAddress",
+      "summary": "Infoblox Create a DHCP fixed address",
+      "tags": [
+        "DHCP"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/lease",
+      "operationId": "listDHCPLeases",
+      "summary": "Infoblox List DHCP leases",
+      "tags": [
+        "DHCP"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/grid",
+      "operationId": "getGrid",
+      "summary": "Infoblox Get Grid information",
+      "tags": [
+        "Grid"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/member",
+      "operationId": "listMembers",
+      "summary": "Infoblox List Grid members",
+      "tags": [
+        "Grid"
+      ]
+    }
+  ]
+}

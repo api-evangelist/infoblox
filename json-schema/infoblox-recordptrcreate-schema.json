@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RecordPTRCreate",
+  "title": "RecordPTRCreate",
+  "type": "object",
+  "required": [
+    "ptrdname",
+    "ipv4addr"
+  ],
+  "properties": {
+    "ptrdname": {
+      "type": "string",
+      "description": "The domain name the PTR record points to."
+    },
+    "ipv4addr": {
+      "type": "string",
+      "format": "ipv4",
+      "description": "The IPv4 address."
+    },
+    "view": {
+      "type": "string",
+      "description": "The DNS view."
+    },
+    "comment": {
+      "type": "string",
+      "description": "A descriptive comment.",
+      "maxLength": 256
+    }
+  }
+}

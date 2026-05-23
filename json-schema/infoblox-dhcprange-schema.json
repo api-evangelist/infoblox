@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DHCPRange",
+  "title": "DHCPRange",
+  "type": "object",
+  "properties": {
+    "_ref": {
+      "type": "string",
+      "description": "The object reference for this DHCP range."
+    },
+    "network": {
+      "type": "string",
+      "description": "The parent network in CIDR notation."
+    },
+    "start_addr": {
+      "type": "string",
+      "format": "ipv4",
+      "description": "The starting IP address of the range."
+    },
+    "end_addr": {
+      "type": "string",
+      "format": "ipv4",
+      "description": "The ending IP address of the range."
+    },
+    "network_view": {
+      "type": "string",
+      "description": "The network view."
+    },
+    "comment": {
+      "type": "string",
+      "description": "A descriptive comment.",
+      "maxLength": 256
+    },
+    "disable": {
+      "type": "boolean",
+      "description": "Whether the DHCP range is disabled."
+    }
+  }
+}

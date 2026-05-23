@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Grid",
+  "title": "Grid",
+  "type": "object",
+  "properties": {
+    "_ref": {
+      "type": "string",
+      "description": "The object reference for the Grid."
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the Grid."
+    },
+    "dns_resolver_setting": {
+      "type": "object",
+      "description": "The DNS resolver settings for the Grid."
+    },
+    "ntp_setting": {
+      "type": "object",
+      "description": "The NTP settings for the Grid."
+    }
+  }
+}

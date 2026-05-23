@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DHCPLease",
+  "title": "DHCPLease",
+  "type": "object",
+  "properties": {
+    "_ref": {
+      "type": "string",
+      "description": "The object reference for this lease."
+    },
+    "address": {
+      "type": "string",
+      "format": "ipv4",
+      "description": "The leased IPv4 address."
+    },
+    "network_view": {
+      "type": "string",
+      "description": "The network view."
+    },
+    "binding_state": {
+      "type": "string",
+      "enum": [
+        "ACTIVE",
+        "EXPIRED",
+        "FREE",
+        "RELEASED"
+      ],
+      "description": "The current state of the DHCP lease."
+    },
+    "hardware": {
+      "type": "string",
+      "description": "The hardware (MAC) address of the DHCP client."
+    },
+    "client_hostname": {
+      "type": "string",
+      "description": "The hostname provided by the DHCP client."
+    },
+    "starts": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The lease start time."
+    },
+    "ends": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The lease expiration time."
+    }
+  }
+}

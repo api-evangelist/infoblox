@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ZoneForward",
+  "title": "ZoneForward",
+  "type": "object",
+  "properties": {
+    "_ref": {
+      "type": "string",
+      "description": "The object reference for this forward zone."
+    },
+    "fqdn": {
+      "type": "string",
+      "description": "The fully qualified domain name of the forward zone."
+    },
+    "forward_to": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "address": {
+            "type": "string",
+            "description": "The IP address of the forwarding server."
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the forwarding server."
+          }
+        }
+      },
+      "description": "The list of DNS servers to forward queries to."
+    },
+    "view": {
+      "type": "string",
+      "description": "The DNS view."
+    },
+    "comment": {
+      "type": "string",
+      "description": "A descriptive comment.",
+      "maxLength": 256
+    }
+  }
+}

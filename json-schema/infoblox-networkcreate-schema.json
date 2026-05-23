@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/NetworkCreate",
+  "title": "NetworkCreate",
+  "type": "object",
+  "required": [
+    "network"
+  ],
+  "properties": {
+    "network": {
+      "type": "string",
+      "description": "The network address in CIDR notation (e.g. 10.0.0.0/24)."
+    },
+    "network_view": {
+      "type": "string",
+      "description": "The network view. Defaults to the default network view."
+    },
+    "comment": {
+      "type": "string",
+      "description": "A descriptive comment.",
+      "maxLength": 256
+    }
+  }
+}

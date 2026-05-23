@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/FixedAddress",
+  "title": "FixedAddress",
+  "type": "object",
+  "properties": {
+    "_ref": {
+      "type": "string",
+      "description": "The object reference for this fixed address."
+    },
+    "ipv4addr": {
+      "type": "string",
+      "format": "ipv4",
+      "description": "The reserved IPv4 address."
+    },
+    "mac": {
+      "type": "string",
+      "description": "The MAC address of the client."
+    },
+    "network_view": {
+      "type": "string",
+      "description": "The network view."
+    },
+    "comment": {
+      "type": "string",
+      "description": "A descriptive comment.",
+      "maxLength": 256
+    },
+    "disable": {
+      "type": "boolean",
+      "description": "Whether the fixed address reservation is disabled."
+    }
+  }
+}

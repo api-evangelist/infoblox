@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RecordACreate",
+  "title": "RecordACreate",
+  "type": "object",
+  "required": [
+    "name",
+    "ipv4addr"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The fully qualified domain name for the A record."
+    },
+    "ipv4addr": {
+      "type": "string",
+      "format": "ipv4",
+      "description": "The IPv4 address to map to the domain name. Use func:nextavailableip to assign the next available IP."
+    },
+    "view": {
+      "type": "string",
+      "description": "The DNS view in which to create the record."
+    },
+    "ttl": {
+      "type": "integer",
+      "description": "The time to live in seconds."
+    },
+    "use_ttl": {
+      "type": "boolean",
+      "description": "Whether to use the specified TTL value."
+    },
+    "comment": {
+      "type": "string",
+      "description": "A descriptive comment for the record.",
+      "maxLength": 256
+    }
+  }
+}

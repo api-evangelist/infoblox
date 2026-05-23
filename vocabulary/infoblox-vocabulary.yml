@@ -1,0 +1,17 @@
+name: Infoblox Domain Vocabulary
+provider: Infoblox
+providerId: infoblox
+description: Tag-derived vocabulary for the Infoblox API surface; sourced from openapi/ tags.
+terms:
+- term: DHCP
+  description: Operations for managing DHCP ranges, fixed addresses, leases, and DHCP option configurations.
+- term: DNS Records
+  description: Operations for managing DNS resource records including A, AAAA, CNAME, MX, PTR, TXT, SRV, and NS records.
+- term: DNS Zones
+  description: Operations for managing authoritative DNS zones, delegated zones, forward zones, and stub zones.
+- term: Grid
+  description: Operations for managing Grid members, properties, and services.
+- term: IP Address Management
+  description: Operations for managing IP addresses, querying address utilization, and performing next available IP lookups.
+- term: Networks
+  description: Operations for managing IPv4 and IPv6 networks, network containers, and network views.

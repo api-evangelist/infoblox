@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RecordAAAACreate",
+  "title": "RecordAAAACreate",
+  "type": "object",
+  "required": [
+    "name",
+    "ipv6addr"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The fully qualified domain name."
+    },
+    "ipv6addr": {
+      "type": "string",
+      "format": "ipv6",
+      "description": "The IPv6 address to map."
+    },
+    "view": {
+      "type": "string",
+      "description": "The DNS view in which to create the record."
+    },
+    "comment": {
+      "type": "string",
+      "description": "A descriptive comment.",
+      "maxLength": 256
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Error",
+  "title": "Error",
+  "type": "object",
+  "properties": {
+    "Error": {
+      "type": "string",
+      "description": "The error type identifier."
+    },
+    "code": {
+      "type": "string",
+      "description": "The error code."
+    },
+    "text": {
+      "type": "string",
+      "description": "A human-readable error message."
+    }
+  }
+}

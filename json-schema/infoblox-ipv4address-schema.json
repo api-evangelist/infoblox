@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/IPv4Address",
+  "title": "IPv4Address",
+  "type": "object",
+  "properties": {
+    "_ref": {
+      "type": "string",
+      "description": "The object reference for this IPv4 address."
+    },
+    "ip_address": {
+      "type": "string",
+      "format": "ipv4",
+      "description": "The IPv4 address."
+    },
+    "network": {
+      "type": "string",
+      "description": "The network containing this address in CIDR notation."
+    },
+    "network_view": {
+      "type": "string",
+      "description": "The network view containing this address."
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "USED",
+        "UNUSED"
+      ],
+      "description": "The utilization status of the address."
+    },
+    "names": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "The DNS names associated with this address."
+    },
+    "types": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "The types of objects using this address (e.g. A, HOST, RESERVATION)."
+    },
+    "objects": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "The object references of objects using this address."
+    },
+    "mac_address": {
+      "type": "string",
+      "description": "The MAC address associated with this IP if available."
+    },
+    "is_conflict": {
+      "type": "boolean",
+      "description": "Whether a conflict has been detected for this address."
+    }
+  }
+}

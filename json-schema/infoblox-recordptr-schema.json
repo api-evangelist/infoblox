@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RecordPTR",
+  "title": "RecordPTR",
+  "type": "object",
+  "properties": {
+    "_ref": {
+      "type": "string",
+      "description": "The object reference for this PTR record."
+    },
+    "ptrdname": {
+      "type": "string",
+      "description": "The domain name the PTR record points to."
+    },
+    "ipv4addr": {
+      "type": "string",
+      "format": "ipv4",
+      "description": "The IPv4 address for reverse lookup."
+    },
+    "view": {
+      "type": "string",
+      "description": "The DNS view."
+    },
+    "comment": {
+      "type": "string",
+      "description": "A descriptive comment.",
+      "maxLength": 256
+    }
+  }
+}

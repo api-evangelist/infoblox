@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RecordTXT",
+  "title": "RecordTXT",
+  "type": "object",
+  "properties": {
+    "_ref": {
+      "type": "string",
+      "description": "The object reference for this TXT record."
+    },
+    "name": {
+      "type": "string",
+      "description": "The domain name."
+    },
+    "text": {
+      "type": "string",
+      "description": "The text data of the record."
+    },
+    "view": {
+      "type": "string",
+      "description": "The DNS view."
+    },
+    "comment": {
+      "type": "string",
+      "description": "A descriptive comment.",
+      "maxLength": 256
+    }
+  }
+}

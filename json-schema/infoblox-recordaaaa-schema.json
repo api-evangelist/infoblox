@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RecordAAAA",
+  "title": "RecordAAAA",
+  "type": "object",
+  "properties": {
+    "_ref": {
+      "type": "string",
+      "description": "The object reference for this AAAA record."
+    },
+    "name": {
+      "type": "string",
+      "description": "The fully qualified domain name."
+    },
+    "ipv6addr": {
+      "type": "string",
+      "format": "ipv6",
+      "description": "The IPv6 address mapped to the domain name."
+    },
+    "view": {
+      "type": "string",
+      "description": "The DNS view in which this record exists."
+    },
+    "ttl": {
+      "type": "integer",
+      "description": "The time to live in seconds."
+    },
+    "comment": {
+      "type": "string",
+      "description": "A descriptive comment for the record.",
+      "maxLength": 256
+    }
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RecordHostCreate",
+  "title": "RecordHostCreate",
+  "type": "object",
+  "required": [
+    "name",
+    "ipv4addrs"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The fully qualified domain name of the host."
+    },
+    "ipv4addrs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "ipv4addr"
+        ],
+        "properties": {
+          "ipv4addr": {
+            "type": "string",
+            "description": "The IPv4 address. Use func:nextavailableip for automatic assignment."
+          },
+          "mac": {
+            "type": "string",
+            "description": "The MAC address for DHCP configuration."
+          },
+          "configure_for_dhcp": {
+            "type": "boolean",
+            "description": "Whether to configure DHCP for this address."
+          }
+        }
+      },
+      "description": "The list of IPv4 addresses for the host."
+    },
+    "view": {
+      "type": "string",
+      "description": "The DNS view."
+    },
+    "comment": {
+      "type": "string",
+      "description": "A descriptive comment.",
+      "maxLength": 256
+    }
+  }
+}

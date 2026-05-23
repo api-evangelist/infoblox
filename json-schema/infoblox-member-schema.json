@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Member",
+  "title": "Member",
+  "type": "object",
+  "properties": {
+    "_ref": {
+      "type": "string",
+      "description": "The object reference for this Grid member."
+    },
+    "host_name": {
+      "type": "string",
+      "description": "The hostname of the Grid member."
+    },
+    "config_addr_type": {
+      "type": "string",
+      "enum": [
+        "IPV4",
+        "IPV6",
+        "BOTH"
+      ],
+      "description": "The address type configuration."
+    },
+    "platform": {
+      "type": "string",
+      "description": "The hardware or virtual platform type."
+    },
+    "service_status": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "service": {
+            "type": "string",
+            "description": "The service name (e.g. DNS, DHCP)."
+          },
+          "status": {
+            "type": "string",
+            "description": "The service status (e.g. WORKING, INACTIVE)."
+          }
+        }
+      },
+      "description": "The status of services running on this member."
+    }
+  }
+}

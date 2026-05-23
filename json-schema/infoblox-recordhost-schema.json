@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RecordHost",
+  "title": "RecordHost",
+  "type": "object",
+  "properties": {
+    "_ref": {
+      "type": "string",
+      "description": "The object reference for this host record."
+    },
+    "name": {
+      "type": "string",
+      "description": "The fully qualified domain name of the host."
+    },
+    "ipv4addrs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "_ref": {
+            "type": "string",
+            "description": "The object reference for this IPv4 address entry."
+          },
+          "ipv4addr": {
+            "type": "string",
+            "format": "ipv4",
+            "description": "The IPv4 address."
+          },
+          "configure_for_dhcp": {
+            "type": "boolean",
+            "description": "Whether DHCP is configured for this address."
+          },
+          "mac": {
+            "type": "string",
+            "description": "The MAC address associated with this IP."
+          }
+        }
+      },
+      "description": "The list of IPv4 addresses for the host."
+    },
+    "view": {
+      "type": "string",
+      "description": "The DNS view."
+    },
+    "comment": {
+      "type": "string",
+      "description": "A descriptive comment.",
+      "maxLength": 256
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/NetworkView",
+  "title": "NetworkView",
+  "type": "object",
+  "properties": {
+    "_ref": {
+      "type": "string",
+      "description": "The object reference for this network view."
+    },
+    "name": {
+      "type": "string",
+      "description": "The name of the network view."
+    },
+    "comment": {
+      "type": "string",
+      "description": "A descriptive comment.",
+      "maxLength": 256
+    },
+    "is_default": {
+      "type": "boolean",
+      "description": "Whether this is the default network view."
+    }
+  }
+}

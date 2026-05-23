@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DHCPRangeCreate",
+  "title": "DHCPRangeCreate",
+  "type": "object",
+  "required": [
+    "start_addr",
+    "end_addr"
+  ],
+  "properties": {
+    "network": {
+      "type": "string",
+      "description": "The parent network in CIDR notation."
+    },
+    "start_addr": {
+      "type": "string",
+      "format": "ipv4",
+      "description": "The starting IP address."
+    },
+    "end_addr": {
+      "type": "string",
+      "format": "ipv4",
+      "description": "The ending IP address."
+    },
+    "network_view": {
+      "type": "string",
+      "description": "The network view."
+    },
+    "comment": {
+      "type": "string",
+      "description": "A descriptive comment.",
+      "maxLength": 256
+    }
+  }
+}

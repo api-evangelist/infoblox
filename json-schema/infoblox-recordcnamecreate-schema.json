@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RecordCNAMECreate",
+  "title": "RecordCNAMECreate",
+  "type": "object",
+  "required": [
+    "name",
+    "canonical"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The alias name."
+    },
+    "canonical": {
+      "type": "string",
+      "description": "The canonical (target) domain name."
+    },
+    "view": {
+      "type": "string",
+      "description": "The DNS view."
+    },
+    "comment": {
+      "type": "string",
+      "description": "A descriptive comment.",
+      "maxLength": 256
+    }
+  }
+}

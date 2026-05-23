@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/FixedAddressCreate",
+  "title": "FixedAddressCreate",
+  "type": "object",
+  "required": [
+    "ipv4addr",
+    "mac"
+  ],
+  "properties": {
+    "ipv4addr": {
+      "type": "string",
+      "format": "ipv4",
+      "description": "The IPv4 address to reserve."
+    },
+    "mac": {
+      "type": "string",
+      "description": "The MAC address of the client."
+    },
+    "network_view": {
+      "type": "string",
+      "description": "The network view."
+    },
+    "comment": {
+      "type": "string",
+      "description": "A descriptive comment.",
+      "maxLength": 256
+    }
+  }
+}

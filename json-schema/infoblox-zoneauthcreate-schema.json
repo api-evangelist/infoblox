@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ZoneAuthCreate",
+  "title": "ZoneAuthCreate",
+  "type": "object",
+  "required": [
+    "fqdn",
+    "zone_format"
+  ],
+  "properties": {
+    "fqdn": {
+      "type": "string",
+      "description": "The fully qualified domain name of the zone."
+    },
+    "view": {
+      "type": "string",
+      "description": "The DNS view in which to create the zone."
+    },
+    "zone_format": {
+      "type": "string",
+      "enum": [
+        "FORWARD",
+        "IPV4",
+        "IPV6"
+      ],
+      "description": "The format of the zone."
+    },
+    "comment": {
+      "type": "string",
+      "description": "A descriptive comment.",
+      "maxLength": 256
+    }
+  }
+}

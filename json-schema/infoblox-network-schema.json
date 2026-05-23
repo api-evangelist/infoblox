@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Network",
+  "title": "Network",
+  "type": "object",
+  "properties": {
+    "_ref": {
+      "type": "string",
+      "description": "The object reference for this network."
+    },
+    "network": {
+      "type": "string",
+      "description": "The network address in CIDR notation."
+    },
+    "network_view": {
+      "type": "string",
+      "description": "The network view containing this network."
+    },
+    "comment": {
+      "type": "string",
+      "description": "A descriptive comment for the network.",
+      "maxLength": 256
+    },
+    "members": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The Grid member name."
+          },
+          "_struct": {
+            "type": "string",
+            "description": "The member structure type (e.g. dhcpmember)."
+          }
+        }
+      },
+      "description": "The list of DHCP members serving this network."
+    }
+  }
+}
