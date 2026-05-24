@@ -428,6 +428,8 @@ common:
   url: https://csp.infoblox.com/
 - type: Integrations
   url: https://www.infoblox.com/partners/
+- type: LLMsTxt
+  url: https://infoblox.com/llms.txt
 integrations:
 - name: Technology Ecosystem
 - name: Infoblox for Microsoft
