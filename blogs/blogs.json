@@ -2,12 +2,20 @@
   "repo": "infoblox",
   "feeds": [
     {
-      "source": "https://blogs.infoblox.com/",
+      "source": "https://blogs.infoblox.com/feed/",
       "feed_url": "https://blogs.infoblox.com/feed/",
-      "title": "Infoblox Blog",
-      "saved": 9
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
+      "source": "https://docs.infoblox.com/",
+      "feed_url": "https://docs.infoblox.com/",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     }
   ],
-  "post_count": 21,
-  "fetched": "2026-05-17T20:20:35Z"
+  "post_count": 23,
+  "fetched": "2026-06-01T23:35:02Z"
 }
