@@ -1,0 +1,986 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Infoblox WAPI (Web API)",
+    "version": "2.12"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "DNS Records",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Infoblox List DNS A records",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{grid-master}/wapi/v2.12/record:a",
+            "params": [
+              {
+                "name": "_return_fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set."
+              },
+              {
+                "name": "_max_results",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results."
+              },
+              {
+                "name": "_paging",
+                "value": "",
+                "type": "query",
+                "description": "Set to 1 to enable result paging. When enabled, a next_page_id is returned if more results are available."
+              },
+              {
+                "name": "_page_id",
+                "value": "",
+                "type": "query",
+                "description": "The page identifier returned from a previous paged request. Used to retrieve the next page of results."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the fully qualified domain name of the A record."
+              },
+              {
+                "name": "ipv4addr",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the IPv4 address of the A record."
+              },
+              {
+                "name": "view",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the DNS view name."
+              },
+              {
+                "name": "zone",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the DNS zone name."
+              }
+            ]
+          },
+          "docs": "Retrieves a list of DNS A records from the Infoblox appliance. Supports filtering by name, IP address, view, zone, and other fields. Use the _return_fields parameter to specify which fields to include in the response. Results can be paginated using _max_results and _paging parameters."
+        },
+        {
+          "info": {
+            "name": "Infoblox Create a DNS A record",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{grid-master}/wapi/v2.12/record:a",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new DNS A record with the specified name and IPv4 address. The record is created in the specified DNS view, or the default view if none is specified. Returns the object reference of the newly created record."
+        },
+        {
+          "info": {
+            "name": "Infoblox Get a DNS A record",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{grid-master}/wapi/v2.12/record:a/:ref",
+            "params": [
+              {
+                "name": "ref",
+                "value": "",
+                "type": "path",
+                "description": "The object reference string that uniquely identifies the WAPI object."
+              },
+              {
+                "name": "_return_fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set."
+              }
+            ]
+          },
+          "docs": "Retrieves a specific DNS A record by its object reference. Use the _return_fields parameter to specify which fields to include in the response."
+        },
+        {
+          "info": {
+            "name": "Infoblox Update a DNS A record",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{grid-master}/wapi/v2.12/record:a/:ref",
+            "params": [
+              {
+                "name": "ref",
+                "value": "",
+                "type": "path",
+                "description": "The object reference string that uniquely identifies the WAPI object."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing DNS A record identified by its object reference. Only the fields included in the request body are modified. Returns the object reference of the updated record."
+        },
+        {
+          "info": {
+            "name": "Infoblox Delete a DNS A record",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{grid-master}/wapi/v2.12/record:a/:ref",
+            "params": [
+              {
+                "name": "ref",
+                "value": "",
+                "type": "path",
+                "description": "The object reference string that uniquely identifies the WAPI object."
+              }
+            ]
+          },
+          "docs": "Deletes a DNS A record identified by its object reference. Returns the object reference of the deleted record."
+        },
+        {
+          "info": {
+            "name": "Infoblox List DNS AAAA records",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{grid-master}/wapi/v2.12/record:aaaa",
+            "params": [
+              {
+                "name": "_return_fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set."
+              },
+              {
+                "name": "_max_results",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the fully qualified domain name."
+              },
+              {
+                "name": "ipv6addr",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the IPv6 address."
+              },
+              {
+                "name": "view",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the DNS view name."
+              }
+            ]
+          },
+          "docs": "Retrieves a list of DNS AAAA (IPv6 address) records. Supports filtering by name, IPv6 address, view, and zone."
+        },
+        {
+          "info": {
+            "name": "Infoblox Create a DNS AAAA record",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{grid-master}/wapi/v2.12/record:aaaa",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new DNS AAAA record mapping a domain name to an IPv6 address."
+        },
+        {
+          "info": {
+            "name": "Infoblox List DNS CNAME records",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{grid-master}/wapi/v2.12/record:cname",
+            "params": [
+              {
+                "name": "_return_fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set."
+              },
+              {
+                "name": "_max_results",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the alias name."
+              },
+              {
+                "name": "canonical",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the canonical (target) name."
+              },
+              {
+                "name": "view",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the DNS view name."
+              }
+            ]
+          },
+          "docs": "Retrieves a list of DNS CNAME (canonical name) records. Supports filtering by name, canonical name, view, and zone."
+        },
+        {
+          "info": {
+            "name": "Infoblox Create a DNS CNAME record",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{grid-master}/wapi/v2.12/record:cname",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new DNS CNAME record mapping an alias name to a canonical name."
+        },
+        {
+          "info": {
+            "name": "Infoblox List DNS MX records",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{grid-master}/wapi/v2.12/record:mx",
+            "params": [
+              {
+                "name": "_return_fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set."
+              },
+              {
+                "name": "_max_results",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the domain name."
+              },
+              {
+                "name": "mail_exchanger",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the mail exchanger hostname."
+              },
+              {
+                "name": "view",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the DNS view name."
+              }
+            ]
+          },
+          "docs": "Retrieves a list of DNS MX (mail exchange) records. Supports filtering by name, mail exchanger, preference, view, and zone."
+        },
+        {
+          "info": {
+            "name": "Infoblox Create a DNS MX record",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{grid-master}/wapi/v2.12/record:mx",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new DNS MX record specifying a mail exchanger for a domain."
+        },
+        {
+          "info": {
+            "name": "Infoblox List DNS TXT records",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{grid-master}/wapi/v2.12/record:txt",
+            "params": [
+              {
+                "name": "_return_fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set."
+              },
+              {
+                "name": "_max_results",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the domain name."
+              },
+              {
+                "name": "view",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the DNS view name."
+              }
+            ]
+          },
+          "docs": "Retrieves a list of DNS TXT records. Supports filtering by name, text content, view, and zone."
+        },
+        {
+          "info": {
+            "name": "Infoblox Create a DNS TXT record",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{grid-master}/wapi/v2.12/record:txt",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new DNS TXT record with the specified text data."
+        },
+        {
+          "info": {
+            "name": "Infoblox List DNS PTR records",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{grid-master}/wapi/v2.12/record:ptr",
+            "params": [
+              {
+                "name": "_return_fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set."
+              },
+              {
+                "name": "_max_results",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results."
+              },
+              {
+                "name": "ptrdname",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the domain name the PTR record points to."
+              },
+              {
+                "name": "ipv4addr",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the IPv4 address for the PTR record."
+              },
+              {
+                "name": "view",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the DNS view name."
+              }
+            ]
+          },
+          "docs": "Retrieves a list of DNS PTR (pointer) records used for reverse DNS lookups. Supports filtering by name, ptrdname, view, and zone."
+        },
+        {
+          "info": {
+            "name": "Infoblox Create a DNS PTR record",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{grid-master}/wapi/v2.12/record:ptr",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new DNS PTR record for reverse DNS resolution."
+        },
+        {
+          "info": {
+            "name": "Infoblox List DNS host records",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{grid-master}/wapi/v2.12/record:host",
+            "params": [
+              {
+                "name": "_return_fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set."
+              },
+              {
+                "name": "_max_results",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the fully qualified domain name of the host."
+              },
+              {
+                "name": "view",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the DNS view name."
+              }
+            ]
+          },
+          "docs": "Retrieves a list of DNS host records. A host record contains the DNS and DHCP data for a host, including one or more IP addresses. Supports filtering by name, view, and zone."
+        },
+        {
+          "info": {
+            "name": "Infoblox Create a DNS host record",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{grid-master}/wapi/v2.12/record:host",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new DNS host record with the specified name and IP addresses. A host record can contain multiple IPv4 and IPv6 addresses and automatically creates the corresponding A and AAAA records."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "DNS Zones",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Infoblox List authoritative DNS zones",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{grid-master}/wapi/v2.12/zone_auth",
+            "params": [
+              {
+                "name": "_return_fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set."
+              },
+              {
+                "name": "_max_results",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results."
+              },
+              {
+                "name": "fqdn",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the fully qualified domain name of the zone."
+              },
+              {
+                "name": "view",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the DNS view name."
+              },
+              {
+                "name": "zone_format",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the zone format."
+              }
+            ]
+          },
+          "docs": "Retrieves a list of authoritative DNS zones. Supports filtering by FQDN, view, and zone format (forward or reverse)."
+        },
+        {
+          "info": {
+            "name": "Infoblox Create an authoritative DNS zone",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{grid-master}/wapi/v2.12/zone_auth",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new authoritative DNS zone with the specified FQDN and zone format. The zone is created in the specified DNS view."
+        },
+        {
+          "info": {
+            "name": "Infoblox List forward DNS zones",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{grid-master}/wapi/v2.12/zone_forward",
+            "params": [
+              {
+                "name": "_return_fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set."
+              },
+              {
+                "name": "_max_results",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results."
+              },
+              {
+                "name": "fqdn",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the fully qualified domain name of the forward zone."
+              },
+              {
+                "name": "view",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the DNS view name."
+              }
+            ]
+          },
+          "docs": "Retrieves a list of forward DNS zones. A forward zone forwards queries to specified DNS servers rather than resolving them locally."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Networks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Infoblox List DHCP networks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{grid-master}/wapi/v2.12/network",
+            "params": [
+              {
+                "name": "_return_fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set."
+              },
+              {
+                "name": "_max_results",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results."
+              },
+              {
+                "name": "network",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the network address in CIDR notation (e.g. 10.0.0.0/24)."
+              },
+              {
+                "name": "network_view",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the network view name."
+              },
+              {
+                "name": "comment",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the comment associated with the network."
+              }
+            ]
+          },
+          "docs": "Retrieves a list of IPv4 networks. Networks represent IP subnets and can contain DHCP ranges and fixed addresses. Supports filtering by network address, CIDR, network view, and comment."
+        },
+        {
+          "info": {
+            "name": "Infoblox Create a network",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{grid-master}/wapi/v2.12/network",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new IPv4 network with the specified CIDR address. The network is created in the specified network view, or the default view if none is specified."
+        },
+        {
+          "info": {
+            "name": "Infoblox List network views",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{grid-master}/wapi/v2.12/networkview",
+            "params": [
+              {
+                "name": "_return_fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set."
+              },
+              {
+                "name": "_max_results",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the network view name."
+              }
+            ]
+          },
+          "docs": "Retrieves a list of network views. A network view provides a way to separate overlapping IP address spaces into distinct logical views."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "IP Address Management",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Infoblox List IPv4 addresses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{grid-master}/wapi/v2.12/ipv4address",
+            "params": [
+              {
+                "name": "_return_fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set."
+              },
+              {
+                "name": "_max_results",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results."
+              },
+              {
+                "name": "ip_address",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the IPv4 address."
+              },
+              {
+                "name": "network",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the network in CIDR notation."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the IP address status."
+              },
+              {
+                "name": "network_view",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the network view name."
+              }
+            ]
+          },
+          "docs": "Retrieves a list of IPv4 address objects. This is a read-only object that provides information about the usage and status of IPv4 addresses in the Infoblox system. Supports filtering by IP address, network, status, and associated names."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "DHCP",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Infoblox List DHCP ranges",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{grid-master}/wapi/v2.12/range",
+            "params": [
+              {
+                "name": "_return_fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set."
+              },
+              {
+                "name": "_max_results",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results."
+              },
+              {
+                "name": "network",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the parent network in CIDR notation."
+              },
+              {
+                "name": "start_addr",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the starting IP address of the range."
+              },
+              {
+                "name": "end_addr",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the ending IP address of the range."
+              },
+              {
+                "name": "network_view",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the network view name."
+              }
+            ]
+          },
+          "docs": "Retrieves a list of DHCP range objects. A DHCP range defines a pool of IP addresses from which DHCP clients can obtain leases."
+        },
+        {
+          "info": {
+            "name": "Infoblox Create a DHCP range",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{grid-master}/wapi/v2.12/range",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new DHCP range within a specified network. The range defines a contiguous block of IP addresses available for DHCP allocation."
+        },
+        {
+          "info": {
+            "name": "Infoblox List DHCP fixed addresses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{grid-master}/wapi/v2.12/fixedaddress",
+            "params": [
+              {
+                "name": "_return_fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set."
+              },
+              {
+                "name": "_max_results",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results."
+              },
+              {
+                "name": "ipv4addr",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the reserved IPv4 address."
+              },
+              {
+                "name": "mac",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the MAC address."
+              },
+              {
+                "name": "network_view",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the network view name."
+              }
+            ]
+          },
+          "docs": "Retrieves a list of DHCP fixed address reservations. A fixed address maps a specific MAC address to a reserved IP address."
+        },
+        {
+          "info": {
+            "name": "Infoblox Create a DHCP fixed address",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{grid-master}/wapi/v2.12/fixedaddress",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new DHCP fixed address reservation mapping a MAC address to a specific IPv4 address."
+        },
+        {
+          "info": {
+            "name": "Infoblox List DHCP leases",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{grid-master}/wapi/v2.12/lease",
+            "params": [
+              {
+                "name": "_return_fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set."
+              },
+              {
+                "name": "_max_results",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results."
+              },
+              {
+                "name": "address",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the leased IPv4 address."
+              },
+              {
+                "name": "network_view",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the network view name."
+              }
+            ]
+          },
+          "docs": "Retrieves a list of DHCP lease objects. Leases represent active DHCP address assignments and include information about the client, assigned address, and lease duration."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Grid",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Infoblox Get Grid information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{grid-master}/wapi/v2.12/grid",
+            "params": [
+              {
+                "name": "_return_fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set."
+              }
+            ]
+          },
+          "docs": "Retrieves the Grid object containing configuration and status information about the Infoblox Grid."
+        },
+        {
+          "info": {
+            "name": "Infoblox List Grid members",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{grid-master}/wapi/v2.12/member",
+            "params": [
+              {
+                "name": "_return_fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set."
+              },
+              {
+                "name": "_max_results",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results."
+              },
+              {
+                "name": "host_name",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the member hostname."
+              }
+            ]
+          },
+          "docs": "Retrieves a list of Grid member objects. Each member represents an Infoblox appliance that is part of the Grid."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
