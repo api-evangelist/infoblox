@@ -406,6 +406,12 @@ apis:
         email: support@infoblox.com
         url: https://www.infoblox.com/support/
 common:
+  - type: TrustCenter
+    url: security/infoblox-trust-center.yml
+  - type: DomainSecurity
+    url: security/infoblox-domain-security.yml
+  - type: Authentication
+    url: authentication/infoblox-authentication.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/infoblox
   - type: Portal

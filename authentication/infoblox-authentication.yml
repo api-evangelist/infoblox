@@ -1,0 +1,24 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/infoblox-wapi-openapi.yml
+summary:
+  types:
+  - apiKey
+  - http
+  api_key_in:
+  - cookie
+schemes:
+- name: basicAuth
+  type: http
+  scheme: basic
+  description: HTTP Basic Authentication using NIOS admin credentials.
+  sources:
+  - openapi/infoblox-wapi-openapi.yml
+- name: cookieAuth
+  type: apiKey
+  in: cookie
+  parameter: ibapauth
+  description: Session cookie returned after successful authentication. Pass the ibapauth cookie
+    with subsequent requests to maintain an authenticated session.
+  sources:
+  - openapi/infoblox-wapi-openapi.yml
