@@ -406,6 +406,8 @@ apis:
         email: support@infoblox.com
         url: https://www.infoblox.com/support/
 common:
+  - type: AgenticAccess
+    url: agentic-access/infoblox-agentic-access.yml
   - type: TrustCenter
     url: security/infoblox-trust-center.yml
   - type: DomainSecurity
