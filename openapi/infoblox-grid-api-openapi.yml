@@ -1,0 +1,172 @@
+openapi: 3.1.0
+info:
+  title: Infoblox WAPI (Web API) DHCP Grid API
+  description: RESTful API for managing Infoblox NIOS DDI (DNS, DHCP, IPAM) services, network objects, and configuration. The WAPI uses standard HTTP methods for CRUD operations and supports JSON and XML input and output formats. Authentication is handled via HTTP basic authentication or certificate-based authentication, and sessions can be maintained using cookies returned after initial authentication. The API follows a resource-oriented design where each NIOS object type is accessible as a REST resource.
+  version: '2.12'
+  contact:
+    name: Infoblox Support
+    email: support@infoblox.com
+    url: https://www.infoblox.com/support/
+  termsOfService: https://www.infoblox.com/company/legal/website-terms-and-conditions/
+servers:
+- url: https://{grid-master}/wapi/v2.12
+  description: Infoblox NIOS Grid Master
+  variables:
+    grid-master:
+      default: grid-master.example.com
+      description: The hostname or IP address of the Infoblox NIOS Grid Master appliance.
+security:
+- basicAuth: []
+- cookieAuth: []
+tags:
+- name: Grid
+  description: Operations for managing Grid members, properties, and services.
+paths:
+  /grid:
+    get:
+      operationId: getGrid
+      summary: Infoblox Get Grid information
+      description: Retrieves the Grid object containing configuration and status information about the Infoblox Grid.
+      tags:
+      - Grid
+      parameters:
+      - $ref: '#/components/parameters/ReturnFields'
+      responses:
+        '200':
+          description: Successfully retrieved Grid information.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Grid'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /member:
+    get:
+      operationId: listMembers
+      summary: Infoblox List Grid members
+      description: Retrieves a list of Grid member objects. Each member represents an Infoblox appliance that is part of the Grid.
+      tags:
+      - Grid
+      parameters:
+      - $ref: '#/components/parameters/ReturnFields'
+      - $ref: '#/components/parameters/MaxResults'
+      - name: host_name
+        in: query
+        description: Filter by the member hostname.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successfully retrieved list of Grid members.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Member'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  responses:
+    Unauthorized:
+      description: Authentication failed or credentials were not provided.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: The request was malformed or contained invalid parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    Member:
+      type: object
+      properties:
+        _ref:
+          type: string
+          description: The object reference for this Grid member.
+        host_name:
+          type: string
+          description: The hostname of the Grid member.
+        config_addr_type:
+          type: string
+          enum:
+          - IPV4
+          - IPV6
+          - BOTH
+          description: The address type configuration.
+        platform:
+          type: string
+          description: The hardware or virtual platform type.
+        service_status:
+          type: array
+          items:
+            type: object
+            properties:
+              service:
+                type: string
+                description: The service name (e.g. DNS, DHCP).
+              status:
+                type: string
+                description: The service status (e.g. WORKING, INACTIVE).
+          description: The status of services running on this member.
+    Grid:
+      type: object
+      properties:
+        _ref:
+          type: string
+          description: The object reference for the Grid.
+        name:
+          type: string
+          description: The name of the Grid.
+        dns_resolver_setting:
+          type: object
+          description: The DNS resolver settings for the Grid.
+        ntp_setting:
+          type: object
+          description: The NTP settings for the Grid.
+    Error:
+      type: object
+      properties:
+        Error:
+          type: string
+          description: The error type identifier.
+        code:
+          type: string
+          description: The error code.
+        text:
+          type: string
+          description: A human-readable error message.
+  parameters:
+    ReturnFields:
+      name: _return_fields
+      in: query
+      description: Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.
+      schema:
+        type: string
+    MaxResults:
+      name: _max_results
+      in: query
+      description: The maximum number of results to return. The default is 1000. Use a negative value to return all results.
+      schema:
+        type: integer
+        default: 1000
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication using NIOS admin credentials.
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: ibapauth
+      description: Session cookie returned after successful authentication. Pass the ibapauth cookie with subsequent requests to maintain an authenticated session.
+externalDocs:
+  description: Infoblox WAPI Documentation
+  url: https://docs.infoblox.com/space/niosapi/

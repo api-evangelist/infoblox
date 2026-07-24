@@ -1,0 +1,226 @@
+openapi: 3.1.0
+info:
+  title: Infoblox WAPI (Web API) DHCP Networks API
+  description: RESTful API for managing Infoblox NIOS DDI (DNS, DHCP, IPAM) services, network objects, and configuration. The WAPI uses standard HTTP methods for CRUD operations and supports JSON and XML input and output formats. Authentication is handled via HTTP basic authentication or certificate-based authentication, and sessions can be maintained using cookies returned after initial authentication. The API follows a resource-oriented design where each NIOS object type is accessible as a REST resource.
+  version: '2.12'
+  contact:
+    name: Infoblox Support
+    email: support@infoblox.com
+    url: https://www.infoblox.com/support/
+  termsOfService: https://www.infoblox.com/company/legal/website-terms-and-conditions/
+servers:
+- url: https://{grid-master}/wapi/v2.12
+  description: Infoblox NIOS Grid Master
+  variables:
+    grid-master:
+      default: grid-master.example.com
+      description: The hostname or IP address of the Infoblox NIOS Grid Master appliance.
+security:
+- basicAuth: []
+- cookieAuth: []
+tags:
+- name: Networks
+  description: Operations for managing IPv4 and IPv6 networks, network containers, and network views.
+paths:
+  /network:
+    get:
+      operationId: listNetworks
+      summary: Infoblox List DHCP networks
+      description: Retrieves a list of IPv4 networks. Networks represent IP subnets and can contain DHCP ranges and fixed addresses. Supports filtering by network address, CIDR, network view, and comment.
+      tags:
+      - Networks
+      parameters:
+      - $ref: '#/components/parameters/ReturnFields'
+      - $ref: '#/components/parameters/MaxResults'
+      - name: network
+        in: query
+        description: Filter by the network address in CIDR notation (e.g. 10.0.0.0/24).
+        schema:
+          type: string
+      - name: network_view
+        in: query
+        description: Filter by the network view name.
+        schema:
+          type: string
+      - name: comment
+        in: query
+        description: Filter by the comment associated with the network.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successfully retrieved list of networks.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Network'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createNetwork
+      summary: Infoblox Create a network
+      description: Creates a new IPv4 network with the specified CIDR address. The network is created in the specified network view, or the default view if none is specified.
+      tags:
+      - Networks
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NetworkCreate'
+      responses:
+        '201':
+          description: Successfully created the network.
+          content:
+            application/json:
+              schema:
+                type: string
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /networkview:
+    get:
+      operationId: listNetworkViews
+      summary: Infoblox List network views
+      description: Retrieves a list of network views. A network view provides a way to separate overlapping IP address spaces into distinct logical views.
+      tags:
+      - Networks
+      parameters:
+      - $ref: '#/components/parameters/ReturnFields'
+      - $ref: '#/components/parameters/MaxResults'
+      - name: name
+        in: query
+        description: Filter by the network view name.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successfully retrieved list of network views.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NetworkView'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  schemas:
+    NetworkCreate:
+      type: object
+      required:
+      - network
+      properties:
+        network:
+          type: string
+          description: The network address in CIDR notation (e.g. 10.0.0.0/24).
+        network_view:
+          type: string
+          description: The network view. Defaults to the default network view.
+        comment:
+          type: string
+          description: A descriptive comment.
+          maxLength: 256
+    NetworkView:
+      type: object
+      properties:
+        _ref:
+          type: string
+          description: The object reference for this network view.
+        name:
+          type: string
+          description: The name of the network view.
+        comment:
+          type: string
+          description: A descriptive comment.
+          maxLength: 256
+        is_default:
+          type: boolean
+          description: Whether this is the default network view.
+    Error:
+      type: object
+      properties:
+        Error:
+          type: string
+          description: The error type identifier.
+        code:
+          type: string
+          description: The error code.
+        text:
+          type: string
+          description: A human-readable error message.
+    Network:
+      type: object
+      properties:
+        _ref:
+          type: string
+          description: The object reference for this network.
+        network:
+          type: string
+          description: The network address in CIDR notation.
+        network_view:
+          type: string
+          description: The network view containing this network.
+        comment:
+          type: string
+          description: A descriptive comment for the network.
+          maxLength: 256
+        members:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: The Grid member name.
+              _struct:
+                type: string
+                description: The member structure type (e.g. dhcpmember).
+          description: The list of DHCP members serving this network.
+  responses:
+    Unauthorized:
+      description: Authentication failed or credentials were not provided.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: The request was malformed or contained invalid parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  parameters:
+    ReturnFields:
+      name: _return_fields
+      in: query
+      description: Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.
+      schema:
+        type: string
+    MaxResults:
+      name: _max_results
+      in: query
+      description: The maximum number of results to return. The default is 1000. Use a negative value to return all results.
+      schema:
+        type: integer
+        default: 1000
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication using NIOS admin credentials.
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: ibapauth
+      description: Session cookie returned after successful authentication. Pass the ibapauth cookie with subsequent requests to maintain an authenticated session.
+externalDocs:
+  description: Infoblox WAPI Documentation
+  url: https://docs.infoblox.com/space/niosapi/

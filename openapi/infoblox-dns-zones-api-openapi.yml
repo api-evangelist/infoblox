@@ -1,0 +1,253 @@
+openapi: 3.1.0
+info:
+  title: Infoblox WAPI (Web API) DHCP DNS Zones API
+  description: RESTful API for managing Infoblox NIOS DDI (DNS, DHCP, IPAM) services, network objects, and configuration. The WAPI uses standard HTTP methods for CRUD operations and supports JSON and XML input and output formats. Authentication is handled via HTTP basic authentication or certificate-based authentication, and sessions can be maintained using cookies returned after initial authentication. The API follows a resource-oriented design where each NIOS object type is accessible as a REST resource.
+  version: '2.12'
+  contact:
+    name: Infoblox Support
+    email: support@infoblox.com
+    url: https://www.infoblox.com/support/
+  termsOfService: https://www.infoblox.com/company/legal/website-terms-and-conditions/
+servers:
+- url: https://{grid-master}/wapi/v2.12
+  description: Infoblox NIOS Grid Master
+  variables:
+    grid-master:
+      default: grid-master.example.com
+      description: The hostname or IP address of the Infoblox NIOS Grid Master appliance.
+security:
+- basicAuth: []
+- cookieAuth: []
+tags:
+- name: DNS Zones
+  description: Operations for managing authoritative DNS zones, delegated zones, forward zones, and stub zones.
+paths:
+  /zone_auth:
+    get:
+      operationId: listAuthoritativeZones
+      summary: Infoblox List authoritative DNS zones
+      description: Retrieves a list of authoritative DNS zones. Supports filtering by FQDN, view, and zone format (forward or reverse).
+      tags:
+      - DNS Zones
+      parameters:
+      - $ref: '#/components/parameters/ReturnFields'
+      - $ref: '#/components/parameters/MaxResults'
+      - name: fqdn
+        in: query
+        description: Filter by the fully qualified domain name of the zone.
+        schema:
+          type: string
+      - name: view
+        in: query
+        description: Filter by the DNS view name.
+        schema:
+          type: string
+      - name: zone_format
+        in: query
+        description: Filter by the zone format.
+        schema:
+          type: string
+          enum:
+          - FORWARD
+          - IPV4
+          - IPV6
+      responses:
+        '200':
+          description: Successfully retrieved list of authoritative zones.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ZoneAuth'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createAuthoritativeZone
+      summary: Infoblox Create an authoritative DNS zone
+      description: Creates a new authoritative DNS zone with the specified FQDN and zone format. The zone is created in the specified DNS view.
+      tags:
+      - DNS Zones
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ZoneAuthCreate'
+      responses:
+        '201':
+          description: Successfully created the authoritative zone.
+          content:
+            application/json:
+              schema:
+                type: string
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /zone_forward:
+    get:
+      operationId: listForwardZones
+      summary: Infoblox List forward DNS zones
+      description: Retrieves a list of forward DNS zones. A forward zone forwards queries to specified DNS servers rather than resolving them locally.
+      tags:
+      - DNS Zones
+      parameters:
+      - $ref: '#/components/parameters/ReturnFields'
+      - $ref: '#/components/parameters/MaxResults'
+      - name: fqdn
+        in: query
+        description: Filter by the fully qualified domain name of the forward zone.
+        schema:
+          type: string
+      - name: view
+        in: query
+        description: Filter by the DNS view name.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successfully retrieved list of forward zones.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ZoneForward'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  schemas:
+    ZoneAuthCreate:
+      type: object
+      required:
+      - fqdn
+      - zone_format
+      properties:
+        fqdn:
+          type: string
+          description: The fully qualified domain name of the zone.
+        view:
+          type: string
+          description: The DNS view in which to create the zone.
+        zone_format:
+          type: string
+          enum:
+          - FORWARD
+          - IPV4
+          - IPV6
+          description: The format of the zone.
+        comment:
+          type: string
+          description: A descriptive comment.
+          maxLength: 256
+    ZoneAuth:
+      type: object
+      properties:
+        _ref:
+          type: string
+          description: The object reference for this authoritative zone.
+        fqdn:
+          type: string
+          description: The fully qualified domain name of the zone.
+        view:
+          type: string
+          description: The DNS view containing this zone.
+        zone_format:
+          type: string
+          enum:
+          - FORWARD
+          - IPV4
+          - IPV6
+          description: The format of the zone (forward or reverse).
+        comment:
+          type: string
+          description: A descriptive comment.
+          maxLength: 256
+        ns_group:
+          type: string
+          description: The name server group assigned to this zone.
+    Error:
+      type: object
+      properties:
+        Error:
+          type: string
+          description: The error type identifier.
+        code:
+          type: string
+          description: The error code.
+        text:
+          type: string
+          description: A human-readable error message.
+    ZoneForward:
+      type: object
+      properties:
+        _ref:
+          type: string
+          description: The object reference for this forward zone.
+        fqdn:
+          type: string
+          description: The fully qualified domain name of the forward zone.
+        forward_to:
+          type: array
+          items:
+            type: object
+            properties:
+              address:
+                type: string
+                description: The IP address of the forwarding server.
+              name:
+                type: string
+                description: The name of the forwarding server.
+          description: The list of DNS servers to forward queries to.
+        view:
+          type: string
+          description: The DNS view.
+        comment:
+          type: string
+          description: A descriptive comment.
+          maxLength: 256
+  responses:
+    Unauthorized:
+      description: Authentication failed or credentials were not provided.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: The request was malformed or contained invalid parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  parameters:
+    ReturnFields:
+      name: _return_fields
+      in: query
+      description: Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.
+      schema:
+        type: string
+    MaxResults:
+      name: _max_results
+      in: query
+      description: The maximum number of results to return. The default is 1000. Use a negative value to return all results.
+      schema:
+        type: integer
+        default: 1000
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Authentication using NIOS admin credentials.
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: ibapauth
+      description: Session cookie returned after successful authentication. Pass the ibapauth cookie with subsequent requests to maintain an authenticated session.
+externalDocs:
+  description: Infoblox WAPI Documentation
+  url: https://docs.infoblox.com/space/niosapi/
