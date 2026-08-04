@@ -1,0 +1,24 @@
+{
+  "provider": "infoblox",
+  "sources": [
+    "infoblox-dhcp-api-openapi.yml",
+    "infoblox-dns-records-api-openapi.yml",
+    "infoblox-dns-zones-api-openapi.yml",
+    "infoblox-grid-api-openapi.yml",
+    "infoblox-ip-address-management-api-openapi.yml",
+    "infoblox-networks-api-openapi.yml"
+  ],
+  "outputs": [
+    "infoblox-dhcp-api-openapi.yml",
+    "infoblox-dns-records-api-openapi.yml",
+    "infoblox-dns-zones-api-openapi.yml",
+    "infoblox-grid-api-openapi.yml",
+    "infoblox-ip-address-management-api-openapi.yml",
+    "infoblox-networks-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

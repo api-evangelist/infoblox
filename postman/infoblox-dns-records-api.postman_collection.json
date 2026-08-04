@@ -1,0 +1,4175 @@
+{
+  "info": {
+    "_postman_id": "0efe5dd4-a1a9-4aaa-a2f8-dd8aee639378",
+    "name": "Infoblox WAPI (Web API) DHCP DNS Records API",
+    "description": "RESTful API for managing Infoblox NIOS DDI (DNS, DHCP, IPAM) services, network objects, and configuration. The WAPI uses standard HTTP methods for CRUD operations and supports JSON and XML input and output formats. Authentication is handled via HTTP basic authentication or certificate-based authentication, and sessions can be maintained using cookies returned after initial authentication. The API follows a resource-oriented design where each NIOS object type is accessible as a REST resource.\n\nContact Support:\n Name: Infoblox Support\n Email: support@infoblox.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:57:32.000Z",
+    "updatedAt": "2026-07-28T01:57:33.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-0efe5dd4-a1a9-4aaa-a2f8-dd8aee639378"
+  },
+  "item": [
+    {
+      "name": "record:a",
+      "item": [
+        {
+          "name": "{ref}",
+          "item": [
+            {
+              "name": "Infoblox Get a DNS A record",
+              "id": "aba6ad09-c8ee-4668-a599-10295f5276c6",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/record:a/:ref?_return_fields=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "record:a",
+                    ":ref"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                      "key": "_return_fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "c10e33a6-d87d-435c-8787-a2b6e6260863",
+                      "key": "ref",
+                      "value": "<string>",
+                      "description": "(Required) The object reference string that uniquely identifies the WAPI object."
+                    }
+                  ]
+                },
+                "description": "Retrieves a specific DNS A record by its object reference. Use the _return_fields parameter to specify which fields to include in the response."
+              },
+              "response": [
+                {
+                  "id": "4f0e68f4-4f16-44ab-bf29-27ee4b61c4e2",
+                  "name": "Successfully retrieved the A record.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/record:a/:ref?_return_fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "record:a",
+                        ":ref"
+                      ],
+                      "query": [
+                        {
+                          "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                          "key": "_return_fields",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "ref"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"_ref\": \"<string>\",\n  \"name\": \"<string>\",\n  \"ipv4addr\": \"<ipv4>\",\n  \"view\": \"<string>\",\n  \"zone\": \"<string>\",\n  \"ttl\": \"<integer>\",\n  \"use_ttl\": \"<boolean>\",\n  \"comment\": \"<string>\",\n  \"disable\": \"<boolean>\"\n}",
+                  "createdAt": "2026-07-28T01:57:33.000Z",
+                  "updatedAt": "2026-07-28T01:57:33.000Z",
+                  "uid": "35240-4f0e68f4-4f16-44ab-bf29-27ee4b61c4e2"
+                },
+                {
+                  "id": "5f8ac352-3171-4462-80e8-d621a8775025",
+                  "name": "Authentication failed or credentials were not provided.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/record:a/:ref?_return_fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "record:a",
+                        ":ref"
+                      ],
+                      "query": [
+                        {
+                          "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                          "key": "_return_fields",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "ref"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"Error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:57:33.000Z",
+                  "updatedAt": "2026-07-28T01:57:33.000Z",
+                  "uid": "35240-5f8ac352-3171-4462-80e8-d621a8775025"
+                },
+                {
+                  "id": "936d723f-cd58-4f60-8cad-9acf90d3e45a",
+                  "name": "The specified object reference was not found.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/record:a/:ref?_return_fields=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "record:a",
+                        ":ref"
+                      ],
+                      "query": [
+                        {
+                          "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                          "key": "_return_fields",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "ref"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"Error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:57:33.000Z",
+                  "updatedAt": "2026-07-28T01:57:33.000Z",
+                  "uid": "35240-936d723f-cd58-4f60-8cad-9acf90d3e45a"
+                }
+              ],
+              "createdAt": "2026-07-28T01:57:33.000Z",
+              "updatedAt": "2026-07-28T01:57:33.000Z",
+              "uid": "35240-aba6ad09-c8ee-4668-a599-10295f5276c6"
+            },
+            {
+              "name": "Infoblox Update a DNS A record",
+              "id": "9e329252-9a2c-4bbf-9f15-5a660b1340a2",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"ipv4addr\": \"<ipv4>\",\n  \"ttl\": \"<integer>\",\n  \"use_ttl\": \"<boolean>\",\n  \"comment\": \"<string>\",\n  \"disable\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/record:a/:ref",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "record:a",
+                    ":ref"
+                  ],
+                  "variable": [
+                    {
+                      "id": "0312415d-8a47-49a8-960a-d8eef8e40432",
+                      "key": "ref",
+                      "value": "<string>",
+                      "description": "(Required) The object reference string that uniquely identifies the WAPI object."
+                    }
+                  ]
+                },
+                "description": "Updates an existing DNS A record identified by its object reference. Only the fields included in the request body are modified. Returns the object reference of the updated record."
+              },
+              "response": [
+                {
+                  "id": "61610d0e-1264-42ce-847b-7c97ffaf2322",
+                  "name": "Successfully updated the A record.",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"ipv4addr\": \"<ipv4>\",\n  \"ttl\": \"<integer>\",\n  \"use_ttl\": \"<boolean>\",\n  \"comment\": \"<string>\",\n  \"disable\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/record:a/:ref",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "record:a",
+                        ":ref"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ref"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<string>",
+                  "createdAt": "2026-07-28T01:57:33.000Z",
+                  "updatedAt": "2026-07-28T01:57:33.000Z",
+                  "uid": "35240-61610d0e-1264-42ce-847b-7c97ffaf2322"
+                },
+                {
+                  "id": "2956a23e-b7e6-4e7c-8cff-5e618d386d9f",
+                  "name": "The request was malformed or contained invalid parameters.",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"ipv4addr\": \"<ipv4>\",\n  \"ttl\": \"<integer>\",\n  \"use_ttl\": \"<boolean>\",\n  \"comment\": \"<string>\",\n  \"disable\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/record:a/:ref",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "record:a",
+                        ":ref"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ref"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"Error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:57:33.000Z",
+                  "updatedAt": "2026-07-28T01:57:33.000Z",
+                  "uid": "35240-2956a23e-b7e6-4e7c-8cff-5e618d386d9f"
+                },
+                {
+                  "id": "9fd13040-aa6d-4e47-8278-3db74446e801",
+                  "name": "Authentication failed or credentials were not provided.",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"ipv4addr\": \"<ipv4>\",\n  \"ttl\": \"<integer>\",\n  \"use_ttl\": \"<boolean>\",\n  \"comment\": \"<string>\",\n  \"disable\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/record:a/:ref",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "record:a",
+                        ":ref"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ref"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"Error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:57:33.000Z",
+                  "updatedAt": "2026-07-28T01:57:33.000Z",
+                  "uid": "35240-9fd13040-aa6d-4e47-8278-3db74446e801"
+                },
+                {
+                  "id": "eb0aabd2-217f-4d53-a6ca-d01e8ad8ad26",
+                  "name": "The specified object reference was not found.",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"ipv4addr\": \"<ipv4>\",\n  \"ttl\": \"<integer>\",\n  \"use_ttl\": \"<boolean>\",\n  \"comment\": \"<string>\",\n  \"disable\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/record:a/:ref",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "record:a",
+                        ":ref"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ref"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"Error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:57:33.000Z",
+                  "updatedAt": "2026-07-28T01:57:33.000Z",
+                  "uid": "35240-eb0aabd2-217f-4d53-a6ca-d01e8ad8ad26"
+                }
+              ],
+              "createdAt": "2026-07-28T01:57:33.000Z",
+              "updatedAt": "2026-07-28T01:57:33.000Z",
+              "uid": "35240-9e329252-9a2c-4bbf-9f15-5a660b1340a2"
+            },
+            {
+              "name": "Infoblox Delete a DNS A record",
+              "id": "367640da-7984-40a8-b507-55a65b85841f",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/record:a/:ref",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "record:a",
+                    ":ref"
+                  ],
+                  "variable": [
+                    {
+                      "id": "6414c647-bb75-481d-994a-433390480ef3",
+                      "key": "ref",
+                      "value": "<string>",
+                      "description": "(Required) The object reference string that uniquely identifies the WAPI object."
+                    }
+                  ]
+                },
+                "description": "Deletes a DNS A record identified by its object reference. Returns the object reference of the deleted record."
+              },
+              "response": [
+                {
+                  "id": "c86d7f79-c3bd-4e1a-a038-ee22ee7a1a27",
+                  "name": "Successfully deleted the A record.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/record:a/:ref",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "record:a",
+                        ":ref"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ref"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<string>",
+                  "createdAt": "2026-07-28T01:57:33.000Z",
+                  "updatedAt": "2026-07-28T01:57:33.000Z",
+                  "uid": "35240-c86d7f79-c3bd-4e1a-a038-ee22ee7a1a27"
+                },
+                {
+                  "id": "6190220a-bfdc-41b9-9ff9-4d01e39dd1cd",
+                  "name": "Authentication failed or credentials were not provided.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/record:a/:ref",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "record:a",
+                        ":ref"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ref"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"Error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:57:33.000Z",
+                  "updatedAt": "2026-07-28T01:57:33.000Z",
+                  "uid": "35240-6190220a-bfdc-41b9-9ff9-4d01e39dd1cd"
+                },
+                {
+                  "id": "dec684f4-3e46-4b19-90e7-f677b10449f2",
+                  "name": "The specified object reference was not found.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/record:a/:ref",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "record:a",
+                        ":ref"
+                      ],
+                      "variable": [
+                        {
+                          "key": "ref"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"Error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:57:33.000Z",
+                  "updatedAt": "2026-07-28T01:57:33.000Z",
+                  "uid": "35240-dec684f4-3e46-4b19-90e7-f677b10449f2"
+                }
+              ],
+              "createdAt": "2026-07-28T01:57:33.000Z",
+              "updatedAt": "2026-07-28T01:57:33.000Z",
+              "uid": "35240-367640da-7984-40a8-b507-55a65b85841f"
+            }
+          ],
+          "id": "7c5b99c7-a131-4d79-a555-ce63023ab2fd",
+          "createdAt": "2026-07-28T01:57:33.000Z",
+          "updatedAt": "2026-07-28T01:57:33.000Z",
+          "uid": "35240-7c5b99c7-a131-4d79-a555-ce63023ab2fd"
+        },
+        {
+          "name": "Infoblox List DNS A records",
+          "id": "a8678d57-dcfa-4683-9e8c-de3e05c9f5e6",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/record:a?_return_fields=<string>&_max_results=1000&_paging=1&_page_id=<string>&name=<string>&ipv4addr=<ipv4>&view=<string>&zone=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "record:a"
+              ],
+              "query": [
+                {
+                  "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                  "key": "_return_fields",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results.",
+                  "key": "_max_results",
+                  "value": "1000"
+                },
+                {
+                  "description": "Set to 1 to enable result paging. When enabled, a next_page_id is returned if more results are available.",
+                  "key": "_paging",
+                  "value": "1"
+                },
+                {
+                  "description": "The page identifier returned from a previous paged request. Used to retrieve the next page of results.",
+                  "key": "_page_id",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter by the fully qualified domain name of the A record.",
+                  "key": "name",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter by the IPv4 address of the A record.",
+                  "key": "ipv4addr",
+                  "value": "<ipv4>"
+                },
+                {
+                  "description": "Filter by the DNS view name.",
+                  "key": "view",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter by the DNS zone name.",
+                  "key": "zone",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Retrieves a list of DNS A records from the Infoblox appliance. Supports filtering by name, IP address, view, zone, and other fields. Use the _return_fields parameter to specify which fields to include in the response. Results can be paginated using _max_results and _paging parameters."
+          },
+          "response": [
+            {
+              "id": "e7e14844-55ad-4504-8644-e937a86e9ecc",
+              "name": "Successfully retrieved list of A records.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/record:a?_return_fields=<string>&_max_results=1000&_paging=1&_page_id=<string>&name=<string>&ipv4addr=<ipv4>&view=<string>&zone=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "record:a"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                      "key": "_return_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results.",
+                      "key": "_max_results",
+                      "value": "1000"
+                    },
+                    {
+                      "description": "Set to 1 to enable result paging. When enabled, a next_page_id is returned if more results are available.",
+                      "key": "_paging",
+                      "value": "1"
+                    },
+                    {
+                      "description": "The page identifier returned from a previous paged request. Used to retrieve the next page of results.",
+                      "key": "_page_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by the fully qualified domain name of the A record.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by the IPv4 address of the A record.",
+                      "key": "ipv4addr",
+                      "value": "<ipv4>"
+                    },
+                    {
+                      "description": "Filter by the DNS view name.",
+                      "key": "view",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by the DNS zone name.",
+                      "key": "zone",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"_ref\": \"<string>\",\n    \"name\": \"<string>\",\n    \"ipv4addr\": \"<ipv4>\",\n    \"view\": \"<string>\",\n    \"zone\": \"<string>\",\n    \"ttl\": \"<integer>\",\n    \"use_ttl\": \"<boolean>\",\n    \"comment\": \"<string>\",\n    \"disable\": \"<boolean>\"\n  },\n  {\n    \"_ref\": \"<string>\",\n    \"name\": \"<string>\",\n    \"ipv4addr\": \"<ipv4>\",\n    \"view\": \"<string>\",\n    \"zone\": \"<string>\",\n    \"ttl\": \"<integer>\",\n    \"use_ttl\": \"<boolean>\",\n    \"comment\": \"<string>\",\n    \"disable\": \"<boolean>\"\n  }\n]",
+              "createdAt": "2026-07-28T01:57:33.000Z",
+              "updatedAt": "2026-07-28T01:57:33.000Z",
+              "uid": "35240-e7e14844-55ad-4504-8644-e937a86e9ecc"
+            },
+            {
+              "id": "9e797ae2-a78f-4933-82b0-0b9b13d21ad3",
+              "name": "The request was malformed or contained invalid parameters.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/record:a?_return_fields=<string>&_max_results=1000&_paging=1&_page_id=<string>&name=<string>&ipv4addr=<ipv4>&view=<string>&zone=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "record:a"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                      "key": "_return_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results.",
+                      "key": "_max_results",
+                      "value": "1000"
+                    },
+                    {
+                      "description": "Set to 1 to enable result paging. When enabled, a next_page_id is returned if more results are available.",
+                      "key": "_paging",
+                      "value": "1"
+                    },
+                    {
+                      "description": "The page identifier returned from a previous paged request. Used to retrieve the next page of results.",
+                      "key": "_page_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by the fully qualified domain name of the A record.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by the IPv4 address of the A record.",
+                      "key": "ipv4addr",
+                      "value": "<ipv4>"
+                    },
+                    {
+                      "description": "Filter by the DNS view name.",
+                      "key": "view",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by the DNS zone name.",
+                      "key": "zone",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:57:33.000Z",
+              "updatedAt": "2026-07-28T01:57:33.000Z",
+              "uid": "35240-9e797ae2-a78f-4933-82b0-0b9b13d21ad3"
+            },
+            {
+              "id": "58c212c1-dac8-41f8-8690-dcbca44fe0fe",
+              "name": "Authentication failed or credentials were not provided.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/record:a?_return_fields=<string>&_max_results=1000&_paging=1&_page_id=<string>&name=<string>&ipv4addr=<ipv4>&view=<string>&zone=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "record:a"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                      "key": "_return_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results.",
+                      "key": "_max_results",
+                      "value": "1000"
+                    },
+                    {
+                      "description": "Set to 1 to enable result paging. When enabled, a next_page_id is returned if more results are available.",
+                      "key": "_paging",
+                      "value": "1"
+                    },
+                    {
+                      "description": "The page identifier returned from a previous paged request. Used to retrieve the next page of results.",
+                      "key": "_page_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by the fully qualified domain name of the A record.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by the IPv4 address of the A record.",
+                      "key": "ipv4addr",
+                      "value": "<ipv4>"
+                    },
+                    {
+                      "description": "Filter by the DNS view name.",
+                      "key": "view",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by the DNS zone name.",
+                      "key": "zone",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:57:33.000Z",
+              "updatedAt": "2026-07-28T01:57:33.000Z",
+              "uid": "35240-58c212c1-dac8-41f8-8690-dcbca44fe0fe"
+            }
+          ],
+          "createdAt": "2026-07-28T01:57:33.000Z",
+          "updatedAt": "2026-07-28T01:57:33.000Z",
+          "uid": "35240-a8678d57-dcfa-4683-9e8c-de3e05c9f5e6"
+        },
+        {
+          "name": "Infoblox Create a DNS A record",
+          "id": "e8b4f032-0409-4414-b8f6-e6d1ba0e284f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"ipv4addr\": \"<ipv4>\",\n  \"view\": \"<string>\",\n  \"ttl\": \"<integer>\",\n  \"use_ttl\": \"<boolean>\",\n  \"comment\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/record:a",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "record:a"
+              ]
+            },
+            "description": "Creates a new DNS A record with the specified name and IPv4 address. The record is created in the specified DNS view, or the default view if none is specified. Returns the object reference of the newly created record."
+          },
+          "response": [
+            {
+              "id": "29b46787-cc8e-40c8-b726-6cb4fc57dd8b",
+              "name": "Successfully created the A record.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"ipv4addr\": \"<ipv4>\",\n  \"view\": \"<string>\",\n  \"ttl\": \"<integer>\",\n  \"use_ttl\": \"<boolean>\",\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/record:a",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "record:a"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<string>",
+              "createdAt": "2026-07-28T01:57:33.000Z",
+              "updatedAt": "2026-07-28T01:57:33.000Z",
+              "uid": "35240-29b46787-cc8e-40c8-b726-6cb4fc57dd8b"
+            },
+            {
+              "id": "bb4d23b2-30a6-48f5-b26b-b390d8c91cb1",
+              "name": "The request was malformed or contained invalid parameters.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"ipv4addr\": \"<ipv4>\",\n  \"view\": \"<string>\",\n  \"ttl\": \"<integer>\",\n  \"use_ttl\": \"<boolean>\",\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/record:a",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "record:a"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:57:33.000Z",
+              "updatedAt": "2026-07-28T01:57:33.000Z",
+              "uid": "35240-bb4d23b2-30a6-48f5-b26b-b390d8c91cb1"
+            },
+            {
+              "id": "caec5eb2-27b9-42c0-86fb-712278449789",
+              "name": "Authentication failed or credentials were not provided.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"ipv4addr\": \"<ipv4>\",\n  \"view\": \"<string>\",\n  \"ttl\": \"<integer>\",\n  \"use_ttl\": \"<boolean>\",\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/record:a",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "record:a"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:57:33.000Z",
+              "updatedAt": "2026-07-28T01:57:33.000Z",
+              "uid": "35240-caec5eb2-27b9-42c0-86fb-712278449789"
+            }
+          ],
+          "createdAt": "2026-07-28T01:57:33.000Z",
+          "updatedAt": "2026-07-28T01:57:33.000Z",
+          "uid": "35240-e8b4f032-0409-4414-b8f6-e6d1ba0e284f"
+        }
+      ],
+      "id": "4541d94d-511f-47ad-8f41-e74719f4cd23",
+      "createdAt": "2026-07-28T01:57:33.000Z",
+      "updatedAt": "2026-07-28T01:57:33.000Z",
+      "uid": "35240-4541d94d-511f-47ad-8f41-e74719f4cd23"
+    },
+    {
+      "name": "record:aaaa",
+      "item": [
+        {
+          "name": "Infoblox List DNS AAAA records",
+          "id": "afe98633-0f90-41ea-8e45-4b758f5de7fb",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/record:aaaa?_return_fields=<string>&_max_results=1000&name=<string>&ipv6addr=<ipv6>&view=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "record:aaaa"
+              ],
+              "query": [
+                {
+                  "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                  "key": "_return_fields",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results.",
+                  "key": "_max_results",
+                  "value": "1000"
+                },
+                {
+                  "description": "Filter by the fully qualified domain name.",
+                  "key": "name",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter by the IPv6 address.",
+                  "key": "ipv6addr",
+                  "value": "<ipv6>"
+                },
+                {
+                  "description": "Filter by the DNS view name.",
+                  "key": "view",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Retrieves a list of DNS AAAA (IPv6 address) records. Supports filtering by name, IPv6 address, view, and zone."
+          },
+          "response": [
+            {
+              "id": "b148025a-ba9b-4490-9022-20b9874d7135",
+              "name": "Successfully retrieved list of AAAA records.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/record:aaaa?_return_fields=<string>&_max_results=1000&name=<string>&ipv6addr=<ipv6>&view=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "record:aaaa"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                      "key": "_return_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results.",
+                      "key": "_max_results",
+                      "value": "1000"
+                    },
+                    {
+                      "description": "Filter by the fully qualified domain name.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by the IPv6 address.",
+                      "key": "ipv6addr",
+                      "value": "<ipv6>"
+                    },
+                    {
+                      "description": "Filter by the DNS view name.",
+                      "key": "view",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"_ref\": \"<string>\",\n    \"name\": \"<string>\",\n    \"ipv6addr\": \"<ipv6>\",\n    \"view\": \"<string>\",\n    \"ttl\": \"<integer>\",\n    \"comment\": \"<string>\"\n  },\n  {\n    \"_ref\": \"<string>\",\n    \"name\": \"<string>\",\n    \"ipv6addr\": \"<ipv6>\",\n    \"view\": \"<string>\",\n    \"ttl\": \"<integer>\",\n    \"comment\": \"<string>\"\n  }\n]",
+              "createdAt": "2026-07-28T01:57:33.000Z",
+              "updatedAt": "2026-07-28T01:57:33.000Z",
+              "uid": "35240-b148025a-ba9b-4490-9022-20b9874d7135"
+            },
+            {
+              "id": "22218909-3e83-4474-b5f9-d892ef6ba02e",
+              "name": "The request was malformed or contained invalid parameters.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/record:aaaa?_return_fields=<string>&_max_results=1000&name=<string>&ipv6addr=<ipv6>&view=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "record:aaaa"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                      "key": "_return_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results.",
+                      "key": "_max_results",
+                      "value": "1000"
+                    },
+                    {
+                      "description": "Filter by the fully qualified domain name.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by the IPv6 address.",
+                      "key": "ipv6addr",
+                      "value": "<ipv6>"
+                    },
+                    {
+                      "description": "Filter by the DNS view name.",
+                      "key": "view",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:57:33.000Z",
+              "updatedAt": "2026-07-28T01:57:33.000Z",
+              "uid": "35240-22218909-3e83-4474-b5f9-d892ef6ba02e"
+            },
+            {
+              "id": "a9d104c6-caa8-4adf-acaa-35a00e57d72f",
+              "name": "Authentication failed or credentials were not provided.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/record:aaaa?_return_fields=<string>&_max_results=1000&name=<string>&ipv6addr=<ipv6>&view=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "record:aaaa"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                      "key": "_return_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results.",
+                      "key": "_max_results",
+                      "value": "1000"
+                    },
+                    {
+                      "description": "Filter by the fully qualified domain name.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by the IPv6 address.",
+                      "key": "ipv6addr",
+                      "value": "<ipv6>"
+                    },
+                    {
+                      "description": "Filter by the DNS view name.",
+                      "key": "view",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:57:33.000Z",
+              "updatedAt": "2026-07-28T01:57:33.000Z",
+              "uid": "35240-a9d104c6-caa8-4adf-acaa-35a00e57d72f"
+            }
+          ],
+          "createdAt": "2026-07-28T01:57:33.000Z",
+          "updatedAt": "2026-07-28T01:57:33.000Z",
+          "uid": "35240-afe98633-0f90-41ea-8e45-4b758f5de7fb"
+        },
+        {
+          "name": "Infoblox Create a DNS AAAA record",
+          "id": "b0df90c0-94b8-44ed-95d6-4cf8738757d1",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"ipv6addr\": \"<ipv6>\",\n  \"view\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/record:aaaa",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "record:aaaa"
+              ]
+            },
+            "description": "Creates a new DNS AAAA record mapping a domain name to an IPv6 address."
+          },
+          "response": [
+            {
+              "id": "bd5c1bfd-5434-448b-8a11-4ef786687d77",
+              "name": "Successfully created the AAAA record.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"ipv6addr\": \"<ipv6>\",\n  \"view\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/record:aaaa",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "record:aaaa"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<string>",
+              "createdAt": "2026-07-28T01:57:33.000Z",
+              "updatedAt": "2026-07-28T01:57:33.000Z",
+              "uid": "35240-bd5c1bfd-5434-448b-8a11-4ef786687d77"
+            },
+            {
+              "id": "213da282-51c0-4c5a-bead-ac15178e37db",
+              "name": "The request was malformed or contained invalid parameters.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"ipv6addr\": \"<ipv6>\",\n  \"view\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/record:aaaa",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "record:aaaa"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:57:33.000Z",
+              "updatedAt": "2026-07-28T01:57:33.000Z",
+              "uid": "35240-213da282-51c0-4c5a-bead-ac15178e37db"
+            },
+            {
+              "id": "93e4c351-107a-4fdb-b832-933ca1fca3b9",
+              "name": "Authentication failed or credentials were not provided.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"ipv6addr\": \"<ipv6>\",\n  \"view\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/record:aaaa",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "record:aaaa"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:57:33.000Z",
+              "updatedAt": "2026-07-28T01:57:33.000Z",
+              "uid": "35240-93e4c351-107a-4fdb-b832-933ca1fca3b9"
+            }
+          ],
+          "createdAt": "2026-07-28T01:57:33.000Z",
+          "updatedAt": "2026-07-28T01:57:33.000Z",
+          "uid": "35240-b0df90c0-94b8-44ed-95d6-4cf8738757d1"
+        }
+      ],
+      "id": "693f237f-c90e-45e8-afca-643a6fb6ff3a",
+      "createdAt": "2026-07-28T01:57:33.000Z",
+      "updatedAt": "2026-07-28T01:57:33.000Z",
+      "uid": "35240-693f237f-c90e-45e8-afca-643a6fb6ff3a"
+    },
+    {
+      "name": "record:cname",
+      "item": [
+        {
+          "name": "Infoblox List DNS CNAME records",
+          "id": "9e6d904c-66ce-40c3-920d-08de991869ec",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/record:cname?_return_fields=<string>&_max_results=1000&name=<string>&canonical=<string>&view=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "record:cname"
+              ],
+              "query": [
+                {
+                  "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                  "key": "_return_fields",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results.",
+                  "key": "_max_results",
+                  "value": "1000"
+                },
+                {
+                  "description": "Filter by the alias name.",
+                  "key": "name",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter by the canonical (target) name.",
+                  "key": "canonical",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter by the DNS view name.",
+                  "key": "view",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Retrieves a list of DNS CNAME (canonical name) records. Supports filtering by name, canonical name, view, and zone."
+          },
+          "response": [
+            {
+              "id": "b36f7cd0-7f6b-423b-a942-2ae58554ecbf",
+              "name": "Successfully retrieved list of CNAME records.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/record:cname?_return_fields=<string>&_max_results=1000&name=<string>&canonical=<string>&view=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "record:cname"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                      "key": "_return_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results.",
+                      "key": "_max_results",
+                      "value": "1000"
+                    },
+                    {
+                      "description": "Filter by the alias name.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by the canonical (target) name.",
+                      "key": "canonical",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by the DNS view name.",
+                      "key": "view",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"_ref\": \"<string>\",\n    \"name\": \"<string>\",\n    \"canonical\": \"<string>\",\n    \"view\": \"<string>\",\n    \"ttl\": \"<integer>\",\n    \"comment\": \"<string>\"\n  },\n  {\n    \"_ref\": \"<string>\",\n    \"name\": \"<string>\",\n    \"canonical\": \"<string>\",\n    \"view\": \"<string>\",\n    \"ttl\": \"<integer>\",\n    \"comment\": \"<string>\"\n  }\n]",
+              "createdAt": "2026-07-28T01:57:33.000Z",
+              "updatedAt": "2026-07-28T01:57:33.000Z",
+              "uid": "35240-b36f7cd0-7f6b-423b-a942-2ae58554ecbf"
+            },
+            {
+              "id": "b74bdb97-45ea-4f53-8314-a10952c7d279",
+              "name": "The request was malformed or contained invalid parameters.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/record:cname?_return_fields=<string>&_max_results=1000&name=<string>&canonical=<string>&view=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "record:cname"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                      "key": "_return_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results.",
+                      "key": "_max_results",
+                      "value": "1000"
+                    },
+                    {
+                      "description": "Filter by the alias name.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by the canonical (target) name.",
+                      "key": "canonical",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by the DNS view name.",
+                      "key": "view",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:57:33.000Z",
+              "updatedAt": "2026-07-28T01:57:33.000Z",
+              "uid": "35240-b74bdb97-45ea-4f53-8314-a10952c7d279"
+            },
+            {
+              "id": "8f53350e-38b8-400d-9887-23ec52abb338",
+              "name": "Authentication failed or credentials were not provided.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/record:cname?_return_fields=<string>&_max_results=1000&name=<string>&canonical=<string>&view=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "record:cname"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                      "key": "_return_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results.",
+                      "key": "_max_results",
+                      "value": "1000"
+                    },
+                    {
+                      "description": "Filter by the alias name.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by the canonical (target) name.",
+                      "key": "canonical",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by the DNS view name.",
+                      "key": "view",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:57:33.000Z",
+              "updatedAt": "2026-07-28T01:57:33.000Z",
+              "uid": "35240-8f53350e-38b8-400d-9887-23ec52abb338"
+            }
+          ],
+          "createdAt": "2026-07-28T01:57:33.000Z",
+          "updatedAt": "2026-07-28T01:57:33.000Z",
+          "uid": "35240-9e6d904c-66ce-40c3-920d-08de991869ec"
+        },
+        {
+          "name": "Infoblox Create a DNS CNAME record",
+          "id": "8afb32fa-e783-4c21-91f9-a2cff284de55",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"canonical\": \"<string>\",\n  \"view\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/record:cname",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "record:cname"
+              ]
+            },
+            "description": "Creates a new DNS CNAME record mapping an alias name to a canonical name."
+          },
+          "response": [
+            {
+              "id": "f3208bec-1b62-4f66-9684-b6be0b3c2583",
+              "name": "Successfully created the CNAME record.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"canonical\": \"<string>\",\n  \"view\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/record:cname",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "record:cname"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<string>",
+              "createdAt": "2026-07-28T01:57:33.000Z",
+              "updatedAt": "2026-07-28T01:57:33.000Z",
+              "uid": "35240-f3208bec-1b62-4f66-9684-b6be0b3c2583"
+            },
+            {
+              "id": "9635e49a-08c9-4b7a-a1b2-81b6ff38f759",
+              "name": "The request was malformed or contained invalid parameters.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"canonical\": \"<string>\",\n  \"view\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/record:cname",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "record:cname"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:57:33.000Z",
+              "updatedAt": "2026-07-28T01:57:33.000Z",
+              "uid": "35240-9635e49a-08c9-4b7a-a1b2-81b6ff38f759"
+            },
+            {
+              "id": "47faca51-ce47-48be-a85e-3f5e03aea2ee",
+              "name": "Authentication failed or credentials were not provided.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"canonical\": \"<string>\",\n  \"view\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/record:cname",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "record:cname"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:57:33.000Z",
+              "updatedAt": "2026-07-28T01:57:33.000Z",
+              "uid": "35240-47faca51-ce47-48be-a85e-3f5e03aea2ee"
+            }
+          ],
+          "createdAt": "2026-07-28T01:57:33.000Z",
+          "updatedAt": "2026-07-28T01:57:33.000Z",
+          "uid": "35240-8afb32fa-e783-4c21-91f9-a2cff284de55"
+        }
+      ],
+      "id": "cc2f3478-a122-40f3-b2b4-b97da8e1ba0f",
+      "createdAt": "2026-07-28T01:57:33.000Z",
+      "updatedAt": "2026-07-28T01:57:33.000Z",
+      "uid": "35240-cc2f3478-a122-40f3-b2b4-b97da8e1ba0f"
+    },
+    {
+      "name": "record:mx",
+      "item": [
+        {
+          "name": "Infoblox List DNS MX records",
+          "id": "4d2797fe-01af-44ce-8f3c-766d4450330c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/record:mx?_return_fields=<string>&_max_results=1000&name=<string>&mail_exchanger=<string>&view=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "record:mx"
+              ],
+              "query": [
+                {
+                  "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                  "key": "_return_fields",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results.",
+                  "key": "_max_results",
+                  "value": "1000"
+                },
+                {
+                  "description": "Filter by the domain name.",
+                  "key": "name",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter by the mail exchanger hostname.",
+                  "key": "mail_exchanger",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter by the DNS view name.",
+                  "key": "view",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Retrieves a list of DNS MX (mail exchange) records. Supports filtering by name, mail exchanger, preference, view, and zone."
+          },
+          "response": [
+            {
+              "id": "8a0234de-32d4-49dd-8b6d-4a43a0f6c43f",
+              "name": "Successfully retrieved list of MX records.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/record:mx?_return_fields=<string>&_max_results=1000&name=<string>&mail_exchanger=<string>&view=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "record:mx"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                      "key": "_return_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results.",
+                      "key": "_max_results",
+                      "value": "1000"
+                    },
+                    {
+                      "description": "Filter by the domain name.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by the mail exchanger hostname.",
+                      "key": "mail_exchanger",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by the DNS view name.",
+                      "key": "view",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"_ref\": \"<string>\",\n    \"name\": \"<string>\",\n    \"mail_exchanger\": \"<string>\",\n    \"preference\": \"<integer>\",\n    \"view\": \"<string>\",\n    \"comment\": \"<string>\"\n  },\n  {\n    \"_ref\": \"<string>\",\n    \"name\": \"<string>\",\n    \"mail_exchanger\": \"<string>\",\n    \"preference\": \"<integer>\",\n    \"view\": \"<string>\",\n    \"comment\": \"<string>\"\n  }\n]",
+              "createdAt": "2026-07-28T01:57:33.000Z",
+              "updatedAt": "2026-07-28T01:57:33.000Z",
+              "uid": "35240-8a0234de-32d4-49dd-8b6d-4a43a0f6c43f"
+            },
+            {
+              "id": "3a679007-082f-4899-88df-ea367905247e",
+              "name": "The request was malformed or contained invalid parameters.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/record:mx?_return_fields=<string>&_max_results=1000&name=<string>&mail_exchanger=<string>&view=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "record:mx"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                      "key": "_return_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results.",
+                      "key": "_max_results",
+                      "value": "1000"
+                    },
+                    {
+                      "description": "Filter by the domain name.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by the mail exchanger hostname.",
+                      "key": "mail_exchanger",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by the DNS view name.",
+                      "key": "view",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:57:33.000Z",
+              "updatedAt": "2026-07-28T01:57:33.000Z",
+              "uid": "35240-3a679007-082f-4899-88df-ea367905247e"
+            },
+            {
+              "id": "cc28c297-f979-40b4-a3f7-eb0bc7cfad70",
+              "name": "Authentication failed or credentials were not provided.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/record:mx?_return_fields=<string>&_max_results=1000&name=<string>&mail_exchanger=<string>&view=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "record:mx"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                      "key": "_return_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results.",
+                      "key": "_max_results",
+                      "value": "1000"
+                    },
+                    {
+                      "description": "Filter by the domain name.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by the mail exchanger hostname.",
+                      "key": "mail_exchanger",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by the DNS view name.",
+                      "key": "view",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:57:33.000Z",
+              "updatedAt": "2026-07-28T01:57:33.000Z",
+              "uid": "35240-cc28c297-f979-40b4-a3f7-eb0bc7cfad70"
+            }
+          ],
+          "createdAt": "2026-07-28T01:57:33.000Z",
+          "updatedAt": "2026-07-28T01:57:33.000Z",
+          "uid": "35240-4d2797fe-01af-44ce-8f3c-766d4450330c"
+        },
+        {
+          "name": "Infoblox Create a DNS MX record",
+          "id": "590b3b74-5463-4efb-aedb-58164a45b367",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"mail_exchanger\": \"<string>\",\n  \"preference\": \"<integer>\",\n  \"view\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/record:mx",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "record:mx"
+              ]
+            },
+            "description": "Creates a new DNS MX record specifying a mail exchanger for a domain."
+          },
+          "response": [
+            {
+              "id": "2cf643d8-fe8a-4253-848f-9a731e3b811e",
+              "name": "Successfully created the MX record.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"mail_exchanger\": \"<string>\",\n  \"preference\": \"<integer>\",\n  \"view\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/record:mx",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "record:mx"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<string>",
+              "createdAt": "2026-07-28T01:57:33.000Z",
+              "updatedAt": "2026-07-28T01:57:33.000Z",
+              "uid": "35240-2cf643d8-fe8a-4253-848f-9a731e3b811e"
+            },
+            {
+              "id": "51fa499a-5f3f-4235-a24a-1af9ef794b0c",
+              "name": "The request was malformed or contained invalid parameters.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"mail_exchanger\": \"<string>\",\n  \"preference\": \"<integer>\",\n  \"view\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/record:mx",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "record:mx"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:57:33.000Z",
+              "updatedAt": "2026-07-28T01:57:33.000Z",
+              "uid": "35240-51fa499a-5f3f-4235-a24a-1af9ef794b0c"
+            },
+            {
+              "id": "75c0050d-5081-4d8f-8f34-2afc1d02ab12",
+              "name": "Authentication failed or credentials were not provided.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"mail_exchanger\": \"<string>\",\n  \"preference\": \"<integer>\",\n  \"view\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/record:mx",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "record:mx"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:57:33.000Z",
+              "updatedAt": "2026-07-28T01:57:33.000Z",
+              "uid": "35240-75c0050d-5081-4d8f-8f34-2afc1d02ab12"
+            }
+          ],
+          "createdAt": "2026-07-28T01:57:33.000Z",
+          "updatedAt": "2026-07-28T01:57:33.000Z",
+          "uid": "35240-590b3b74-5463-4efb-aedb-58164a45b367"
+        }
+      ],
+      "id": "6e2113af-9b04-494e-95dd-17fca8767181",
+      "createdAt": "2026-07-28T01:57:33.000Z",
+      "updatedAt": "2026-07-28T01:57:33.000Z",
+      "uid": "35240-6e2113af-9b04-494e-95dd-17fca8767181"
+    },
+    {
+      "name": "record:txt",
+      "item": [
+        {
+          "name": "Infoblox List DNS TXT records",
+          "id": "5ff67709-ad41-41f4-ae05-2be9c1aec4d8",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/record:txt?_return_fields=<string>&_max_results=1000&name=<string>&view=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "record:txt"
+              ],
+              "query": [
+                {
+                  "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                  "key": "_return_fields",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results.",
+                  "key": "_max_results",
+                  "value": "1000"
+                },
+                {
+                  "description": "Filter by the domain name.",
+                  "key": "name",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter by the DNS view name.",
+                  "key": "view",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Retrieves a list of DNS TXT records. Supports filtering by name, text content, view, and zone."
+          },
+          "response": [
+            {
+              "id": "00f63b8d-b24d-48a8-b1f9-6cf08ae2cc70",
+              "name": "Successfully retrieved list of TXT records.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/record:txt?_return_fields=<string>&_max_results=1000&name=<string>&view=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "record:txt"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                      "key": "_return_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results.",
+                      "key": "_max_results",
+                      "value": "1000"
+                    },
+                    {
+                      "description": "Filter by the domain name.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by the DNS view name.",
+                      "key": "view",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"_ref\": \"<string>\",\n    \"name\": \"<string>\",\n    \"text\": \"<string>\",\n    \"view\": \"<string>\",\n    \"comment\": \"<string>\"\n  },\n  {\n    \"_ref\": \"<string>\",\n    \"name\": \"<string>\",\n    \"text\": \"<string>\",\n    \"view\": \"<string>\",\n    \"comment\": \"<string>\"\n  }\n]",
+              "createdAt": "2026-07-28T01:57:33.000Z",
+              "updatedAt": "2026-07-28T01:57:33.000Z",
+              "uid": "35240-00f63b8d-b24d-48a8-b1f9-6cf08ae2cc70"
+            },
+            {
+              "id": "161cac36-aa06-478f-b3ac-a9fa05834e37",
+              "name": "The request was malformed or contained invalid parameters.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/record:txt?_return_fields=<string>&_max_results=1000&name=<string>&view=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "record:txt"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                      "key": "_return_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results.",
+                      "key": "_max_results",
+                      "value": "1000"
+                    },
+                    {
+                      "description": "Filter by the domain name.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by the DNS view name.",
+                      "key": "view",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:57:33.000Z",
+              "updatedAt": "2026-07-28T01:57:33.000Z",
+              "uid": "35240-161cac36-aa06-478f-b3ac-a9fa05834e37"
+            },
+            {
+              "id": "d17303d0-55db-4fde-af47-7b2a833f0b10",
+              "name": "Authentication failed or credentials were not provided.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/record:txt?_return_fields=<string>&_max_results=1000&name=<string>&view=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "record:txt"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                      "key": "_return_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results.",
+                      "key": "_max_results",
+                      "value": "1000"
+                    },
+                    {
+                      "description": "Filter by the domain name.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by the DNS view name.",
+                      "key": "view",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:57:33.000Z",
+              "updatedAt": "2026-07-28T01:57:33.000Z",
+              "uid": "35240-d17303d0-55db-4fde-af47-7b2a833f0b10"
+            }
+          ],
+          "createdAt": "2026-07-28T01:57:33.000Z",
+          "updatedAt": "2026-07-28T01:57:33.000Z",
+          "uid": "35240-5ff67709-ad41-41f4-ae05-2be9c1aec4d8"
+        },
+        {
+          "name": "Infoblox Create a DNS TXT record",
+          "id": "c8c001b0-00fd-4252-8781-661108def919",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"text\": \"<string>\",\n  \"view\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/record:txt",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "record:txt"
+              ]
+            },
+            "description": "Creates a new DNS TXT record with the specified text data."
+          },
+          "response": [
+            {
+              "id": "5a7d3834-197c-4a48-a4ec-36635faedb2d",
+              "name": "Successfully created the TXT record.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"text\": \"<string>\",\n  \"view\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/record:txt",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "record:txt"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<string>",
+              "createdAt": "2026-07-28T01:57:33.000Z",
+              "updatedAt": "2026-07-28T01:57:33.000Z",
+              "uid": "35240-5a7d3834-197c-4a48-a4ec-36635faedb2d"
+            },
+            {
+              "id": "1f182e8c-b932-4a05-bd35-df59ff6bff74",
+              "name": "The request was malformed or contained invalid parameters.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"text\": \"<string>\",\n  \"view\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/record:txt",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "record:txt"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:57:33.000Z",
+              "updatedAt": "2026-07-28T01:57:33.000Z",
+              "uid": "35240-1f182e8c-b932-4a05-bd35-df59ff6bff74"
+            },
+            {
+              "id": "319cb24c-6836-4c4b-abce-67897a99928b",
+              "name": "Authentication failed or credentials were not provided.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"text\": \"<string>\",\n  \"view\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/record:txt",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "record:txt"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:57:33.000Z",
+              "updatedAt": "2026-07-28T01:57:33.000Z",
+              "uid": "35240-319cb24c-6836-4c4b-abce-67897a99928b"
+            }
+          ],
+          "createdAt": "2026-07-28T01:57:33.000Z",
+          "updatedAt": "2026-07-28T01:57:33.000Z",
+          "uid": "35240-c8c001b0-00fd-4252-8781-661108def919"
+        }
+      ],
+      "id": "0f21dc6f-8bee-463e-aec9-b6cb6916158f",
+      "createdAt": "2026-07-28T01:57:33.000Z",
+      "updatedAt": "2026-07-28T01:57:33.000Z",
+      "uid": "35240-0f21dc6f-8bee-463e-aec9-b6cb6916158f"
+    },
+    {
+      "name": "record:ptr",
+      "item": [
+        {
+          "name": "Infoblox List DNS PTR records",
+          "id": "863487fb-0cdf-4e64-88d5-c3a8e614d8aa",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/record:ptr?_return_fields=<string>&_max_results=1000&ptrdname=<string>&ipv4addr=<ipv4>&view=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "record:ptr"
+              ],
+              "query": [
+                {
+                  "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                  "key": "_return_fields",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results.",
+                  "key": "_max_results",
+                  "value": "1000"
+                },
+                {
+                  "description": "Filter by the domain name the PTR record points to.",
+                  "key": "ptrdname",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter by the IPv4 address for the PTR record.",
+                  "key": "ipv4addr",
+                  "value": "<ipv4>"
+                },
+                {
+                  "description": "Filter by the DNS view name.",
+                  "key": "view",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Retrieves a list of DNS PTR (pointer) records used for reverse DNS lookups. Supports filtering by name, ptrdname, view, and zone."
+          },
+          "response": [
+            {
+              "id": "f969c524-181d-4423-acf1-75ba9307487a",
+              "name": "Successfully retrieved list of PTR records.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/record:ptr?_return_fields=<string>&_max_results=1000&ptrdname=<string>&ipv4addr=<ipv4>&view=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "record:ptr"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                      "key": "_return_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results.",
+                      "key": "_max_results",
+                      "value": "1000"
+                    },
+                    {
+                      "description": "Filter by the domain name the PTR record points to.",
+                      "key": "ptrdname",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by the IPv4 address for the PTR record.",
+                      "key": "ipv4addr",
+                      "value": "<ipv4>"
+                    },
+                    {
+                      "description": "Filter by the DNS view name.",
+                      "key": "view",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"_ref\": \"<string>\",\n    \"ptrdname\": \"<string>\",\n    \"ipv4addr\": \"<ipv4>\",\n    \"view\": \"<string>\",\n    \"comment\": \"<string>\"\n  },\n  {\n    \"_ref\": \"<string>\",\n    \"ptrdname\": \"<string>\",\n    \"ipv4addr\": \"<ipv4>\",\n    \"view\": \"<string>\",\n    \"comment\": \"<string>\"\n  }\n]",
+              "createdAt": "2026-07-28T01:57:33.000Z",
+              "updatedAt": "2026-07-28T01:57:33.000Z",
+              "uid": "35240-f969c524-181d-4423-acf1-75ba9307487a"
+            },
+            {
+              "id": "ae8b47f5-8a01-4534-8f69-b1046d205d17",
+              "name": "The request was malformed or contained invalid parameters.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/record:ptr?_return_fields=<string>&_max_results=1000&ptrdname=<string>&ipv4addr=<ipv4>&view=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "record:ptr"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                      "key": "_return_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results.",
+                      "key": "_max_results",
+                      "value": "1000"
+                    },
+                    {
+                      "description": "Filter by the domain name the PTR record points to.",
+                      "key": "ptrdname",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by the IPv4 address for the PTR record.",
+                      "key": "ipv4addr",
+                      "value": "<ipv4>"
+                    },
+                    {
+                      "description": "Filter by the DNS view name.",
+                      "key": "view",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:57:33.000Z",
+              "updatedAt": "2026-07-28T01:57:33.000Z",
+              "uid": "35240-ae8b47f5-8a01-4534-8f69-b1046d205d17"
+            },
+            {
+              "id": "5413c9ee-f386-4652-b81f-f29a760878ef",
+              "name": "Authentication failed or credentials were not provided.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/record:ptr?_return_fields=<string>&_max_results=1000&ptrdname=<string>&ipv4addr=<ipv4>&view=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "record:ptr"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                      "key": "_return_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results.",
+                      "key": "_max_results",
+                      "value": "1000"
+                    },
+                    {
+                      "description": "Filter by the domain name the PTR record points to.",
+                      "key": "ptrdname",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by the IPv4 address for the PTR record.",
+                      "key": "ipv4addr",
+                      "value": "<ipv4>"
+                    },
+                    {
+                      "description": "Filter by the DNS view name.",
+                      "key": "view",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:57:33.000Z",
+              "updatedAt": "2026-07-28T01:57:33.000Z",
+              "uid": "35240-5413c9ee-f386-4652-b81f-f29a760878ef"
+            }
+          ],
+          "createdAt": "2026-07-28T01:57:33.000Z",
+          "updatedAt": "2026-07-28T01:57:33.000Z",
+          "uid": "35240-863487fb-0cdf-4e64-88d5-c3a8e614d8aa"
+        },
+        {
+          "name": "Infoblox Create a DNS PTR record",
+          "id": "b3c5860c-a14d-47b9-be5a-52598da4ee15",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ptrdname\": \"<string>\",\n  \"ipv4addr\": \"<ipv4>\",\n  \"view\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/record:ptr",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "record:ptr"
+              ]
+            },
+            "description": "Creates a new DNS PTR record for reverse DNS resolution."
+          },
+          "response": [
+            {
+              "id": "835f83c5-08c8-4369-82f1-dacc8d573def",
+              "name": "Successfully created the PTR record.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ptrdname\": \"<string>\",\n  \"ipv4addr\": \"<ipv4>\",\n  \"view\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/record:ptr",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "record:ptr"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<string>",
+              "createdAt": "2026-07-28T01:57:33.000Z",
+              "updatedAt": "2026-07-28T01:57:33.000Z",
+              "uid": "35240-835f83c5-08c8-4369-82f1-dacc8d573def"
+            },
+            {
+              "id": "56d26380-029c-4043-a03e-662b25fd9bbd",
+              "name": "The request was malformed or contained invalid parameters.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ptrdname\": \"<string>\",\n  \"ipv4addr\": \"<ipv4>\",\n  \"view\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/record:ptr",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "record:ptr"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:57:33.000Z",
+              "updatedAt": "2026-07-28T01:57:33.000Z",
+              "uid": "35240-56d26380-029c-4043-a03e-662b25fd9bbd"
+            },
+            {
+              "id": "92c71620-c352-48af-8db7-2d5c4c74e064",
+              "name": "Authentication failed or credentials were not provided.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ptrdname\": \"<string>\",\n  \"ipv4addr\": \"<ipv4>\",\n  \"view\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/record:ptr",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "record:ptr"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:57:33.000Z",
+              "updatedAt": "2026-07-28T01:57:33.000Z",
+              "uid": "35240-92c71620-c352-48af-8db7-2d5c4c74e064"
+            }
+          ],
+          "createdAt": "2026-07-28T01:57:33.000Z",
+          "updatedAt": "2026-07-28T01:57:33.000Z",
+          "uid": "35240-b3c5860c-a14d-47b9-be5a-52598da4ee15"
+        }
+      ],
+      "id": "a5fa9ecb-fe14-4bd0-be87-e4a81330b33e",
+      "createdAt": "2026-07-28T01:57:33.000Z",
+      "updatedAt": "2026-07-28T01:57:33.000Z",
+      "uid": "35240-a5fa9ecb-fe14-4bd0-be87-e4a81330b33e"
+    },
+    {
+      "name": "record:host",
+      "item": [
+        {
+          "name": "Infoblox List DNS host records",
+          "id": "fe65e6d8-c2ee-408d-8cd6-602e703d70f1",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/record:host?_return_fields=<string>&_max_results=1000&name=<string>&view=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "record:host"
+              ],
+              "query": [
+                {
+                  "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                  "key": "_return_fields",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results.",
+                  "key": "_max_results",
+                  "value": "1000"
+                },
+                {
+                  "description": "Filter by the fully qualified domain name of the host.",
+                  "key": "name",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter by the DNS view name.",
+                  "key": "view",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Retrieves a list of DNS host records. A host record contains the DNS and DHCP data for a host, including one or more IP addresses. Supports filtering by name, view, and zone."
+          },
+          "response": [
+            {
+              "id": "fe54da1a-bd29-4acb-85ab-bea9f48d8372",
+              "name": "Successfully retrieved list of host records.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/record:host?_return_fields=<string>&_max_results=1000&name=<string>&view=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "record:host"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                      "key": "_return_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results.",
+                      "key": "_max_results",
+                      "value": "1000"
+                    },
+                    {
+                      "description": "Filter by the fully qualified domain name of the host.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by the DNS view name.",
+                      "key": "view",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"_ref\": \"<string>\",\n    \"name\": \"<string>\",\n    \"ipv4addrs\": [\n      {\n        \"_ref\": \"<string>\",\n        \"ipv4addr\": \"<ipv4>\",\n        \"configure_for_dhcp\": \"<boolean>\",\n        \"mac\": \"<string>\"\n      },\n      {\n        \"_ref\": \"<string>\",\n        \"ipv4addr\": \"<ipv4>\",\n        \"configure_for_dhcp\": \"<boolean>\",\n        \"mac\": \"<string>\"\n      }\n    ],\n    \"view\": \"<string>\",\n    \"comment\": \"<string>\"\n  },\n  {\n    \"_ref\": \"<string>\",\n    \"name\": \"<string>\",\n    \"ipv4addrs\": [\n      {\n        \"_ref\": \"<string>\",\n        \"ipv4addr\": \"<ipv4>\",\n        \"configure_for_dhcp\": \"<boolean>\",\n        \"mac\": \"<string>\"\n      },\n      {\n        \"_ref\": \"<string>\",\n        \"ipv4addr\": \"<ipv4>\",\n        \"configure_for_dhcp\": \"<boolean>\",\n        \"mac\": \"<string>\"\n      }\n    ],\n    \"view\": \"<string>\",\n    \"comment\": \"<string>\"\n  }\n]",
+              "createdAt": "2026-07-28T01:57:33.000Z",
+              "updatedAt": "2026-07-28T01:57:33.000Z",
+              "uid": "35240-fe54da1a-bd29-4acb-85ab-bea9f48d8372"
+            },
+            {
+              "id": "7856d388-fbcd-4d8c-86fe-fd825cc15e2c",
+              "name": "The request was malformed or contained invalid parameters.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/record:host?_return_fields=<string>&_max_results=1000&name=<string>&view=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "record:host"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                      "key": "_return_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results.",
+                      "key": "_max_results",
+                      "value": "1000"
+                    },
+                    {
+                      "description": "Filter by the fully qualified domain name of the host.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by the DNS view name.",
+                      "key": "view",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:57:33.000Z",
+              "updatedAt": "2026-07-28T01:57:33.000Z",
+              "uid": "35240-7856d388-fbcd-4d8c-86fe-fd825cc15e2c"
+            },
+            {
+              "id": "eb5d13d6-5ec3-4210-84c2-816fbec0005d",
+              "name": "Authentication failed or credentials were not provided.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/record:host?_return_fields=<string>&_max_results=1000&name=<string>&view=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "record:host"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                      "key": "_return_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results.",
+                      "key": "_max_results",
+                      "value": "1000"
+                    },
+                    {
+                      "description": "Filter by the fully qualified domain name of the host.",
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by the DNS view name.",
+                      "key": "view",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:57:33.000Z",
+              "updatedAt": "2026-07-28T01:57:33.000Z",
+              "uid": "35240-eb5d13d6-5ec3-4210-84c2-816fbec0005d"
+            }
+          ],
+          "createdAt": "2026-07-28T01:57:33.000Z",
+          "updatedAt": "2026-07-28T01:57:33.000Z",
+          "uid": "35240-fe65e6d8-c2ee-408d-8cd6-602e703d70f1"
+        },
+        {
+          "name": "Infoblox Create a DNS host record",
+          "id": "1d0fb903-7b55-45f3-8e2d-6a56cdf19d31",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"ipv4addrs\": [\n    {\n      \"ipv4addr\": \"<string>\",\n      \"mac\": \"<string>\",\n      \"configure_for_dhcp\": \"<boolean>\"\n    },\n    {\n      \"ipv4addr\": \"<string>\",\n      \"mac\": \"<string>\",\n      \"configure_for_dhcp\": \"<boolean>\"\n    }\n  ],\n  \"view\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/record:host",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "record:host"
+              ]
+            },
+            "description": "Creates a new DNS host record with the specified name and IP addresses. A host record can contain multiple IPv4 and IPv6 addresses and automatically creates the corresponding A and AAAA records."
+          },
+          "response": [
+            {
+              "id": "496aa3de-79b3-4fc9-968c-810b596f6d05",
+              "name": "Successfully created the host record.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"ipv4addrs\": [\n    {\n      \"ipv4addr\": \"<string>\",\n      \"mac\": \"<string>\",\n      \"configure_for_dhcp\": \"<boolean>\"\n    },\n    {\n      \"ipv4addr\": \"<string>\",\n      \"mac\": \"<string>\",\n      \"configure_for_dhcp\": \"<boolean>\"\n    }\n  ],\n  \"view\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/record:host",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "record:host"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<string>",
+              "createdAt": "2026-07-28T01:57:33.000Z",
+              "updatedAt": "2026-07-28T01:57:33.000Z",
+              "uid": "35240-496aa3de-79b3-4fc9-968c-810b596f6d05"
+            },
+            {
+              "id": "a3f3023b-7c26-410a-a0f2-72c1bcb1012b",
+              "name": "The request was malformed or contained invalid parameters.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"ipv4addrs\": [\n    {\n      \"ipv4addr\": \"<string>\",\n      \"mac\": \"<string>\",\n      \"configure_for_dhcp\": \"<boolean>\"\n    },\n    {\n      \"ipv4addr\": \"<string>\",\n      \"mac\": \"<string>\",\n      \"configure_for_dhcp\": \"<boolean>\"\n    }\n  ],\n  \"view\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/record:host",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "record:host"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:57:33.000Z",
+              "updatedAt": "2026-07-28T01:57:33.000Z",
+              "uid": "35240-a3f3023b-7c26-410a-a0f2-72c1bcb1012b"
+            },
+            {
+              "id": "db20f505-e4dc-4335-bbaa-b563460ad3ba",
+              "name": "Authentication failed or credentials were not provided.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"ipv4addrs\": [\n    {\n      \"ipv4addr\": \"<string>\",\n      \"mac\": \"<string>\",\n      \"configure_for_dhcp\": \"<boolean>\"\n    },\n    {\n      \"ipv4addr\": \"<string>\",\n      \"mac\": \"<string>\",\n      \"configure_for_dhcp\": \"<boolean>\"\n    }\n  ],\n  \"view\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/record:host",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "record:host"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:57:33.000Z",
+              "updatedAt": "2026-07-28T01:57:33.000Z",
+              "uid": "35240-db20f505-e4dc-4335-bbaa-b563460ad3ba"
+            }
+          ],
+          "createdAt": "2026-07-28T01:57:33.000Z",
+          "updatedAt": "2026-07-28T01:57:33.000Z",
+          "uid": "35240-1d0fb903-7b55-45f3-8e2d-6a56cdf19d31"
+        }
+      ],
+      "id": "f1a7aead-df47-4db0-8c19-12e83fd30356",
+      "createdAt": "2026-07-28T01:57:33.000Z",
+      "updatedAt": "2026-07-28T01:57:33.000Z",
+      "uid": "35240-f1a7aead-df47-4db0-8c19-12e83fd30356"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "grid-master",
+      "value": "grid-master.example.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{grid-master}}/wapi/v2.12"
+    }
+  ]
+}

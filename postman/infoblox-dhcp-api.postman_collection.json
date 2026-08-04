@@ -1,0 +1,1287 @@
+{
+  "info": {
+    "_postman_id": "3740fef3-b174-4236-9e9f-bfb2a5d6dddb",
+    "name": "Infoblox WAPI (Web API) DHCP API",
+    "description": "RESTful API for managing Infoblox NIOS DDI (DNS, DHCP, IPAM) services, network objects, and configuration. The WAPI uses standard HTTP methods for CRUD operations and supports JSON and XML input and output formats. Authentication is handled via HTTP basic authentication or certificate-based authentication, and sessions can be maintained using cookies returned after initial authentication. The API follows a resource-oriented design where each NIOS object type is accessible as a REST resource.\n\nContact Support:\n Name: Infoblox Support\n Email: support@infoblox.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:57:31.000Z",
+    "updatedAt": "2026-07-28T01:57:31.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-3740fef3-b174-4236-9e9f-bfb2a5d6dddb"
+  },
+  "item": [
+    {
+      "name": "range",
+      "item": [
+        {
+          "name": "Infoblox List DHCP ranges",
+          "id": "06fb98cf-97ce-45a4-bdc7-040a0a3c0129",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/range?_return_fields=<string>&_max_results=1000&network=<string>&start_addr=<ipv4>&end_addr=<ipv4>&network_view=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "range"
+              ],
+              "query": [
+                {
+                  "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                  "key": "_return_fields",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results.",
+                  "key": "_max_results",
+                  "value": "1000"
+                },
+                {
+                  "description": "Filter by the parent network in CIDR notation.",
+                  "key": "network",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter by the starting IP address of the range.",
+                  "key": "start_addr",
+                  "value": "<ipv4>"
+                },
+                {
+                  "description": "Filter by the ending IP address of the range.",
+                  "key": "end_addr",
+                  "value": "<ipv4>"
+                },
+                {
+                  "description": "Filter by the network view name.",
+                  "key": "network_view",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Retrieves a list of DHCP range objects. A DHCP range defines a pool of IP addresses from which DHCP clients can obtain leases."
+          },
+          "response": [
+            {
+              "id": "010927b6-84fb-4fcc-b253-8bd1e46962f8",
+              "name": "Successfully retrieved list of DHCP ranges.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/range?_return_fields=<string>&_max_results=1000&network=<string>&start_addr=<ipv4>&end_addr=<ipv4>&network_view=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "range"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                      "key": "_return_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results.",
+                      "key": "_max_results",
+                      "value": "1000"
+                    },
+                    {
+                      "description": "Filter by the parent network in CIDR notation.",
+                      "key": "network",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by the starting IP address of the range.",
+                      "key": "start_addr",
+                      "value": "<ipv4>"
+                    },
+                    {
+                      "description": "Filter by the ending IP address of the range.",
+                      "key": "end_addr",
+                      "value": "<ipv4>"
+                    },
+                    {
+                      "description": "Filter by the network view name.",
+                      "key": "network_view",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"_ref\": \"<string>\",\n    \"network\": \"<string>\",\n    \"start_addr\": \"<ipv4>\",\n    \"end_addr\": \"<ipv4>\",\n    \"network_view\": \"<string>\",\n    \"comment\": \"<string>\",\n    \"disable\": \"<boolean>\"\n  },\n  {\n    \"_ref\": \"<string>\",\n    \"network\": \"<string>\",\n    \"start_addr\": \"<ipv4>\",\n    \"end_addr\": \"<ipv4>\",\n    \"network_view\": \"<string>\",\n    \"comment\": \"<string>\",\n    \"disable\": \"<boolean>\"\n  }\n]",
+              "createdAt": "2026-07-28T01:57:32.000Z",
+              "updatedAt": "2026-07-28T01:57:32.000Z",
+              "uid": "35240-010927b6-84fb-4fcc-b253-8bd1e46962f8"
+            },
+            {
+              "id": "0f5fc43a-9aa9-400d-8f3a-ad7b72f37766",
+              "name": "The request was malformed or contained invalid parameters.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/range?_return_fields=<string>&_max_results=1000&network=<string>&start_addr=<ipv4>&end_addr=<ipv4>&network_view=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "range"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                      "key": "_return_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results.",
+                      "key": "_max_results",
+                      "value": "1000"
+                    },
+                    {
+                      "description": "Filter by the parent network in CIDR notation.",
+                      "key": "network",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by the starting IP address of the range.",
+                      "key": "start_addr",
+                      "value": "<ipv4>"
+                    },
+                    {
+                      "description": "Filter by the ending IP address of the range.",
+                      "key": "end_addr",
+                      "value": "<ipv4>"
+                    },
+                    {
+                      "description": "Filter by the network view name.",
+                      "key": "network_view",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:57:32.000Z",
+              "updatedAt": "2026-07-28T01:57:32.000Z",
+              "uid": "35240-0f5fc43a-9aa9-400d-8f3a-ad7b72f37766"
+            },
+            {
+              "id": "7b3222fd-08f8-4f7d-9f75-899f29a2a049",
+              "name": "Authentication failed or credentials were not provided.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/range?_return_fields=<string>&_max_results=1000&network=<string>&start_addr=<ipv4>&end_addr=<ipv4>&network_view=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "range"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                      "key": "_return_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results.",
+                      "key": "_max_results",
+                      "value": "1000"
+                    },
+                    {
+                      "description": "Filter by the parent network in CIDR notation.",
+                      "key": "network",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by the starting IP address of the range.",
+                      "key": "start_addr",
+                      "value": "<ipv4>"
+                    },
+                    {
+                      "description": "Filter by the ending IP address of the range.",
+                      "key": "end_addr",
+                      "value": "<ipv4>"
+                    },
+                    {
+                      "description": "Filter by the network view name.",
+                      "key": "network_view",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:57:32.000Z",
+              "updatedAt": "2026-07-28T01:57:32.000Z",
+              "uid": "35240-7b3222fd-08f8-4f7d-9f75-899f29a2a049"
+            }
+          ],
+          "createdAt": "2026-07-28T01:57:32.000Z",
+          "updatedAt": "2026-07-28T01:57:32.000Z",
+          "uid": "35240-06fb98cf-97ce-45a4-bdc7-040a0a3c0129"
+        },
+        {
+          "name": "Infoblox Create a DHCP range",
+          "id": "05fc5701-24d6-4754-89c8-5a265970c7e9",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"start_addr\": \"<ipv4>\",\n  \"end_addr\": \"<ipv4>\",\n  \"network\": \"<string>\",\n  \"network_view\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/range",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "range"
+              ]
+            },
+            "description": "Creates a new DHCP range within a specified network. The range defines a contiguous block of IP addresses available for DHCP allocation."
+          },
+          "response": [
+            {
+              "id": "1a3e14dd-b66c-4367-b707-2bd128e88944",
+              "name": "Successfully created the DHCP range.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"start_addr\": \"<ipv4>\",\n  \"end_addr\": \"<ipv4>\",\n  \"network\": \"<string>\",\n  \"network_view\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/range",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "range"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<string>",
+              "createdAt": "2026-07-28T01:57:32.000Z",
+              "updatedAt": "2026-07-28T01:57:32.000Z",
+              "uid": "35240-1a3e14dd-b66c-4367-b707-2bd128e88944"
+            },
+            {
+              "id": "4c0890f7-09d1-4b11-bd39-e2e8a9a12915",
+              "name": "The request was malformed or contained invalid parameters.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"start_addr\": \"<ipv4>\",\n  \"end_addr\": \"<ipv4>\",\n  \"network\": \"<string>\",\n  \"network_view\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/range",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "range"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:57:32.000Z",
+              "updatedAt": "2026-07-28T01:57:32.000Z",
+              "uid": "35240-4c0890f7-09d1-4b11-bd39-e2e8a9a12915"
+            },
+            {
+              "id": "a6d76fc3-9ea7-4133-91d6-1ee99f967efd",
+              "name": "Authentication failed or credentials were not provided.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"start_addr\": \"<ipv4>\",\n  \"end_addr\": \"<ipv4>\",\n  \"network\": \"<string>\",\n  \"network_view\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/range",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "range"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:57:32.000Z",
+              "updatedAt": "2026-07-28T01:57:32.000Z",
+              "uid": "35240-a6d76fc3-9ea7-4133-91d6-1ee99f967efd"
+            }
+          ],
+          "createdAt": "2026-07-28T01:57:32.000Z",
+          "updatedAt": "2026-07-28T01:57:32.000Z",
+          "uid": "35240-05fc5701-24d6-4754-89c8-5a265970c7e9"
+        }
+      ],
+      "id": "28cada68-53d7-43ef-b70a-3d1ab26ed774",
+      "createdAt": "2026-07-28T01:57:32.000Z",
+      "updatedAt": "2026-07-28T01:57:32.000Z",
+      "uid": "35240-28cada68-53d7-43ef-b70a-3d1ab26ed774"
+    },
+    {
+      "name": "fixedaddress",
+      "item": [
+        {
+          "name": "Infoblox List DHCP fixed addresses",
+          "id": "b850f8c5-751b-4c56-ac79-87bd920a9331",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/fixedaddress?_return_fields=<string>&_max_results=1000&ipv4addr=<ipv4>&mac=<string>&network_view=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "fixedaddress"
+              ],
+              "query": [
+                {
+                  "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                  "key": "_return_fields",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results.",
+                  "key": "_max_results",
+                  "value": "1000"
+                },
+                {
+                  "description": "Filter by the reserved IPv4 address.",
+                  "key": "ipv4addr",
+                  "value": "<ipv4>"
+                },
+                {
+                  "description": "Filter by the MAC address.",
+                  "key": "mac",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter by the network view name.",
+                  "key": "network_view",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Retrieves a list of DHCP fixed address reservations. A fixed address maps a specific MAC address to a reserved IP address."
+          },
+          "response": [
+            {
+              "id": "f0af5c90-6b42-4e8b-b38c-1844eb0434a3",
+              "name": "Successfully retrieved list of fixed addresses.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/fixedaddress?_return_fields=<string>&_max_results=1000&ipv4addr=<ipv4>&mac=<string>&network_view=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "fixedaddress"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                      "key": "_return_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results.",
+                      "key": "_max_results",
+                      "value": "1000"
+                    },
+                    {
+                      "description": "Filter by the reserved IPv4 address.",
+                      "key": "ipv4addr",
+                      "value": "<ipv4>"
+                    },
+                    {
+                      "description": "Filter by the MAC address.",
+                      "key": "mac",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by the network view name.",
+                      "key": "network_view",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"_ref\": \"<string>\",\n    \"ipv4addr\": \"<ipv4>\",\n    \"mac\": \"<string>\",\n    \"network_view\": \"<string>\",\n    \"comment\": \"<string>\",\n    \"disable\": \"<boolean>\"\n  },\n  {\n    \"_ref\": \"<string>\",\n    \"ipv4addr\": \"<ipv4>\",\n    \"mac\": \"<string>\",\n    \"network_view\": \"<string>\",\n    \"comment\": \"<string>\",\n    \"disable\": \"<boolean>\"\n  }\n]",
+              "createdAt": "2026-07-28T01:57:32.000Z",
+              "updatedAt": "2026-07-28T01:57:32.000Z",
+              "uid": "35240-f0af5c90-6b42-4e8b-b38c-1844eb0434a3"
+            },
+            {
+              "id": "3654394c-536e-4e63-bd34-7ddfd29afc09",
+              "name": "The request was malformed or contained invalid parameters.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/fixedaddress?_return_fields=<string>&_max_results=1000&ipv4addr=<ipv4>&mac=<string>&network_view=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "fixedaddress"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                      "key": "_return_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results.",
+                      "key": "_max_results",
+                      "value": "1000"
+                    },
+                    {
+                      "description": "Filter by the reserved IPv4 address.",
+                      "key": "ipv4addr",
+                      "value": "<ipv4>"
+                    },
+                    {
+                      "description": "Filter by the MAC address.",
+                      "key": "mac",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by the network view name.",
+                      "key": "network_view",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:57:32.000Z",
+              "updatedAt": "2026-07-28T01:57:32.000Z",
+              "uid": "35240-3654394c-536e-4e63-bd34-7ddfd29afc09"
+            },
+            {
+              "id": "2c35c033-f3c4-4244-b002-31cf246d6b78",
+              "name": "Authentication failed or credentials were not provided.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/fixedaddress?_return_fields=<string>&_max_results=1000&ipv4addr=<ipv4>&mac=<string>&network_view=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "fixedaddress"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                      "key": "_return_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results.",
+                      "key": "_max_results",
+                      "value": "1000"
+                    },
+                    {
+                      "description": "Filter by the reserved IPv4 address.",
+                      "key": "ipv4addr",
+                      "value": "<ipv4>"
+                    },
+                    {
+                      "description": "Filter by the MAC address.",
+                      "key": "mac",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by the network view name.",
+                      "key": "network_view",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:57:32.000Z",
+              "updatedAt": "2026-07-28T01:57:32.000Z",
+              "uid": "35240-2c35c033-f3c4-4244-b002-31cf246d6b78"
+            }
+          ],
+          "createdAt": "2026-07-28T01:57:32.000Z",
+          "updatedAt": "2026-07-28T01:57:32.000Z",
+          "uid": "35240-b850f8c5-751b-4c56-ac79-87bd920a9331"
+        },
+        {
+          "name": "Infoblox Create a DHCP fixed address",
+          "id": "5b66c1c8-646f-47c7-8da7-e422767e0fc1",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ipv4addr\": \"<ipv4>\",\n  \"mac\": \"<string>\",\n  \"network_view\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/fixedaddress",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "fixedaddress"
+              ]
+            },
+            "description": "Creates a new DHCP fixed address reservation mapping a MAC address to a specific IPv4 address."
+          },
+          "response": [
+            {
+              "id": "b81741fb-aecc-4e12-9abf-2b4403580fa7",
+              "name": "Successfully created the fixed address.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ipv4addr\": \"<ipv4>\",\n  \"mac\": \"<string>\",\n  \"network_view\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/fixedaddress",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "fixedaddress"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<string>",
+              "createdAt": "2026-07-28T01:57:32.000Z",
+              "updatedAt": "2026-07-28T01:57:32.000Z",
+              "uid": "35240-b81741fb-aecc-4e12-9abf-2b4403580fa7"
+            },
+            {
+              "id": "8c8bd6b3-4134-4e18-9ae6-b34982315137",
+              "name": "The request was malformed or contained invalid parameters.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ipv4addr\": \"<ipv4>\",\n  \"mac\": \"<string>\",\n  \"network_view\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/fixedaddress",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "fixedaddress"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:57:32.000Z",
+              "updatedAt": "2026-07-28T01:57:32.000Z",
+              "uid": "35240-8c8bd6b3-4134-4e18-9ae6-b34982315137"
+            },
+            {
+              "id": "69a3a09a-68d9-4da9-aae0-71a839fb5fdf",
+              "name": "Authentication failed or credentials were not provided.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ipv4addr\": \"<ipv4>\",\n  \"mac\": \"<string>\",\n  \"network_view\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/fixedaddress",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "fixedaddress"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:57:32.000Z",
+              "updatedAt": "2026-07-28T01:57:32.000Z",
+              "uid": "35240-69a3a09a-68d9-4da9-aae0-71a839fb5fdf"
+            }
+          ],
+          "createdAt": "2026-07-28T01:57:32.000Z",
+          "updatedAt": "2026-07-28T01:57:32.000Z",
+          "uid": "35240-5b66c1c8-646f-47c7-8da7-e422767e0fc1"
+        }
+      ],
+      "id": "b9352c7c-edba-4c89-90f0-e10a45561b6f",
+      "createdAt": "2026-07-28T01:57:32.000Z",
+      "updatedAt": "2026-07-28T01:57:32.000Z",
+      "uid": "35240-b9352c7c-edba-4c89-90f0-e10a45561b6f"
+    },
+    {
+      "name": "lease",
+      "item": [
+        {
+          "name": "Infoblox List DHCP leases",
+          "id": "1054f81c-6be8-4f14-b378-7c6b748fd27c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/lease?_return_fields=<string>&_max_results=1000&address=<ipv4>&network_view=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "lease"
+              ],
+              "query": [
+                {
+                  "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                  "key": "_return_fields",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results.",
+                  "key": "_max_results",
+                  "value": "1000"
+                },
+                {
+                  "description": "Filter by the leased IPv4 address.",
+                  "key": "address",
+                  "value": "<ipv4>"
+                },
+                {
+                  "description": "Filter by the network view name.",
+                  "key": "network_view",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Retrieves a list of DHCP lease objects. Leases represent active DHCP address assignments and include information about the client, assigned address, and lease duration."
+          },
+          "response": [
+            {
+              "id": "38353879-7656-4790-8ea2-7a629c891b56",
+              "name": "Successfully retrieved list of DHCP leases.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/lease?_return_fields=<string>&_max_results=1000&address=<ipv4>&network_view=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "lease"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                      "key": "_return_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results.",
+                      "key": "_max_results",
+                      "value": "1000"
+                    },
+                    {
+                      "description": "Filter by the leased IPv4 address.",
+                      "key": "address",
+                      "value": "<ipv4>"
+                    },
+                    {
+                      "description": "Filter by the network view name.",
+                      "key": "network_view",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"_ref\": \"<string>\",\n    \"address\": \"<ipv4>\",\n    \"network_view\": \"<string>\",\n    \"binding_state\": \"ACTIVE\",\n    \"hardware\": \"<string>\",\n    \"client_hostname\": \"<string>\",\n    \"starts\": \"<dateTime>\",\n    \"ends\": \"<dateTime>\"\n  },\n  {\n    \"_ref\": \"<string>\",\n    \"address\": \"<ipv4>\",\n    \"network_view\": \"<string>\",\n    \"binding_state\": \"ACTIVE\",\n    \"hardware\": \"<string>\",\n    \"client_hostname\": \"<string>\",\n    \"starts\": \"<dateTime>\",\n    \"ends\": \"<dateTime>\"\n  }\n]",
+              "createdAt": "2026-07-28T01:57:32.000Z",
+              "updatedAt": "2026-07-28T01:57:32.000Z",
+              "uid": "35240-38353879-7656-4790-8ea2-7a629c891b56"
+            },
+            {
+              "id": "5156f551-c1bd-407d-8c6a-44ab24031d8f",
+              "name": "The request was malformed or contained invalid parameters.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/lease?_return_fields=<string>&_max_results=1000&address=<ipv4>&network_view=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "lease"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                      "key": "_return_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results.",
+                      "key": "_max_results",
+                      "value": "1000"
+                    },
+                    {
+                      "description": "Filter by the leased IPv4 address.",
+                      "key": "address",
+                      "value": "<ipv4>"
+                    },
+                    {
+                      "description": "Filter by the network view name.",
+                      "key": "network_view",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:57:32.000Z",
+              "updatedAt": "2026-07-28T01:57:32.000Z",
+              "uid": "35240-5156f551-c1bd-407d-8c6a-44ab24031d8f"
+            },
+            {
+              "id": "41763a75-f0d0-42db-827f-8afea37e71a6",
+              "name": "Authentication failed or credentials were not provided.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/lease?_return_fields=<string>&_max_results=1000&address=<ipv4>&network_view=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "lease"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                      "key": "_return_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results.",
+                      "key": "_max_results",
+                      "value": "1000"
+                    },
+                    {
+                      "description": "Filter by the leased IPv4 address.",
+                      "key": "address",
+                      "value": "<ipv4>"
+                    },
+                    {
+                      "description": "Filter by the network view name.",
+                      "key": "network_view",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:57:32.000Z",
+              "updatedAt": "2026-07-28T01:57:32.000Z",
+              "uid": "35240-41763a75-f0d0-42db-827f-8afea37e71a6"
+            }
+          ],
+          "createdAt": "2026-07-28T01:57:32.000Z",
+          "updatedAt": "2026-07-28T01:57:32.000Z",
+          "uid": "35240-1054f81c-6be8-4f14-b378-7c6b748fd27c"
+        }
+      ],
+      "id": "599dc8db-9a19-4804-b15b-66089d1a8800",
+      "createdAt": "2026-07-28T01:57:32.000Z",
+      "updatedAt": "2026-07-28T01:57:32.000Z",
+      "uid": "35240-599dc8db-9a19-4804-b15b-66089d1a8800"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "grid-master",
+      "value": "grid-master.example.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{grid-master}}/wapi/v2.12"
+    }
+  ]
+}

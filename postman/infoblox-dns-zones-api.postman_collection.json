@@ -1,0 +1,780 @@
+{
+  "info": {
+    "_postman_id": "0721f864-bbec-4cb9-bae8-42b64309bd87",
+    "name": "Infoblox WAPI (Web API) DHCP DNS Zones API",
+    "description": "RESTful API for managing Infoblox NIOS DDI (DNS, DHCP, IPAM) services, network objects, and configuration. The WAPI uses standard HTTP methods for CRUD operations and supports JSON and XML input and output formats. Authentication is handled via HTTP basic authentication or certificate-based authentication, and sessions can be maintained using cookies returned after initial authentication. The API follows a resource-oriented design where each NIOS object type is accessible as a REST resource.\n\nContact Support:\n Name: Infoblox Support\n Email: support@infoblox.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:57:33.000Z",
+    "updatedAt": "2026-07-28T01:57:34.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-0721f864-bbec-4cb9-bae8-42b64309bd87"
+  },
+  "item": [
+    {
+      "name": "zone_auth",
+      "item": [
+        {
+          "name": "Infoblox List authoritative DNS zones",
+          "id": "00008443-ff46-4163-87b7-e735fc5fa8c5",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/zone_auth?_return_fields=<string>&_max_results=1000&fqdn=<string>&view=<string>&zone_format=FORWARD",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "zone_auth"
+              ],
+              "query": [
+                {
+                  "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                  "key": "_return_fields",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results.",
+                  "key": "_max_results",
+                  "value": "1000"
+                },
+                {
+                  "description": "Filter by the fully qualified domain name of the zone.",
+                  "key": "fqdn",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter by the DNS view name.",
+                  "key": "view",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter by the zone format.",
+                  "key": "zone_format",
+                  "value": "FORWARD"
+                }
+              ]
+            },
+            "description": "Retrieves a list of authoritative DNS zones. Supports filtering by FQDN, view, and zone format (forward or reverse)."
+          },
+          "response": [
+            {
+              "id": "f1c6a89f-c7ee-4591-87d1-3202984f1c00",
+              "name": "Successfully retrieved list of authoritative zones.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/zone_auth?_return_fields=<string>&_max_results=1000&fqdn=<string>&view=<string>&zone_format=FORWARD",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "zone_auth"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                      "key": "_return_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results.",
+                      "key": "_max_results",
+                      "value": "1000"
+                    },
+                    {
+                      "description": "Filter by the fully qualified domain name of the zone.",
+                      "key": "fqdn",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by the DNS view name.",
+                      "key": "view",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by the zone format.",
+                      "key": "zone_format",
+                      "value": "FORWARD"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"_ref\": \"<string>\",\n    \"fqdn\": \"<string>\",\n    \"view\": \"<string>\",\n    \"zone_format\": \"FORWARD\",\n    \"comment\": \"<string>\",\n    \"ns_group\": \"<string>\"\n  },\n  {\n    \"_ref\": \"<string>\",\n    \"fqdn\": \"<string>\",\n    \"view\": \"<string>\",\n    \"zone_format\": \"FORWARD\",\n    \"comment\": \"<string>\",\n    \"ns_group\": \"<string>\"\n  }\n]",
+              "createdAt": "2026-07-28T01:57:34.000Z",
+              "updatedAt": "2026-07-28T01:57:34.000Z",
+              "uid": "35240-f1c6a89f-c7ee-4591-87d1-3202984f1c00"
+            },
+            {
+              "id": "0db2626b-57b1-4eda-9d48-3f719cdf13ca",
+              "name": "The request was malformed or contained invalid parameters.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/zone_auth?_return_fields=<string>&_max_results=1000&fqdn=<string>&view=<string>&zone_format=FORWARD",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "zone_auth"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                      "key": "_return_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results.",
+                      "key": "_max_results",
+                      "value": "1000"
+                    },
+                    {
+                      "description": "Filter by the fully qualified domain name of the zone.",
+                      "key": "fqdn",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by the DNS view name.",
+                      "key": "view",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by the zone format.",
+                      "key": "zone_format",
+                      "value": "FORWARD"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:57:34.000Z",
+              "updatedAt": "2026-07-28T01:57:34.000Z",
+              "uid": "35240-0db2626b-57b1-4eda-9d48-3f719cdf13ca"
+            },
+            {
+              "id": "da32eb0d-005a-4394-88f6-d80040b7a716",
+              "name": "Authentication failed or credentials were not provided.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/zone_auth?_return_fields=<string>&_max_results=1000&fqdn=<string>&view=<string>&zone_format=FORWARD",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "zone_auth"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                      "key": "_return_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results.",
+                      "key": "_max_results",
+                      "value": "1000"
+                    },
+                    {
+                      "description": "Filter by the fully qualified domain name of the zone.",
+                      "key": "fqdn",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by the DNS view name.",
+                      "key": "view",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by the zone format.",
+                      "key": "zone_format",
+                      "value": "FORWARD"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:57:34.000Z",
+              "updatedAt": "2026-07-28T01:57:34.000Z",
+              "uid": "35240-da32eb0d-005a-4394-88f6-d80040b7a716"
+            }
+          ],
+          "createdAt": "2026-07-28T01:57:34.000Z",
+          "updatedAt": "2026-07-28T01:57:34.000Z",
+          "uid": "35240-00008443-ff46-4163-87b7-e735fc5fa8c5"
+        },
+        {
+          "name": "Infoblox Create an authoritative DNS zone",
+          "id": "f66f2e12-c213-43da-b3b5-6445cdec04c2",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fqdn\": \"<string>\",\n  \"zone_format\": \"IPV4\",\n  \"view\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/zone_auth",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "zone_auth"
+              ]
+            },
+            "description": "Creates a new authoritative DNS zone with the specified FQDN and zone format. The zone is created in the specified DNS view."
+          },
+          "response": [
+            {
+              "id": "fab3efa8-203c-4160-8056-ce46a31b8cd4",
+              "name": "Successfully created the authoritative zone.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fqdn\": \"<string>\",\n  \"zone_format\": \"IPV4\",\n  \"view\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/zone_auth",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "zone_auth"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<string>",
+              "createdAt": "2026-07-28T01:57:34.000Z",
+              "updatedAt": "2026-07-28T01:57:34.000Z",
+              "uid": "35240-fab3efa8-203c-4160-8056-ce46a31b8cd4"
+            },
+            {
+              "id": "f9f16a37-7b3a-478b-8ad1-39996401b903",
+              "name": "The request was malformed or contained invalid parameters.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fqdn\": \"<string>\",\n  \"zone_format\": \"IPV4\",\n  \"view\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/zone_auth",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "zone_auth"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:57:34.000Z",
+              "updatedAt": "2026-07-28T01:57:34.000Z",
+              "uid": "35240-f9f16a37-7b3a-478b-8ad1-39996401b903"
+            },
+            {
+              "id": "765d3d95-eb4b-4a0e-b82a-65aaecf281c4",
+              "name": "Authentication failed or credentials were not provided.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fqdn\": \"<string>\",\n  \"zone_format\": \"IPV4\",\n  \"view\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/zone_auth",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "zone_auth"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:57:34.000Z",
+              "updatedAt": "2026-07-28T01:57:34.000Z",
+              "uid": "35240-765d3d95-eb4b-4a0e-b82a-65aaecf281c4"
+            }
+          ],
+          "createdAt": "2026-07-28T01:57:34.000Z",
+          "updatedAt": "2026-07-28T01:57:34.000Z",
+          "uid": "35240-f66f2e12-c213-43da-b3b5-6445cdec04c2"
+        }
+      ],
+      "id": "e51e5dc1-5c6d-4bc7-aab7-4b9b58484ef7",
+      "createdAt": "2026-07-28T01:57:34.000Z",
+      "updatedAt": "2026-07-28T01:57:34.000Z",
+      "uid": "35240-e51e5dc1-5c6d-4bc7-aab7-4b9b58484ef7"
+    },
+    {
+      "name": "zone_forward",
+      "item": [
+        {
+          "name": "Infoblox List forward DNS zones",
+          "id": "e73b7fb4-08fa-47d5-9795-b38bc81a3388",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/zone_forward?_return_fields=<string>&_max_results=1000&fqdn=<string>&view=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "zone_forward"
+              ],
+              "query": [
+                {
+                  "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                  "key": "_return_fields",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results.",
+                  "key": "_max_results",
+                  "value": "1000"
+                },
+                {
+                  "description": "Filter by the fully qualified domain name of the forward zone.",
+                  "key": "fqdn",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter by the DNS view name.",
+                  "key": "view",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Retrieves a list of forward DNS zones. A forward zone forwards queries to specified DNS servers rather than resolving them locally."
+          },
+          "response": [
+            {
+              "id": "afac7ed9-12b1-4d8c-97c8-5f3e16e89fc6",
+              "name": "Successfully retrieved list of forward zones.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/zone_forward?_return_fields=<string>&_max_results=1000&fqdn=<string>&view=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "zone_forward"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                      "key": "_return_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results.",
+                      "key": "_max_results",
+                      "value": "1000"
+                    },
+                    {
+                      "description": "Filter by the fully qualified domain name of the forward zone.",
+                      "key": "fqdn",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by the DNS view name.",
+                      "key": "view",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"_ref\": \"<string>\",\n    \"fqdn\": \"<string>\",\n    \"forward_to\": [\n      {\n        \"address\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"address\": \"<string>\",\n        \"name\": \"<string>\"\n      }\n    ],\n    \"view\": \"<string>\",\n    \"comment\": \"<string>\"\n  },\n  {\n    \"_ref\": \"<string>\",\n    \"fqdn\": \"<string>\",\n    \"forward_to\": [\n      {\n        \"address\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"address\": \"<string>\",\n        \"name\": \"<string>\"\n      }\n    ],\n    \"view\": \"<string>\",\n    \"comment\": \"<string>\"\n  }\n]",
+              "createdAt": "2026-07-28T01:57:34.000Z",
+              "updatedAt": "2026-07-28T01:57:34.000Z",
+              "uid": "35240-afac7ed9-12b1-4d8c-97c8-5f3e16e89fc6"
+            },
+            {
+              "id": "6c01f3b7-4b61-4180-8aa2-de9639dbdea1",
+              "name": "The request was malformed or contained invalid parameters.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/zone_forward?_return_fields=<string>&_max_results=1000&fqdn=<string>&view=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "zone_forward"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                      "key": "_return_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results.",
+                      "key": "_max_results",
+                      "value": "1000"
+                    },
+                    {
+                      "description": "Filter by the fully qualified domain name of the forward zone.",
+                      "key": "fqdn",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by the DNS view name.",
+                      "key": "view",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:57:34.000Z",
+              "updatedAt": "2026-07-28T01:57:34.000Z",
+              "uid": "35240-6c01f3b7-4b61-4180-8aa2-de9639dbdea1"
+            },
+            {
+              "id": "4ad85f4a-e4ba-4214-9910-ab74c39cda7a",
+              "name": "Authentication failed or credentials were not provided.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/zone_forward?_return_fields=<string>&_max_results=1000&fqdn=<string>&view=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "zone_forward"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                      "key": "_return_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results.",
+                      "key": "_max_results",
+                      "value": "1000"
+                    },
+                    {
+                      "description": "Filter by the fully qualified domain name of the forward zone.",
+                      "key": "fqdn",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by the DNS view name.",
+                      "key": "view",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:57:34.000Z",
+              "updatedAt": "2026-07-28T01:57:34.000Z",
+              "uid": "35240-4ad85f4a-e4ba-4214-9910-ab74c39cda7a"
+            }
+          ],
+          "createdAt": "2026-07-28T01:57:34.000Z",
+          "updatedAt": "2026-07-28T01:57:34.000Z",
+          "uid": "35240-e73b7fb4-08fa-47d5-9795-b38bc81a3388"
+        }
+      ],
+      "id": "8ff47951-dfa9-442d-bf7a-e345f137e0c2",
+      "createdAt": "2026-07-28T01:57:34.000Z",
+      "updatedAt": "2026-07-28T01:57:34.000Z",
+      "uid": "35240-8ff47951-dfa9-442d-bf7a-e345f137e0c2"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "grid-master",
+      "value": "grid-master.example.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{grid-master}}/wapi/v2.12"
+    }
+  ]
+}

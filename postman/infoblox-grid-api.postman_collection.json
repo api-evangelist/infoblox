@@ -1,0 +1,418 @@
+{
+  "info": {
+    "_postman_id": "f1daf3ae-19d1-48ad-befd-33a3e30590c1",
+    "name": "Infoblox WAPI (Web API) DHCP Grid API",
+    "description": "RESTful API for managing Infoblox NIOS DDI (DNS, DHCP, IPAM) services, network objects, and configuration. The WAPI uses standard HTTP methods for CRUD operations and supports JSON and XML input and output formats. Authentication is handled via HTTP basic authentication or certificate-based authentication, and sessions can be maintained using cookies returned after initial authentication. The API follows a resource-oriented design where each NIOS object type is accessible as a REST resource.\n\nContact Support:\n Name: Infoblox Support\n Email: support@infoblox.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:58:17.000Z",
+    "updatedAt": "2026-07-28T01:58:17.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f1daf3ae-19d1-48ad-befd-33a3e30590c1"
+  },
+  "item": [
+    {
+      "name": "grid",
+      "item": [
+        {
+          "name": "Infoblox Get Grid information",
+          "id": "58db5bb9-7b35-438a-84c9-265fce564f82",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/grid?_return_fields=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "grid"
+              ],
+              "query": [
+                {
+                  "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                  "key": "_return_fields",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Retrieves the Grid object containing configuration and status information about the Infoblox Grid."
+          },
+          "response": [
+            {
+              "id": "dc953fe1-8f23-477e-9258-04451cabff01",
+              "name": "Successfully retrieved Grid information.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/grid?_return_fields=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "grid"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                      "key": "_return_fields",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"_ref\": \"<string>\",\n    \"name\": \"<string>\",\n    \"dns_resolver_setting\": {},\n    \"ntp_setting\": {}\n  },\n  {\n    \"_ref\": \"<string>\",\n    \"name\": \"<string>\",\n    \"dns_resolver_setting\": {},\n    \"ntp_setting\": {}\n  }\n]",
+              "createdAt": "2026-07-28T01:58:17.000Z",
+              "updatedAt": "2026-07-28T01:58:17.000Z",
+              "uid": "35240-dc953fe1-8f23-477e-9258-04451cabff01"
+            },
+            {
+              "id": "ad4c2bd6-979c-402d-8c68-e3d8a860d2fc",
+              "name": "Authentication failed or credentials were not provided.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/grid?_return_fields=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "grid"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                      "key": "_return_fields",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:58:17.000Z",
+              "updatedAt": "2026-07-28T01:58:17.000Z",
+              "uid": "35240-ad4c2bd6-979c-402d-8c68-e3d8a860d2fc"
+            }
+          ],
+          "createdAt": "2026-07-28T01:58:17.000Z",
+          "updatedAt": "2026-07-28T01:58:17.000Z",
+          "uid": "35240-58db5bb9-7b35-438a-84c9-265fce564f82"
+        }
+      ],
+      "id": "fc49ab26-5cc0-4633-b9a6-4de1c66cbe8f",
+      "createdAt": "2026-07-28T01:58:17.000Z",
+      "updatedAt": "2026-07-28T01:58:17.000Z",
+      "uid": "35240-fc49ab26-5cc0-4633-b9a6-4de1c66cbe8f"
+    },
+    {
+      "name": "member",
+      "item": [
+        {
+          "name": "Infoblox List Grid members",
+          "id": "d710910e-0da4-43f6-9763-f03d5528061a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/member?_return_fields=<string>&_max_results=1000&host_name=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "member"
+              ],
+              "query": [
+                {
+                  "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                  "key": "_return_fields",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results.",
+                  "key": "_max_results",
+                  "value": "1000"
+                },
+                {
+                  "description": "Filter by the member hostname.",
+                  "key": "host_name",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Retrieves a list of Grid member objects. Each member represents an Infoblox appliance that is part of the Grid."
+          },
+          "response": [
+            {
+              "id": "58a0d7fc-36f0-4049-81ef-e57428d3b110",
+              "name": "Successfully retrieved list of Grid members.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/member?_return_fields=<string>&_max_results=1000&host_name=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "member"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                      "key": "_return_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results.",
+                      "key": "_max_results",
+                      "value": "1000"
+                    },
+                    {
+                      "description": "Filter by the member hostname.",
+                      "key": "host_name",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"_ref\": \"<string>\",\n    \"host_name\": \"<string>\",\n    \"config_addr_type\": \"BOTH\",\n    \"platform\": \"<string>\",\n    \"service_status\": [\n      {\n        \"service\": \"<string>\",\n        \"status\": \"<string>\"\n      },\n      {\n        \"service\": \"<string>\",\n        \"status\": \"<string>\"\n      }\n    ]\n  },\n  {\n    \"_ref\": \"<string>\",\n    \"host_name\": \"<string>\",\n    \"config_addr_type\": \"IPV6\",\n    \"platform\": \"<string>\",\n    \"service_status\": [\n      {\n        \"service\": \"<string>\",\n        \"status\": \"<string>\"\n      },\n      {\n        \"service\": \"<string>\",\n        \"status\": \"<string>\"\n      }\n    ]\n  }\n]",
+              "createdAt": "2026-07-28T01:58:17.000Z",
+              "updatedAt": "2026-07-28T01:58:17.000Z",
+              "uid": "35240-58a0d7fc-36f0-4049-81ef-e57428d3b110"
+            },
+            {
+              "id": "b8e8f54c-b415-4abc-afa8-890f4cc3fe55",
+              "name": "The request was malformed or contained invalid parameters.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/member?_return_fields=<string>&_max_results=1000&host_name=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "member"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                      "key": "_return_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results.",
+                      "key": "_max_results",
+                      "value": "1000"
+                    },
+                    {
+                      "description": "Filter by the member hostname.",
+                      "key": "host_name",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:58:17.000Z",
+              "updatedAt": "2026-07-28T01:58:17.000Z",
+              "uid": "35240-b8e8f54c-b415-4abc-afa8-890f4cc3fe55"
+            },
+            {
+              "id": "783ee5e3-1587-4f1b-a65c-617feda4d533",
+              "name": "Authentication failed or credentials were not provided.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/member?_return_fields=<string>&_max_results=1000&host_name=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "member"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                      "key": "_return_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results.",
+                      "key": "_max_results",
+                      "value": "1000"
+                    },
+                    {
+                      "description": "Filter by the member hostname.",
+                      "key": "host_name",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:58:17.000Z",
+              "updatedAt": "2026-07-28T01:58:17.000Z",
+              "uid": "35240-783ee5e3-1587-4f1b-a65c-617feda4d533"
+            }
+          ],
+          "createdAt": "2026-07-28T01:58:17.000Z",
+          "updatedAt": "2026-07-28T01:58:17.000Z",
+          "uid": "35240-d710910e-0da4-43f6-9763-f03d5528061a"
+        }
+      ],
+      "id": "62fd3809-1d24-464a-885f-bee99f927940",
+      "createdAt": "2026-07-28T01:58:17.000Z",
+      "updatedAt": "2026-07-28T01:58:17.000Z",
+      "uid": "35240-62fd3809-1d24-464a-885f-bee99f927940"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "grid-master",
+      "value": "grid-master.example.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{grid-master}}/wapi/v2.12"
+    }
+  ]
+}

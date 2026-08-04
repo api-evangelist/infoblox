@@ -1,0 +1,760 @@
+{
+  "info": {
+    "_postman_id": "6ee3cbee-3957-47fb-b8e5-712753a09c2b",
+    "name": "Infoblox WAPI (Web API) DHCP Networks API",
+    "description": "RESTful API for managing Infoblox NIOS DDI (DNS, DHCP, IPAM) services, network objects, and configuration. The WAPI uses standard HTTP methods for CRUD operations and supports JSON and XML input and output formats. Authentication is handled via HTTP basic authentication or certificate-based authentication, and sessions can be maintained using cookies returned after initial authentication. The API follows a resource-oriented design where each NIOS object type is accessible as a REST resource.\n\nContact Support:\n Name: Infoblox Support\n Email: support@infoblox.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:58:19.000Z",
+    "updatedAt": "2026-07-28T01:58:20.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-6ee3cbee-3957-47fb-b8e5-712753a09c2b"
+  },
+  "item": [
+    {
+      "name": "network",
+      "item": [
+        {
+          "name": "Infoblox List DHCP networks",
+          "id": "d54d3e10-701c-46ff-8b89-d68f8e2f0822",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/network?_return_fields=<string>&_max_results=1000&network=<string>&network_view=<string>&comment=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "network"
+              ],
+              "query": [
+                {
+                  "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                  "key": "_return_fields",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results.",
+                  "key": "_max_results",
+                  "value": "1000"
+                },
+                {
+                  "description": "Filter by the network address in CIDR notation (e.g. 10.0.0.0/24).",
+                  "key": "network",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter by the network view name.",
+                  "key": "network_view",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter by the comment associated with the network.",
+                  "key": "comment",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Retrieves a list of IPv4 networks. Networks represent IP subnets and can contain DHCP ranges and fixed addresses. Supports filtering by network address, CIDR, network view, and comment."
+          },
+          "response": [
+            {
+              "id": "c800d943-90c2-4aab-8389-e0b320046012",
+              "name": "Successfully retrieved list of networks.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/network?_return_fields=<string>&_max_results=1000&network=<string>&network_view=<string>&comment=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "network"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                      "key": "_return_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results.",
+                      "key": "_max_results",
+                      "value": "1000"
+                    },
+                    {
+                      "description": "Filter by the network address in CIDR notation (e.g. 10.0.0.0/24).",
+                      "key": "network",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by the network view name.",
+                      "key": "network_view",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by the comment associated with the network.",
+                      "key": "comment",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"_ref\": \"<string>\",\n    \"network\": \"<string>\",\n    \"network_view\": \"<string>\",\n    \"comment\": \"<string>\",\n    \"members\": [\n      {\n        \"name\": \"<string>\",\n        \"_struct\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"_struct\": \"<string>\"\n      }\n    ]\n  },\n  {\n    \"_ref\": \"<string>\",\n    \"network\": \"<string>\",\n    \"network_view\": \"<string>\",\n    \"comment\": \"<string>\",\n    \"members\": [\n      {\n        \"name\": \"<string>\",\n        \"_struct\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"_struct\": \"<string>\"\n      }\n    ]\n  }\n]",
+              "createdAt": "2026-07-28T01:58:20.000Z",
+              "updatedAt": "2026-07-28T01:58:20.000Z",
+              "uid": "35240-c800d943-90c2-4aab-8389-e0b320046012"
+            },
+            {
+              "id": "05a06dec-7445-49bb-a952-2669e4982607",
+              "name": "The request was malformed or contained invalid parameters.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/network?_return_fields=<string>&_max_results=1000&network=<string>&network_view=<string>&comment=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "network"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                      "key": "_return_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results.",
+                      "key": "_max_results",
+                      "value": "1000"
+                    },
+                    {
+                      "description": "Filter by the network address in CIDR notation (e.g. 10.0.0.0/24).",
+                      "key": "network",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by the network view name.",
+                      "key": "network_view",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by the comment associated with the network.",
+                      "key": "comment",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:58:20.000Z",
+              "updatedAt": "2026-07-28T01:58:20.000Z",
+              "uid": "35240-05a06dec-7445-49bb-a952-2669e4982607"
+            },
+            {
+              "id": "da8f8a35-366c-407e-816a-0440d757e9a4",
+              "name": "Authentication failed or credentials were not provided.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/network?_return_fields=<string>&_max_results=1000&network=<string>&network_view=<string>&comment=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "network"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                      "key": "_return_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results.",
+                      "key": "_max_results",
+                      "value": "1000"
+                    },
+                    {
+                      "description": "Filter by the network address in CIDR notation (e.g. 10.0.0.0/24).",
+                      "key": "network",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by the network view name.",
+                      "key": "network_view",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by the comment associated with the network.",
+                      "key": "comment",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:58:20.000Z",
+              "updatedAt": "2026-07-28T01:58:20.000Z",
+              "uid": "35240-da8f8a35-366c-407e-816a-0440d757e9a4"
+            }
+          ],
+          "createdAt": "2026-07-28T01:58:20.000Z",
+          "updatedAt": "2026-07-28T01:58:20.000Z",
+          "uid": "35240-d54d3e10-701c-46ff-8b89-d68f8e2f0822"
+        },
+        {
+          "name": "Infoblox Create a network",
+          "id": "71f77978-d932-4713-9667-05b8de7d8fa5",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"network\": \"<string>\",\n  \"network_view\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/network",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "network"
+              ]
+            },
+            "description": "Creates a new IPv4 network with the specified CIDR address. The network is created in the specified network view, or the default view if none is specified."
+          },
+          "response": [
+            {
+              "id": "6c68cd81-62af-4ef2-9761-dfc89bb3ca2a",
+              "name": "Successfully created the network.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"network\": \"<string>\",\n  \"network_view\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/network",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "network"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "<string>",
+              "createdAt": "2026-07-28T01:58:20.000Z",
+              "updatedAt": "2026-07-28T01:58:20.000Z",
+              "uid": "35240-6c68cd81-62af-4ef2-9761-dfc89bb3ca2a"
+            },
+            {
+              "id": "ec268c69-83f0-47d4-98a4-119f0a8da484",
+              "name": "The request was malformed or contained invalid parameters.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"network\": \"<string>\",\n  \"network_view\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/network",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "network"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:58:20.000Z",
+              "updatedAt": "2026-07-28T01:58:20.000Z",
+              "uid": "35240-ec268c69-83f0-47d4-98a4-119f0a8da484"
+            },
+            {
+              "id": "f1869931-1671-45b4-a757-7b71f8e8e8d2",
+              "name": "Authentication failed or credentials were not provided.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"network\": \"<string>\",\n  \"network_view\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/network",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "network"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:58:20.000Z",
+              "updatedAt": "2026-07-28T01:58:20.000Z",
+              "uid": "35240-f1869931-1671-45b4-a757-7b71f8e8e8d2"
+            }
+          ],
+          "createdAt": "2026-07-28T01:58:20.000Z",
+          "updatedAt": "2026-07-28T01:58:20.000Z",
+          "uid": "35240-71f77978-d932-4713-9667-05b8de7d8fa5"
+        }
+      ],
+      "id": "86ff7ff6-f8f4-4981-a52f-3bf92993e35c",
+      "createdAt": "2026-07-28T01:58:20.000Z",
+      "updatedAt": "2026-07-28T01:58:20.000Z",
+      "uid": "35240-86ff7ff6-f8f4-4981-a52f-3bf92993e35c"
+    },
+    {
+      "name": "networkview",
+      "item": [
+        {
+          "name": "Infoblox List network views",
+          "id": "4b78fdd2-67c5-437c-8721-f0451db1b27a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/networkview?_return_fields=<string>&_max_results=1000&name=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "networkview"
+              ],
+              "query": [
+                {
+                  "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                  "key": "_return_fields",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results.",
+                  "key": "_max_results",
+                  "value": "1000"
+                },
+                {
+                  "description": "Filter by the network view name.",
+                  "key": "name",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Retrieves a list of network views. A network view provides a way to separate overlapping IP address spaces into distinct logical views."
+          },
+          "response": [
+            {
+              "id": "932dcdd4-5879-4d65-84fa-8278e2885f99",
+              "name": "Successfully retrieved list of network views.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/networkview?_return_fields=<string>&_max_results=1000&name=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "networkview"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                      "key": "_return_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results.",
+                      "key": "_max_results",
+                      "value": "1000"
+                    },
+                    {
+                      "description": "Filter by the network view name.",
+                      "key": "name",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"_ref\": \"<string>\",\n    \"name\": \"<string>\",\n    \"comment\": \"<string>\",\n    \"is_default\": \"<boolean>\"\n  },\n  {\n    \"_ref\": \"<string>\",\n    \"name\": \"<string>\",\n    \"comment\": \"<string>\",\n    \"is_default\": \"<boolean>\"\n  }\n]",
+              "createdAt": "2026-07-28T01:58:20.000Z",
+              "updatedAt": "2026-07-28T01:58:20.000Z",
+              "uid": "35240-932dcdd4-5879-4d65-84fa-8278e2885f99"
+            },
+            {
+              "id": "de661b28-5ba1-45ba-a649-ed858146b70b",
+              "name": "The request was malformed or contained invalid parameters.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/networkview?_return_fields=<string>&_max_results=1000&name=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "networkview"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                      "key": "_return_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results.",
+                      "key": "_max_results",
+                      "value": "1000"
+                    },
+                    {
+                      "description": "Filter by the network view name.",
+                      "key": "name",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:58:20.000Z",
+              "updatedAt": "2026-07-28T01:58:20.000Z",
+              "uid": "35240-de661b28-5ba1-45ba-a649-ed858146b70b"
+            },
+            {
+              "id": "7b4af3f3-00ab-4980-a6d7-ddb3234c20a5",
+              "name": "Authentication failed or credentials were not provided.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/networkview?_return_fields=<string>&_max_results=1000&name=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "networkview"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                      "key": "_return_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results.",
+                      "key": "_max_results",
+                      "value": "1000"
+                    },
+                    {
+                      "description": "Filter by the network view name.",
+                      "key": "name",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:58:20.000Z",
+              "updatedAt": "2026-07-28T01:58:20.000Z",
+              "uid": "35240-7b4af3f3-00ab-4980-a6d7-ddb3234c20a5"
+            }
+          ],
+          "createdAt": "2026-07-28T01:58:20.000Z",
+          "updatedAt": "2026-07-28T01:58:20.000Z",
+          "uid": "35240-4b78fdd2-67c5-437c-8721-f0451db1b27a"
+        }
+      ],
+      "id": "749cf59c-7f55-408e-8244-3492e366e895",
+      "createdAt": "2026-07-28T01:58:20.000Z",
+      "updatedAt": "2026-07-28T01:58:20.000Z",
+      "uid": "35240-749cf59c-7f55-408e-8244-3492e366e895"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "grid-master",
+      "value": "grid-master.example.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{grid-master}}/wapi/v2.12"
+    }
+  ]
+}

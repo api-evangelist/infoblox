@@ -1,0 +1,333 @@
+{
+  "info": {
+    "_postman_id": "b3669405-902a-48b8-8c85-756c26d0f444",
+    "name": "Infoblox WAPI (Web API) DHCP IP Address Management API",
+    "description": "RESTful API for managing Infoblox NIOS DDI (DNS, DHCP, IPAM) services, network objects, and configuration. The WAPI uses standard HTTP methods for CRUD operations and supports JSON and XML input and output formats. Authentication is handled via HTTP basic authentication or certificate-based authentication, and sessions can be maintained using cookies returned after initial authentication. The API follows a resource-oriented design where each NIOS object type is accessible as a REST resource.\n\nContact Support:\n Name: Infoblox Support\n Email: support@infoblox.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:58:19.000Z",
+    "updatedAt": "2026-07-28T01:58:19.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-b3669405-902a-48b8-8c85-756c26d0f444"
+  },
+  "item": [
+    {
+      "name": "ipv4address",
+      "item": [
+        {
+          "name": "Infoblox List IPv4 addresses",
+          "id": "f0e750d8-377b-487c-9335-62e823e62288",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/ipv4address?_return_fields=<string>&_max_results=1000&ip_address=<ipv4>&network=<string>&status=UNUSED&network_view=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ipv4address"
+              ],
+              "query": [
+                {
+                  "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                  "key": "_return_fields",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results.",
+                  "key": "_max_results",
+                  "value": "1000"
+                },
+                {
+                  "description": "Filter by the IPv4 address.",
+                  "key": "ip_address",
+                  "value": "<ipv4>"
+                },
+                {
+                  "description": "Filter by the network in CIDR notation.",
+                  "key": "network",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter by the IP address status.",
+                  "key": "status",
+                  "value": "UNUSED"
+                },
+                {
+                  "description": "Filter by the network view name.",
+                  "key": "network_view",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Retrieves a list of IPv4 address objects. This is a read-only object that provides information about the usage and status of IPv4 addresses in the Infoblox system. Supports filtering by IP address, network, status, and associated names."
+          },
+          "response": [
+            {
+              "id": "4b855e4b-af37-4c9c-87f6-6f32bf1ddded",
+              "name": "Successfully retrieved list of IPv4 addresses.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/ipv4address?_return_fields=<string>&_max_results=1000&ip_address=<ipv4>&network=<string>&status=UNUSED&network_view=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "ipv4address"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                      "key": "_return_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results.",
+                      "key": "_max_results",
+                      "value": "1000"
+                    },
+                    {
+                      "description": "Filter by the IPv4 address.",
+                      "key": "ip_address",
+                      "value": "<ipv4>"
+                    },
+                    {
+                      "description": "Filter by the network in CIDR notation.",
+                      "key": "network",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by the IP address status.",
+                      "key": "status",
+                      "value": "UNUSED"
+                    },
+                    {
+                      "description": "Filter by the network view name.",
+                      "key": "network_view",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"_ref\": \"<string>\",\n    \"ip_address\": \"<ipv4>\",\n    \"network\": \"<string>\",\n    \"network_view\": \"<string>\",\n    \"status\": \"USED\",\n    \"names\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"types\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"objects\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"mac_address\": \"<string>\",\n    \"is_conflict\": \"<boolean>\"\n  },\n  {\n    \"_ref\": \"<string>\",\n    \"ip_address\": \"<ipv4>\",\n    \"network\": \"<string>\",\n    \"network_view\": \"<string>\",\n    \"status\": \"UNUSED\",\n    \"names\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"types\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"objects\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"mac_address\": \"<string>\",\n    \"is_conflict\": \"<boolean>\"\n  }\n]",
+              "createdAt": "2026-07-28T01:58:19.000Z",
+              "updatedAt": "2026-07-28T01:58:19.000Z",
+              "uid": "35240-4b855e4b-af37-4c9c-87f6-6f32bf1ddded"
+            },
+            {
+              "id": "626fb4b6-6808-40e7-b6cc-55bb2358ffa6",
+              "name": "The request was malformed or contained invalid parameters.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/ipv4address?_return_fields=<string>&_max_results=1000&ip_address=<ipv4>&network=<string>&status=UNUSED&network_view=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "ipv4address"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                      "key": "_return_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results.",
+                      "key": "_max_results",
+                      "value": "1000"
+                    },
+                    {
+                      "description": "Filter by the IPv4 address.",
+                      "key": "ip_address",
+                      "value": "<ipv4>"
+                    },
+                    {
+                      "description": "Filter by the network in CIDR notation.",
+                      "key": "network",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by the IP address status.",
+                      "key": "status",
+                      "value": "UNUSED"
+                    },
+                    {
+                      "description": "Filter by the network view name.",
+                      "key": "network_view",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:58:19.000Z",
+              "updatedAt": "2026-07-28T01:58:19.000Z",
+              "uid": "35240-626fb4b6-6808-40e7-b6cc-55bb2358ffa6"
+            },
+            {
+              "id": "6c218d9c-57a6-4981-8c8d-eadc04fae068",
+              "name": "Authentication failed or credentials were not provided.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/ipv4address?_return_fields=<string>&_max_results=1000&ip_address=<ipv4>&network=<string>&status=UNUSED&network_view=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "ipv4address"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.",
+                      "key": "_return_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results.",
+                      "key": "_max_results",
+                      "value": "1000"
+                    },
+                    {
+                      "description": "Filter by the IPv4 address.",
+                      "key": "ip_address",
+                      "value": "<ipv4>"
+                    },
+                    {
+                      "description": "Filter by the network in CIDR notation.",
+                      "key": "network",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by the IP address status.",
+                      "key": "status",
+                      "value": "UNUSED"
+                    },
+                    {
+                      "description": "Filter by the network view name.",
+                      "key": "network_view",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"Error\": \"<string>\",\n  \"code\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:58:19.000Z",
+              "updatedAt": "2026-07-28T01:58:19.000Z",
+              "uid": "35240-6c218d9c-57a6-4981-8c8d-eadc04fae068"
+            }
+          ],
+          "createdAt": "2026-07-28T01:58:19.000Z",
+          "updatedAt": "2026-07-28T01:58:19.000Z",
+          "uid": "35240-f0e750d8-377b-487c-9335-62e823e62288"
+        }
+      ],
+      "id": "d05aa39a-ca53-49ad-94bf-b7b4831305f1",
+      "createdAt": "2026-07-28T01:58:19.000Z",
+      "updatedAt": "2026-07-28T01:58:19.000Z",
+      "uid": "35240-d05aa39a-ca53-49ad-94bf-b7b4831305f1"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "grid-master",
+      "value": "grid-master.example.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{grid-master}}/wapi/v2.12"
+    }
+  ]
+}
