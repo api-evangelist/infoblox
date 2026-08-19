@@ -1,0 +1,114 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Infoblox WAPI (Web API) DHCP Networks API",
+    "version": "2.12"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Networks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Infoblox List DHCP networks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{grid-master}/wapi/v2.12/network",
+            "params": [
+              {
+                "name": "_return_fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set."
+              },
+              {
+                "name": "_max_results",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results."
+              },
+              {
+                "name": "network",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the network address in CIDR notation (e.g. 10.0.0.0/24)."
+              },
+              {
+                "name": "network_view",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the network view name."
+              },
+              {
+                "name": "comment",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the comment associated with the network."
+              }
+            ]
+          },
+          "docs": "Retrieves a list of IPv4 networks. Networks represent IP subnets and can contain DHCP ranges and fixed addresses. Supports filtering by network address, CIDR, network view, and comment."
+        },
+        {
+          "info": {
+            "name": "Infoblox Create a network",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{grid-master}/wapi/v2.12/network",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new IPv4 network with the specified CIDR address. The network is created in the specified network view, or the default view if none is specified."
+        },
+        {
+          "info": {
+            "name": "Infoblox List network views",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{grid-master}/wapi/v2.12/networkview",
+            "params": [
+              {
+                "name": "_return_fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set."
+              },
+              {
+                "name": "_max_results",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the network view name."
+              }
+            ]
+          },
+          "docs": "Retrieves a list of network views. A network view provides a way to separate overlapping IP address spaces into distinct logical views."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

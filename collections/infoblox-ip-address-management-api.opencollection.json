@@ -1,0 +1,74 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Infoblox WAPI (Web API) DHCP IP Address Management API",
+    "version": "2.12"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "IP Address Management",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Infoblox List IPv4 addresses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{grid-master}/wapi/v2.12/ipv4address",
+            "params": [
+              {
+                "name": "_return_fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set."
+              },
+              {
+                "name": "_max_results",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results."
+              },
+              {
+                "name": "ip_address",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the IPv4 address."
+              },
+              {
+                "name": "network",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the network in CIDR notation."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the IP address status."
+              },
+              {
+                "name": "network_view",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the network view name."
+              }
+            ]
+          },
+          "docs": "Retrieves a list of IPv4 address objects. This is a read-only object that provides information about the usage and status of IPv4 addresses in the Infoblox system. Supports filtering by IP address, network, status, and associated names."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,184 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Infoblox WAPI (Web API) DHCP API",
+    "version": "2.12"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "DHCP",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Infoblox List DHCP ranges",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{grid-master}/wapi/v2.12/range",
+            "params": [
+              {
+                "name": "_return_fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set."
+              },
+              {
+                "name": "_max_results",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results."
+              },
+              {
+                "name": "network",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the parent network in CIDR notation."
+              },
+              {
+                "name": "start_addr",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the starting IP address of the range."
+              },
+              {
+                "name": "end_addr",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the ending IP address of the range."
+              },
+              {
+                "name": "network_view",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the network view name."
+              }
+            ]
+          },
+          "docs": "Retrieves a list of DHCP range objects. A DHCP range defines a pool of IP addresses from which DHCP clients can obtain leases."
+        },
+        {
+          "info": {
+            "name": "Infoblox Create a DHCP range",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{grid-master}/wapi/v2.12/range",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new DHCP range within a specified network. The range defines a contiguous block of IP addresses available for DHCP allocation."
+        },
+        {
+          "info": {
+            "name": "Infoblox List DHCP fixed addresses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{grid-master}/wapi/v2.12/fixedaddress",
+            "params": [
+              {
+                "name": "_return_fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set."
+              },
+              {
+                "name": "_max_results",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results."
+              },
+              {
+                "name": "ipv4addr",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the reserved IPv4 address."
+              },
+              {
+                "name": "mac",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the MAC address."
+              },
+              {
+                "name": "network_view",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the network view name."
+              }
+            ]
+          },
+          "docs": "Retrieves a list of DHCP fixed address reservations. A fixed address maps a specific MAC address to a reserved IP address."
+        },
+        {
+          "info": {
+            "name": "Infoblox Create a DHCP fixed address",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{grid-master}/wapi/v2.12/fixedaddress",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new DHCP fixed address reservation mapping a MAC address to a specific IPv4 address."
+        },
+        {
+          "info": {
+            "name": "Infoblox List DHCP leases",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{grid-master}/wapi/v2.12/lease",
+            "params": [
+              {
+                "name": "_return_fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set."
+              },
+              {
+                "name": "_max_results",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results."
+              },
+              {
+                "name": "address",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the leased IPv4 address."
+              },
+              {
+                "name": "network_view",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the network view name."
+              }
+            ]
+          },
+          "docs": "Retrieves a list of DHCP lease objects. Leases represent active DHCP address assignments and include information about the client, assigned address, and lease duration."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

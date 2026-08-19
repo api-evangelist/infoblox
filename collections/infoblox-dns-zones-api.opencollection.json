@@ -1,0 +1,120 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Infoblox WAPI (Web API) DHCP DNS Zones API",
+    "version": "2.12"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "DNS Zones",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Infoblox List authoritative DNS zones",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{grid-master}/wapi/v2.12/zone_auth",
+            "params": [
+              {
+                "name": "_return_fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set."
+              },
+              {
+                "name": "_max_results",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results."
+              },
+              {
+                "name": "fqdn",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the fully qualified domain name of the zone."
+              },
+              {
+                "name": "view",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the DNS view name."
+              },
+              {
+                "name": "zone_format",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the zone format."
+              }
+            ]
+          },
+          "docs": "Retrieves a list of authoritative DNS zones. Supports filtering by FQDN, view, and zone format (forward or reverse)."
+        },
+        {
+          "info": {
+            "name": "Infoblox Create an authoritative DNS zone",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{grid-master}/wapi/v2.12/zone_auth",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new authoritative DNS zone with the specified FQDN and zone format. The zone is created in the specified DNS view."
+        },
+        {
+          "info": {
+            "name": "Infoblox List forward DNS zones",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{grid-master}/wapi/v2.12/zone_forward",
+            "params": [
+              {
+                "name": "_return_fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set."
+              },
+              {
+                "name": "_max_results",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results."
+              },
+              {
+                "name": "fqdn",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the fully qualified domain name of the forward zone."
+              },
+              {
+                "name": "view",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the DNS view name."
+              }
+            ]
+          },
+          "docs": "Retrieves a list of forward DNS zones. A forward zone forwards queries to specified DNS servers rather than resolving them locally."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

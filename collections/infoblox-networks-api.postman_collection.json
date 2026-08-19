@@ -1,0 +1,819 @@
+{
+  "item": [
+    {
+      "id": "13e12d77-7bc8-4566-aee0-7b456ccf34a4",
+      "name": "Networks",
+      "description": {
+        "content": "Operations for managing IPv4 and IPv6 networks, network containers, and network views.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ac88853b-5557-4574-90ef-2529e76c1f83",
+          "name": "Infoblox List DHCP networks",
+          "request": {
+            "name": "Infoblox List DHCP networks",
+            "description": {
+              "content": "Retrieves a list of IPv4 networks. Networks represent IP subnets and can contain DHCP ranges and fixed addresses. Supports filtering by network address, CIDR, network view, and comment.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "network"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "_return_fields",
+                  "value": "<string>",
+                  "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set."
+                },
+                {
+                  "disabled": false,
+                  "key": "_max_results",
+                  "value": "1000",
+                  "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results."
+                },
+                {
+                  "disabled": false,
+                  "key": "network",
+                  "value": "<string>",
+                  "description": "Filter by the network address in CIDR notation (e.g. 10.0.0.0/24)."
+                },
+                {
+                  "disabled": false,
+                  "key": "network_view",
+                  "value": "<string>",
+                  "description": "Filter by the network view name."
+                },
+                {
+                  "disabled": false,
+                  "key": "comment",
+                  "value": "<string>",
+                  "description": "Filter by the comment associated with the network."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The hostname or IP address of the Infoblox NIOS Grid Master appliance.",
+                  "type": "any",
+                  "value": "{{grid-master}}",
+                  "key": "grid-master"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "63cda5c5-d993-4e21-b5c5-6944c1049180",
+              "name": "Successfully retrieved list of networks.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "network"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_return_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_max_results",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "network",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "network_view",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "comment",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The hostname or IP address of the Infoblox NIOS Grid Master appliance.",
+                      "type": "any",
+                      "value": "{{grid-master}}",
+                      "key": "grid-master"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"_ref\": \"string\",\n    \"network\": \"string\",\n    \"network_view\": \"string\",\n    \"comment\": \"string\",\n    \"members\": [\n      {\n        \"name\": \"string\",\n        \"_struct\": \"string\"\n      },\n      {\n        \"name\": \"string\",\n        \"_struct\": \"string\"\n      }\n    ]\n  },\n  {\n    \"_ref\": \"string\",\n    \"network\": \"string\",\n    \"network_view\": \"string\",\n    \"comment\": \"string\",\n    \"members\": [\n      {\n        \"name\": \"string\",\n        \"_struct\": \"string\"\n      },\n      {\n        \"name\": \"string\",\n        \"_struct\": \"string\"\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1bd8b870-51f0-4aca-8209-f3a2e9bfd4aa",
+              "name": "The request was malformed or contained invalid parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "network"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_return_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_max_results",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "network",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "network_view",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "comment",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The hostname or IP address of the Infoblox NIOS Grid Master appliance.",
+                      "type": "any",
+                      "value": "{{grid-master}}",
+                      "key": "grid-master"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Error\": \"string\",\n  \"code\": \"string\",\n  \"text\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ee01726d-7416-4fd5-bdaa-68cbef5a2ee5",
+              "name": "Authentication failed or credentials were not provided.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "network"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_return_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_max_results",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "network",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "network_view",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "comment",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The hostname or IP address of the Infoblox NIOS Grid Master appliance.",
+                      "type": "any",
+                      "value": "{{grid-master}}",
+                      "key": "grid-master"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Error\": \"string\",\n  \"code\": \"string\",\n  \"text\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "89fcef47-70ec-47aa-9f4f-1edb68469088",
+          "name": "Infoblox Create a network",
+          "request": {
+            "name": "Infoblox Create a network",
+            "description": {
+              "content": "Creates a new IPv4 network with the specified CIDR address. The network is created in the specified network view, or the default view if none is specified.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "network"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The hostname or IP address of the Infoblox NIOS Grid Master appliance.",
+                  "type": "any",
+                  "value": "{{grid-master}}",
+                  "key": "grid-master"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"network\": \"<string>\",\n  \"network_view\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "952bada1-bd65-4cc9-95ee-0061df80a3f4",
+              "name": "Successfully created the network.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "network"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname or IP address of the Infoblox NIOS Grid Master appliance.",
+                      "type": "any",
+                      "value": "{{grid-master}}",
+                      "key": "grid-master"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"network\": \"<string>\",\n  \"network_view\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e8052371-ae39-4fc4-b7c9-16a14965b25e",
+              "name": "The request was malformed or contained invalid parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "network"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname or IP address of the Infoblox NIOS Grid Master appliance.",
+                      "type": "any",
+                      "value": "{{grid-master}}",
+                      "key": "grid-master"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"network\": \"<string>\",\n  \"network_view\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Error\": \"string\",\n  \"code\": \"string\",\n  \"text\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1408117b-f087-44ad-85d5-f59327df23c4",
+              "name": "Authentication failed or credentials were not provided.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "network"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname or IP address of the Infoblox NIOS Grid Master appliance.",
+                      "type": "any",
+                      "value": "{{grid-master}}",
+                      "key": "grid-master"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"network\": \"<string>\",\n  \"network_view\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Error\": \"string\",\n  \"code\": \"string\",\n  \"text\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4608e957-ee46-4e75-a076-82e954049e84",
+          "name": "Infoblox List network views",
+          "request": {
+            "name": "Infoblox List network views",
+            "description": {
+              "content": "Retrieves a list of network views. A network view provides a way to separate overlapping IP address spaces into distinct logical views.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "networkview"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "_return_fields",
+                  "value": "<string>",
+                  "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set."
+                },
+                {
+                  "disabled": false,
+                  "key": "_max_results",
+                  "value": "1000",
+                  "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results."
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "Filter by the network view name."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The hostname or IP address of the Infoblox NIOS Grid Master appliance.",
+                  "type": "any",
+                  "value": "{{grid-master}}",
+                  "key": "grid-master"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ab35fbdb-a291-46a5-a291-c74689a82d69",
+              "name": "Successfully retrieved list of network views.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "networkview"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_return_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_max_results",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The hostname or IP address of the Infoblox NIOS Grid Master appliance.",
+                      "type": "any",
+                      "value": "{{grid-master}}",
+                      "key": "grid-master"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"_ref\": \"string\",\n    \"name\": \"string\",\n    \"comment\": \"string\",\n    \"is_default\": false\n  },\n  {\n    \"_ref\": \"string\",\n    \"name\": \"string\",\n    \"comment\": \"string\",\n    \"is_default\": false\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "77851e17-9e34-4169-941f-472360aaedaf",
+              "name": "The request was malformed or contained invalid parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "networkview"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_return_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_max_results",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The hostname or IP address of the Infoblox NIOS Grid Master appliance.",
+                      "type": "any",
+                      "value": "{{grid-master}}",
+                      "key": "grid-master"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Error\": \"string\",\n  \"code\": \"string\",\n  \"text\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6596e8b6-aadb-4be4-a639-99fd098829b4",
+              "name": "Authentication failed or credentials were not provided.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "networkview"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_return_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_max_results",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The hostname or IP address of the Infoblox NIOS Grid Master appliance.",
+                      "type": "any",
+                      "value": "{{grid-master}}",
+                      "key": "grid-master"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Error\": \"string\",\n  \"code\": \"string\",\n  \"text\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The hostname or IP address of the Infoblox NIOS Grid Master appliance.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "grid-master.example.com",
+      "key": "grid-master"
+    },
+    {
+      "type": "string",
+      "value": "https://{{grid-master}}/wapi/v2.12",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "342fef60-af15-43fe-a342-3ab7df4f7356",
+    "name": "Infoblox WAPI (Web API) DHCP Networks API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "RESTful API for managing Infoblox NIOS DDI (DNS, DHCP, IPAM) services, network objects, and configuration. The WAPI uses standard HTTP methods for CRUD operations and supports JSON and XML input and output formats. Authentication is handled via HTTP basic authentication or certificate-based authentication, and sessions can be maintained using cookies returned after initial authentication. The API follows a resource-oriented design where each NIOS object type is accessible as a REST resource.\n\nContact Support:\n Name: Infoblox Support\n Email: support@infoblox.com",
+      "type": "text/plain"
+    }
+  }
+}

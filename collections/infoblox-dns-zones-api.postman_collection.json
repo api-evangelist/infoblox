@@ -1,0 +1,837 @@
+{
+  "item": [
+    {
+      "id": "ed3c6bc5-70ec-47b1-bf99-a9bee9d3d758",
+      "name": "DNS Zones",
+      "description": {
+        "content": "Operations for managing authoritative DNS zones, delegated zones, forward zones, and stub zones.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6784701e-0794-4543-b97c-c1efd45e424c",
+          "name": "Infoblox List authoritative DNS zones",
+          "request": {
+            "name": "Infoblox List authoritative DNS zones",
+            "description": {
+              "content": "Retrieves a list of authoritative DNS zones. Supports filtering by FQDN, view, and zone format (forward or reverse).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "zone_auth"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "_return_fields",
+                  "value": "<string>",
+                  "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set."
+                },
+                {
+                  "disabled": false,
+                  "key": "_max_results",
+                  "value": "1000",
+                  "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results."
+                },
+                {
+                  "disabled": false,
+                  "key": "fqdn",
+                  "value": "<string>",
+                  "description": "Filter by the fully qualified domain name of the zone."
+                },
+                {
+                  "disabled": false,
+                  "key": "view",
+                  "value": "<string>",
+                  "description": "Filter by the DNS view name."
+                },
+                {
+                  "disabled": false,
+                  "key": "zone_format",
+                  "value": "<string>",
+                  "description": "Filter by the zone format."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The hostname or IP address of the Infoblox NIOS Grid Master appliance.",
+                  "type": "any",
+                  "value": "{{grid-master}}",
+                  "key": "grid-master"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6a4311d2-438f-4845-80aa-d93d363dfd47",
+              "name": "Successfully retrieved list of authoritative zones.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "zone_auth"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_return_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_max_results",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "fqdn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "view",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "zone_format",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The hostname or IP address of the Infoblox NIOS Grid Master appliance.",
+                      "type": "any",
+                      "value": "{{grid-master}}",
+                      "key": "grid-master"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"_ref\": \"string\",\n    \"fqdn\": \"string\",\n    \"view\": \"string\",\n    \"zone_format\": \"FORWARD\",\n    \"comment\": \"string\",\n    \"ns_group\": \"string\"\n  },\n  {\n    \"_ref\": \"string\",\n    \"fqdn\": \"string\",\n    \"view\": \"string\",\n    \"zone_format\": \"FORWARD\",\n    \"comment\": \"string\",\n    \"ns_group\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3b40bbac-90df-406d-b924-b14c787ae140",
+              "name": "The request was malformed or contained invalid parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "zone_auth"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_return_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_max_results",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "fqdn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "view",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "zone_format",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The hostname or IP address of the Infoblox NIOS Grid Master appliance.",
+                      "type": "any",
+                      "value": "{{grid-master}}",
+                      "key": "grid-master"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Error\": \"string\",\n  \"code\": \"string\",\n  \"text\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e651053f-189c-4352-b95b-370af79f7be4",
+              "name": "Authentication failed or credentials were not provided.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "zone_auth"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_return_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_max_results",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "fqdn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "view",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "zone_format",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The hostname or IP address of the Infoblox NIOS Grid Master appliance.",
+                      "type": "any",
+                      "value": "{{grid-master}}",
+                      "key": "grid-master"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Error\": \"string\",\n  \"code\": \"string\",\n  \"text\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "35b29c39-274f-42ec-a3a2-9d05b5a4746a",
+          "name": "Infoblox Create an authoritative DNS zone",
+          "request": {
+            "name": "Infoblox Create an authoritative DNS zone",
+            "description": {
+              "content": "Creates a new authoritative DNS zone with the specified FQDN and zone format. The zone is created in the specified DNS view.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "zone_auth"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The hostname or IP address of the Infoblox NIOS Grid Master appliance.",
+                  "type": "any",
+                  "value": "{{grid-master}}",
+                  "key": "grid-master"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fqdn\": \"<string>\",\n  \"zone_format\": \"<string>\",\n  \"view\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "64d7d6ea-2ec8-4a71-9d7f-75d2e6ff91d8",
+              "name": "Successfully created the authoritative zone.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "zone_auth"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname or IP address of the Infoblox NIOS Grid Master appliance.",
+                      "type": "any",
+                      "value": "{{grid-master}}",
+                      "key": "grid-master"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fqdn\": \"<string>\",\n  \"zone_format\": \"<string>\",\n  \"view\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b95fca27-d03d-42ff-ba17-7e5d68addb8f",
+              "name": "The request was malformed or contained invalid parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "zone_auth"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname or IP address of the Infoblox NIOS Grid Master appliance.",
+                      "type": "any",
+                      "value": "{{grid-master}}",
+                      "key": "grid-master"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fqdn\": \"<string>\",\n  \"zone_format\": \"<string>\",\n  \"view\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Error\": \"string\",\n  \"code\": \"string\",\n  \"text\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1bbb3290-02df-4356-ae2a-ec16992c5ed6",
+              "name": "Authentication failed or credentials were not provided.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "zone_auth"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The hostname or IP address of the Infoblox NIOS Grid Master appliance.",
+                      "type": "any",
+                      "value": "{{grid-master}}",
+                      "key": "grid-master"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fqdn\": \"<string>\",\n  \"zone_format\": \"<string>\",\n  \"view\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Error\": \"string\",\n  \"code\": \"string\",\n  \"text\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0b149033-cc5e-4226-9a55-fabd359c1688",
+          "name": "Infoblox List forward DNS zones",
+          "request": {
+            "name": "Infoblox List forward DNS zones",
+            "description": {
+              "content": "Retrieves a list of forward DNS zones. A forward zone forwards queries to specified DNS servers rather than resolving them locally.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "zone_forward"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "_return_fields",
+                  "value": "<string>",
+                  "description": "Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set."
+                },
+                {
+                  "disabled": false,
+                  "key": "_max_results",
+                  "value": "1000",
+                  "description": "The maximum number of results to return. The default is 1000. Use a negative value to return all results."
+                },
+                {
+                  "disabled": false,
+                  "key": "fqdn",
+                  "value": "<string>",
+                  "description": "Filter by the fully qualified domain name of the forward zone."
+                },
+                {
+                  "disabled": false,
+                  "key": "view",
+                  "value": "<string>",
+                  "description": "Filter by the DNS view name."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The hostname or IP address of the Infoblox NIOS Grid Master appliance.",
+                  "type": "any",
+                  "value": "{{grid-master}}",
+                  "key": "grid-master"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "10486999-1116-4443-b314-121264b4b7d3",
+              "name": "Successfully retrieved list of forward zones.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "zone_forward"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_return_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_max_results",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "fqdn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "view",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The hostname or IP address of the Infoblox NIOS Grid Master appliance.",
+                      "type": "any",
+                      "value": "{{grid-master}}",
+                      "key": "grid-master"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"_ref\": \"string\",\n    \"fqdn\": \"string\",\n    \"forward_to\": [\n      {\n        \"address\": \"string\",\n        \"name\": \"string\"\n      },\n      {\n        \"address\": \"string\",\n        \"name\": \"string\"\n      }\n    ],\n    \"view\": \"string\",\n    \"comment\": \"string\"\n  },\n  {\n    \"_ref\": \"string\",\n    \"fqdn\": \"string\",\n    \"forward_to\": [\n      {\n        \"address\": \"string\",\n        \"name\": \"string\"\n      },\n      {\n        \"address\": \"string\",\n        \"name\": \"string\"\n      }\n    ],\n    \"view\": \"string\",\n    \"comment\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f532ce88-8378-4f5e-a91b-f7511ee0e2c8",
+              "name": "The request was malformed or contained invalid parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "zone_forward"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_return_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_max_results",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "fqdn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "view",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The hostname or IP address of the Infoblox NIOS Grid Master appliance.",
+                      "type": "any",
+                      "value": "{{grid-master}}",
+                      "key": "grid-master"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Error\": \"string\",\n  \"code\": \"string\",\n  \"text\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1bcff939-37c5-4e28-9e8c-803653e64615",
+              "name": "Authentication failed or credentials were not provided.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "zone_forward"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_return_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_max_results",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "fqdn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "view",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The hostname or IP address of the Infoblox NIOS Grid Master appliance.",
+                      "type": "any",
+                      "value": "{{grid-master}}",
+                      "key": "grid-master"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Error\": \"string\",\n  \"code\": \"string\",\n  \"text\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The hostname or IP address of the Infoblox NIOS Grid Master appliance.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "grid-master.example.com",
+      "key": "grid-master"
+    },
+    {
+      "type": "string",
+      "value": "https://{{grid-master}}/wapi/v2.12",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "05ef0371-0a56-4ffd-ada0-27ab9a709655",
+    "name": "Infoblox WAPI (Web API) DHCP DNS Zones API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "RESTful API for managing Infoblox NIOS DDI (DNS, DHCP, IPAM) services, network objects, and configuration. The WAPI uses standard HTTP methods for CRUD operations and supports JSON and XML input and output formats. Authentication is handled via HTTP basic authentication or certificate-based authentication, and sessions can be maintained using cookies returned after initial authentication. The API follows a resource-oriented design where each NIOS object type is accessible as a REST resource.\n\nContact Support:\n Name: Infoblox Support\n Email: support@infoblox.com",
+      "type": "text/plain"
+    }
+  }
+}
