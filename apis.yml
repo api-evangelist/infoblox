@@ -22,7 +22,7 @@ image: https://www.infoblox.com/wp-content/uploads/infoblox-logo.svg
 url: https://raw.githubusercontent.com/api-evangelist/infoblox/refs/heads/main/apis.yml
 created: '2024-01-15'
 modified: '2026-05-19'
-specificationVersion: '0.20'
+specificationVersion: '0.23'
 kind: contract
 position: Consuming
 access: 3rd-Party
