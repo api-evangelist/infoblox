@@ -5,6 +5,18 @@ description: >-
   DNS-layer security services. Its product portfolio spans the Universal DDI suite for unified hybrid and multi-cloud
   network services, NIOS DDI for on-premises deployments, NIOS-X as a Service, Threat Defense for DNS-layer security,
   threat intelligence (TIDE) and research (Dossier), and NetMRI for network change and configuration management.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: self-serve
@@ -586,6 +598,9 @@ apis:
   - type: ChangeLog
     url: https://docs.infoblox.com/space/BloxOneInfrastructure/332366018/BloxOne+Release+Notes
 common:
+  - type: CapabilityMap
+    url: capabilities/infoblox-capability-edges.yml
+    name: Infoblox Business Capability Map
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/infoblox/overview
   - type: AgenticAccess
