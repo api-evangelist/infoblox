@@ -11,8 +11,19 @@ capability_model:
   attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
     CC BY 4.0
   notice: NOTICE
-edge_count: 4
+edge_count: 6
 edges:
+- tag: IP Address Management
+  spec_file: infoblox-ip-address-management-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.78
+  evidence: GET /ipv4address listIPv4Addresses "Infoblox List IPv4 addresses"; schema IPv4Address; "managing
+    Infoblox NIOS DDI (DNS, DHCP, IPAM) services, network objects"
+  reason: IPAM here is enumeration of IP address objects on network infrastructure — a network/infrastructure
+    management capability, not any business-domain address handling.
+  recovered_from: capability-edges-sweep.json
 - tag: DHCP
   spec_file: infoblox-dhcp-api-openapi.yml
   capability_id: BC-600.50
@@ -43,6 +54,18 @@ edges:
   evidence: createAuthoritativeZone  Infoblox Create an authoritative DNS zone; listForwardZones
   reason: Authoritative and forward DNS zone administration is network infrastructure configuration within
     enterprise IT.
+- tag: Grid
+  spec_file: infoblox-grid-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.7
+  evidence: GET /grid getGrid "Infoblox Get Grid information"; GET /member listMembers "Infoblox List
+    Grid members"; schemas Grid, Member
+  reason: The Grid tag exposes the NIOS appliance grid and its member appliances — network service infrastructure
+    inventory/configuration, i.e. IT infrastructure management. No business-domain reading fits; slight
+    uncertainty only about the sub-capability.
+  recovered_from: capability-edges-sweep.json
 - tag: Networks
   spec_file: infoblox-networks-api-openapi.yml
   capability_id: BC-600.50
