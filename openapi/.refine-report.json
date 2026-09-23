@@ -1,12 +1,7 @@
 {
   "provider": "infoblox",
   "sources": [
-    "infoblox-dhcp-api-openapi.yml",
-    "infoblox-dns-records-api-openapi.yml",
-    "infoblox-dns-zones-api-openapi.yml",
-    "infoblox-grid-api-openapi.yml",
-    "infoblox-ip-address-management-api-openapi.yml",
-    "infoblox-networks-api-openapi.yml"
+    "_original/infoblox-wapi-openapi.yml"
   ],
   "outputs": [
     "infoblox-dhcp-api-openapi.yml",
@@ -19,6 +14,17 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "infoblox-wapi-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "infoblox-dhcp-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "infoblox-dns-records-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "infoblox-dns-zones-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "infoblox-grid-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "infoblox-ip-address-management-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "infoblox-networks-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Infoblox WAPI (Web API) DHCP Grid API
+  title: Infoblox WAPI (Web API) Grid API
   description: RESTful API for managing Infoblox NIOS DDI (DNS, DHCP, IPAM) services, network objects, and configuration. The WAPI uses standard HTTP methods for CRUD operations and supports JSON and XML input and output formats. Authentication is handled via HTTP basic authentication or certificate-based authentication, and sessions can be maintained using cookies returned after initial authentication. The API follows a resource-oriented design where each NIOS object type is accessible as a REST resource.
   version: '2.12'
   contact:
@@ -71,19 +71,6 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  responses:
-    Unauthorized:
-      description: Authentication failed or credentials were not provided.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: The request was malformed or contained invalid parameters.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
     Member:
       type: object
@@ -144,12 +131,6 @@ components:
           type: string
           description: A human-readable error message.
   parameters:
-    ReturnFields:
-      name: _return_fields
-      in: query
-      description: Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.
-      schema:
-        type: string
     MaxResults:
       name: _max_results
       in: query
@@ -157,6 +138,25 @@ components:
       schema:
         type: integer
         default: 1000
+    ReturnFields:
+      name: _return_fields
+      in: query
+      description: Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.
+      schema:
+        type: string
+  responses:
+    BadRequest:
+      description: The request was malformed or contained invalid parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication failed or credentials were not provided.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     basicAuth:
       type: http
