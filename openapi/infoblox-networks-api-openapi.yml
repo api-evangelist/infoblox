@@ -113,21 +113,22 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    NetworkCreate:
+    NetworkView:
       type: object
-      required:
-      - network
       properties:
-        network:
+        _ref:
           type: string
-          description: The network address in CIDR notation (e.g. 10.0.0.0/24).
-        network_view:
+          description: The object reference for this network view.
+        name:
           type: string
-          description: The network view. Defaults to the default network view.
+          description: The name of the network view.
         comment:
           type: string
           description: A descriptive comment.
           maxLength: 256
+        is_default:
+          type: boolean
+          description: Whether this is the default network view.
     Network:
       type: object
       properties:
@@ -156,22 +157,6 @@ components:
                 type: string
                 description: The member structure type (e.g. dhcpmember).
           description: The list of DHCP members serving this network.
-    NetworkView:
-      type: object
-      properties:
-        _ref:
-          type: string
-          description: The object reference for this network view.
-        name:
-          type: string
-          description: The name of the network view.
-        comment:
-          type: string
-          description: A descriptive comment.
-          maxLength: 256
-        is_default:
-          type: boolean
-          description: Whether this is the default network view.
     Error:
       type: object
       properties:
@@ -184,7 +169,41 @@ components:
         text:
           type: string
           description: A human-readable error message.
+    NetworkCreate:
+      type: object
+      required:
+      - network
+      properties:
+        network:
+          type: string
+          description: The network address in CIDR notation (e.g. 10.0.0.0/24).
+        network_view:
+          type: string
+          description: The network view. Defaults to the default network view.
+        comment:
+          type: string
+          description: A descriptive comment.
+          maxLength: 256
+  responses:
+    Unauthorized:
+      description: Authentication failed or credentials were not provided.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: The request was malformed or contained invalid parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   parameters:
+    ReturnFields:
+      name: _return_fields
+      in: query
+      description: Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.
+      schema:
+        type: string
     MaxResults:
       name: _max_results
       in: query
@@ -192,25 +211,6 @@ components:
       schema:
         type: integer
         default: 1000
-    ReturnFields:
-      name: _return_fields
-      in: query
-      description: Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.
-      schema:
-        type: string
-  responses:
-    BadRequest:
-      description: The request was malformed or contained invalid parameters.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication failed or credentials were not provided.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     basicAuth:
       type: http

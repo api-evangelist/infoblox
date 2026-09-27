@@ -223,6 +223,29 @@ components:
           type: string
           format: date-time
           description: The lease expiration time.
+    FixedAddress:
+      type: object
+      properties:
+        _ref:
+          type: string
+          description: The object reference for this fixed address.
+        ipv4addr:
+          type: string
+          format: ipv4
+          description: The reserved IPv4 address.
+        mac:
+          type: string
+          description: The MAC address of the client.
+        network_view:
+          type: string
+          description: The network view.
+        comment:
+          type: string
+          description: A descriptive comment.
+          maxLength: 256
+        disable:
+          type: boolean
+          description: Whether the fixed address reservation is disabled.
     DHCPRangeCreate:
       type: object
       required:
@@ -259,49 +282,6 @@ components:
         text:
           type: string
           description: A human-readable error message.
-    FixedAddress:
-      type: object
-      properties:
-        _ref:
-          type: string
-          description: The object reference for this fixed address.
-        ipv4addr:
-          type: string
-          format: ipv4
-          description: The reserved IPv4 address.
-        mac:
-          type: string
-          description: The MAC address of the client.
-        network_view:
-          type: string
-          description: The network view.
-        comment:
-          type: string
-          description: A descriptive comment.
-          maxLength: 256
-        disable:
-          type: boolean
-          description: Whether the fixed address reservation is disabled.
-    FixedAddressCreate:
-      type: object
-      required:
-      - ipv4addr
-      - mac
-      properties:
-        ipv4addr:
-          type: string
-          format: ipv4
-          description: The IPv4 address to reserve.
-        mac:
-          type: string
-          description: The MAC address of the client.
-        network_view:
-          type: string
-          description: The network view.
-        comment:
-          type: string
-          description: A descriptive comment.
-          maxLength: 256
     DHCPRange:
       type: object
       properties:
@@ -329,6 +309,39 @@ components:
         disable:
           type: boolean
           description: Whether the DHCP range is disabled.
+    FixedAddressCreate:
+      type: object
+      required:
+      - ipv4addr
+      - mac
+      properties:
+        ipv4addr:
+          type: string
+          format: ipv4
+          description: The IPv4 address to reserve.
+        mac:
+          type: string
+          description: The MAC address of the client.
+        network_view:
+          type: string
+          description: The network view.
+        comment:
+          type: string
+          description: A descriptive comment.
+          maxLength: 256
+  responses:
+    BadRequest:
+      description: The request was malformed or contained invalid parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication failed or credentials were not provided.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   parameters:
     ReturnFields:
       name: _return_fields
@@ -343,19 +356,6 @@ components:
       schema:
         type: integer
         default: 1000
-  responses:
-    BadRequest:
-      description: The request was malformed or contained invalid parameters.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication failed or credentials were not provided.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     basicAuth:
       type: http
