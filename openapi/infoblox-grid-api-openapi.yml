@@ -71,47 +71,21 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  responses:
-    BadRequest:
-      description: The request was malformed or contained invalid parameters.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication failed or credentials were not provided.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+  parameters:
+    ReturnFields:
+      name: _return_fields
+      in: query
+      description: Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.
+      schema:
+        type: string
+    MaxResults:
+      name: _max_results
+      in: query
+      description: The maximum number of results to return. The default is 1000. Use a negative value to return all results.
+      schema:
+        type: integer
+        default: 1000
   schemas:
-    Error:
-      type: object
-      properties:
-        Error:
-          type: string
-          description: The error type identifier.
-        code:
-          type: string
-          description: The error code.
-        text:
-          type: string
-          description: A human-readable error message.
-    Grid:
-      type: object
-      properties:
-        _ref:
-          type: string
-          description: The object reference for the Grid.
-        name:
-          type: string
-          description: The name of the Grid.
-        dns_resolver_setting:
-          type: object
-          description: The DNS resolver settings for the Grid.
-        ntp_setting:
-          type: object
-          description: The NTP settings for the Grid.
     Member:
       type: object
       properties:
@@ -143,20 +117,46 @@ components:
                 type: string
                 description: The service status (e.g. WORKING, INACTIVE).
           description: The status of services running on this member.
-  parameters:
-    ReturnFields:
-      name: _return_fields
-      in: query
-      description: Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.
-      schema:
-        type: string
-    MaxResults:
-      name: _max_results
-      in: query
-      description: The maximum number of results to return. The default is 1000. Use a negative value to return all results.
-      schema:
-        type: integer
-        default: 1000
+    Grid:
+      type: object
+      properties:
+        _ref:
+          type: string
+          description: The object reference for the Grid.
+        name:
+          type: string
+          description: The name of the Grid.
+        dns_resolver_setting:
+          type: object
+          description: The DNS resolver settings for the Grid.
+        ntp_setting:
+          type: object
+          description: The NTP settings for the Grid.
+    Error:
+      type: object
+      properties:
+        Error:
+          type: string
+          description: The error type identifier.
+        code:
+          type: string
+          description: The error code.
+        text:
+          type: string
+          description: A human-readable error message.
+  responses:
+    BadRequest:
+      description: The request was malformed or contained invalid parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication failed or credentials were not provided.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     basicAuth:
       type: http

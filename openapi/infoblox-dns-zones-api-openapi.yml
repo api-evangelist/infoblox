@@ -121,55 +121,7 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  responses:
-    BadRequest:
-      description: The request was malformed or contained invalid parameters.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication failed or credentials were not provided.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
-    Error:
-      type: object
-      properties:
-        Error:
-          type: string
-          description: The error type identifier.
-        code:
-          type: string
-          description: The error code.
-        text:
-          type: string
-          description: A human-readable error message.
-    ZoneAuthCreate:
-      type: object
-      required:
-      - fqdn
-      - zone_format
-      properties:
-        fqdn:
-          type: string
-          description: The fully qualified domain name of the zone.
-        view:
-          type: string
-          description: The DNS view in which to create the zone.
-        zone_format:
-          type: string
-          enum:
-          - FORWARD
-          - IPV4
-          - IPV6
-          description: The format of the zone.
-        comment:
-          type: string
-          description: A descriptive comment.
-          maxLength: 256
     ZoneAuth:
       type: object
       properties:
@@ -196,6 +148,29 @@ components:
         ns_group:
           type: string
           description: The name server group assigned to this zone.
+    ZoneAuthCreate:
+      type: object
+      required:
+      - fqdn
+      - zone_format
+      properties:
+        fqdn:
+          type: string
+          description: The fully qualified domain name of the zone.
+        view:
+          type: string
+          description: The DNS view in which to create the zone.
+        zone_format:
+          type: string
+          enum:
+          - FORWARD
+          - IPV4
+          - IPV6
+          description: The format of the zone.
+        comment:
+          type: string
+          description: A descriptive comment.
+          maxLength: 256
     ZoneForward:
       type: object
       properties:
@@ -224,6 +199,18 @@ components:
           type: string
           description: A descriptive comment.
           maxLength: 256
+    Error:
+      type: object
+      properties:
+        Error:
+          type: string
+          description: The error type identifier.
+        code:
+          type: string
+          description: The error code.
+        text:
+          type: string
+          description: A human-readable error message.
   parameters:
     ReturnFields:
       name: _return_fields
@@ -238,6 +225,19 @@ components:
       schema:
         type: integer
         default: 1000
+  responses:
+    BadRequest:
+      description: The request was malformed or contained invalid parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication failed or credentials were not provided.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     basicAuth:
       type: http

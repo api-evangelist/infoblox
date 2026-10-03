@@ -113,22 +113,6 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    NetworkView:
-      type: object
-      properties:
-        _ref:
-          type: string
-          description: The object reference for this network view.
-        name:
-          type: string
-          description: The name of the network view.
-        comment:
-          type: string
-          description: A descriptive comment.
-          maxLength: 256
-        is_default:
-          type: boolean
-          description: Whether this is the default network view.
     Network:
       type: object
       properties:
@@ -157,18 +141,22 @@ components:
                 type: string
                 description: The member structure type (e.g. dhcpmember).
           description: The list of DHCP members serving this network.
-    Error:
+    NetworkView:
       type: object
       properties:
-        Error:
+        _ref:
           type: string
-          description: The error type identifier.
-        code:
+          description: The object reference for this network view.
+        name:
           type: string
-          description: The error code.
-        text:
+          description: The name of the network view.
+        comment:
           type: string
-          description: A human-readable error message.
+          description: A descriptive comment.
+          maxLength: 256
+        is_default:
+          type: boolean
+          description: Whether this is the default network view.
     NetworkCreate:
       type: object
       required:
@@ -184,19 +172,18 @@ components:
           type: string
           description: A descriptive comment.
           maxLength: 256
-  responses:
-    Unauthorized:
-      description: Authentication failed or credentials were not provided.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: The request was malformed or contained invalid parameters.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+    Error:
+      type: object
+      properties:
+        Error:
+          type: string
+          description: The error type identifier.
+        code:
+          type: string
+          description: The error code.
+        text:
+          type: string
+          description: A human-readable error message.
   parameters:
     ReturnFields:
       name: _return_fields
@@ -211,6 +198,19 @@ components:
       schema:
         type: integer
         default: 1000
+  responses:
+    BadRequest:
+      description: The request was malformed or contained invalid parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication failed or credentials were not provided.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     basicAuth:
       type: http
