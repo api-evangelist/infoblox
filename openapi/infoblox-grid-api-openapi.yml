@@ -71,21 +71,19 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  parameters:
-    ReturnFields:
-      name: _return_fields
-      in: query
-      description: Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.
-      schema:
-        type: string
-    MaxResults:
-      name: _max_results
-      in: query
-      description: The maximum number of results to return. The default is 1000. Use a negative value to return all results.
-      schema:
-        type: integer
-        default: 1000
   schemas:
+    Error:
+      type: object
+      properties:
+        Error:
+          type: string
+          description: The error type identifier.
+        code:
+          type: string
+          description: The error code.
+        text:
+          type: string
+          description: A human-readable error message.
     Member:
       type: object
       properties:
@@ -132,18 +130,20 @@ components:
         ntp_setting:
           type: object
           description: The NTP settings for the Grid.
-    Error:
-      type: object
-      properties:
-        Error:
-          type: string
-          description: The error type identifier.
-        code:
-          type: string
-          description: The error code.
-        text:
-          type: string
-          description: A human-readable error message.
+  parameters:
+    MaxResults:
+      name: _max_results
+      in: query
+      description: The maximum number of results to return. The default is 1000. Use a negative value to return all results.
+      schema:
+        type: integer
+        default: 1000
+    ReturnFields:
+      name: _return_fields
+      in: query
+      description: Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.
+      schema:
+        type: string
   responses:
     BadRequest:
       description: The request was malformed or contained invalid parameters.
