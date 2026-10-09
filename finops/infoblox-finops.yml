@@ -123,10 +123,8 @@ apis:
 unitEconomics:
   - name: Cost per Protected Asset
     metric: billed_cost / protected_assets
-    target: TBD
   - name: Cost per Million DNS Queries Protected
     metric: billed_cost / (dns_queries_protected / 1000000)
-    target: TBD
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
