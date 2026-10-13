@@ -1,0 +1,44 @@
+generated: '2026-10-13'
+method: searched
+checked:
+- https://aws.amazon.com/marketplace/
+- https://azuremarketplace.microsoft.com/
+marketplace_apps: []
+edges:
+- partner_name: AWS Marketplace
+  partner: amazon-web-services
+  partner_match: aggregator
+  type: marketplace
+  marketplace: aws-marketplace
+  channel: distribution
+  relationship: platform-app
+  direction: provider-built
+  evidence: https://aws.amazon.com/marketplace/seller-profile?id=f7f03970-f903-4ee2-8df8-8ecdfa4fd581
+  listing_count: 4
+  apps:
+  - Infoblox Universal DDI Product Suite
+  - Infoblox Managed Rules for AWS NFW - Expanded Free Preview
+  - Infoblox Threat Defense
+  - Infoblox NIOS - Private Offer request
+  seller_name: Infoblox
+  detected_by: sweep-cloud-marketplaces.py
+  detected: '2026-10-13'
+- partner_name: Microsoft Azure Marketplace
+  partner: microsoft-azure
+  partner_match: aggregator
+  type: marketplace
+  marketplace: azure-marketplace
+  channel: distribution
+  relationship: platform-app
+  direction: provider-built
+  evidence: https://azuremarketplace.microsoft.com/en-us/marketplace/apps?search=Infoblox
+  listing_count: 10
+  apps:
+  - Infoblox Universal DDI Product Suite
+  - Infoblox NIOS 8.6.3 for DDI (BYOL)
+  - Infoblox NIOS PayGo
+  - Infoblox App for Microsoft Sentinel
+  - Infoblox NIOS 9.0.X for DDI (BYOL)
+  seller_name: Infoblox
+  detected_by: sweep-cloud-marketplaces.py
+  detected: '2026-10-13'
