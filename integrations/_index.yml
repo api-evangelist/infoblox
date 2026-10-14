@@ -27,3 +27,42 @@
   relationship: distribution-channel
   status: not-a-workflow
   arazzo: null
+- slug: infoblox-microsoft-sentinel-own
+  label: Microsoft Sentinel (own)
+  partner: microsoft-sentinel
+  partner_name: Microsoft Sentinel (own)
+  category: Networking
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://github.com/Azure/Azure-Sentinel/tree/master/Solutions/Infoblox
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: infoblox-palo-alto-networks-own
+  label: Palo Alto Networks (own)
+  partner: palo-alto-networks
+  partner_name: Palo Alto Networks (own)
+  category: Data Enrichment & Threat Intelligence
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://cortex.marketplace.pan.dev/marketplace/details/FeedInfobloxThreatIntelligence/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: infoblox-splunk-own
+  label: Splunk (own)
+  partner: splunk
+  partner_name: Splunk (own)
+  category: app
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://splunkbase.splunk.com/app/7473/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
