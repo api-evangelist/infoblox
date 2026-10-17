@@ -70,19 +70,20 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  responses:
+    BadRequest:
+      description: The request was malformed or contained invalid parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Authentication failed or credentials were not provided.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    Error:
-      type: object
-      properties:
-        Error:
-          type: string
-          description: The error type identifier.
-        code:
-          type: string
-          description: The error code.
-        text:
-          type: string
-          description: A human-readable error message.
     IPv4Address:
       type: object
       properties:
@@ -126,7 +127,25 @@ components:
         is_conflict:
           type: boolean
           description: Whether a conflict has been detected for this address.
+    Error:
+      type: object
+      properties:
+        Error:
+          type: string
+          description: The error type identifier.
+        code:
+          type: string
+          description: The error code.
+        text:
+          type: string
+          description: A human-readable error message.
   parameters:
+    ReturnFields:
+      name: _return_fields
+      in: query
+      description: Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.
+      schema:
+        type: string
     MaxResults:
       name: _max_results
       in: query
@@ -134,25 +153,6 @@ components:
       schema:
         type: integer
         default: 1000
-    ReturnFields:
-      name: _return_fields
-      in: query
-      description: Comma-separated list of field names to include in the response. Use _return_fields+ to add fields to the default set.
-      schema:
-        type: string
-  responses:
-    BadRequest:
-      description: The request was malformed or contained invalid parameters.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication failed or credentials were not provided.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     basicAuth:
       type: http
