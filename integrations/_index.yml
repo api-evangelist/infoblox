@@ -220,97 +220,6 @@
     identity_source: wikidata P856 (labelled provenance step; Kin 2026-10-15 decision 1)
   status: not-a-workflow
   arazzo: null
-- slug: infoblox-microsoft-sentinel-own
-  label: Microsoft Sentinel (own)
-  partner: microsoft-sentinel
-  partner_name: Microsoft Sentinel (own)
-  category: Networking
-  type: marketplace
-  marketplace: own
-  channel: partner-built
-  evidence: https://github.com/Azure/Azure-Sentinel/tree/master/Solutions/Infoblox
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
-- slug: infoblox-palo-alto-networks-own
-  label: Palo Alto Networks (own)
-  partner: palo-alto-networks
-  partner_name: Palo Alto Networks (own)
-  category: Data Enrichment & Threat Intelligence
-  type: marketplace
-  marketplace: own
-  channel: partner-built
-  evidence: https://cortex.marketplace.pan.dev/marketplace/details/FeedInfobloxThreatIntelligence/
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
-- slug: infoblox-splunk-own
-  label: Splunk (own)
-  partner: splunk
-  partner_name: Splunk (own)
-  category: app
-  type: marketplace
-  marketplace: own
-  channel: partner-built
-  evidence: https://splunkbase.splunk.com/app/7473/
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
-- slug: infoblox-opentofu-opentofu-registry
-  label: OpenTofu (opentofu-registry)
-  partner: opentofu
-  partner_name: OpenTofu (opentofu-registry)
-  category: infrastructure-as-code provider registry listing
-  type: marketplace
-  marketplace: opentofu-registry
-  channel: partner-built
-  evidence: https://search.opentofu.org/provider/infobloxopen/infoblox
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
-- slug: infoblox-pulumi-pulumi-registry
-  label: Pulumi (pulumi-registry)
-  partner: pulumi
-  partner_name: Pulumi (pulumi-registry)
-  category: infrastructure-as-code provider registry listing
-  type: marketplace
-  marketplace: pulumi-registry
-  channel: partner-built
-  evidence: https://www.pulumi.com/registry/packages/infoblox/
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
-- slug: infoblox-terraform-terraform-registry
-  label: Terraform (terraform-registry)
-  partner: terraform
-  partner_name: Terraform (terraform-registry)
-  category: infrastructure-as-code provider registry listing
-  type: marketplace
-  marketplace: terraform-registry
-  channel: partner-built
-  evidence: https://registry.terraform.io/providers/infobloxopen/infoblox
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
-- slug: infoblox-cisco-meraki-own
-  label: Cisco Meraki (own)
-  partner: cisco-meraki
-  partner_name: Cisco Meraki (own)
-  category: IT Asset Management
-  type: marketplace
-  marketplace: own
-  channel: partner-built
-  evidence: https://marketplace.cisco.com/en-US/apps/742469
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
 - slug: infoblox-common-criteria-portal-ccra-certified-products
   label: Common Criteria Portal (CCRA certified products)
   partner_name: Common Criteria Portal (CCRA certified products)
@@ -555,5 +464,109 @@
       lapsed: false
     detected_by: sweep-tx-ramp-certified-cloud.py
     detected: '2026-10-22'
+  status: not-a-workflow
+  arazzo: null
+- slug: infoblox-microsoft-sentinel-own
+  label: Microsoft Sentinel (own)
+  partner: microsoft-sentinel
+  partner_name: Microsoft Sentinel (own)
+  category: Networking
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://github.com/Azure/Azure-Sentinel/tree/master/Solutions/Infoblox
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: infoblox-palo-alto-networks-own
+  label: Palo Alto Networks (own)
+  partner: palo-alto-networks
+  partner_name: Palo Alto Networks (own)
+  category: Data Enrichment & Threat Intelligence
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://cortex.marketplace.pan.dev/marketplace/details/FeedInfobloxThreatIntelligence/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: infoblox-splunk-own
+  label: Splunk (own)
+  partner: splunk
+  partner_name: Splunk (own)
+  category: app
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://splunkbase.splunk.com/app/7473/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: infoblox-opentofu-opentofu-registry
+  label: OpenTofu (opentofu-registry)
+  partner: opentofu
+  partner_name: OpenTofu (opentofu-registry)
+  category: infrastructure-as-code provider registry listing
+  type: marketplace
+  marketplace: opentofu-registry
+  channel: partner-built
+  evidence: https://search.opentofu.org/provider/infobloxopen/infoblox
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: infoblox-pulumi-pulumi-registry
+  label: Pulumi (pulumi-registry)
+  partner: pulumi
+  partner_name: Pulumi (pulumi-registry)
+  category: infrastructure-as-code provider registry listing
+  type: marketplace
+  marketplace: pulumi-registry
+  channel: partner-built
+  evidence: https://www.pulumi.com/registry/packages/infoblox/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: infoblox-terraform-terraform-registry
+  label: Terraform (terraform-registry)
+  partner: terraform
+  partner_name: Terraform (terraform-registry)
+  category: infrastructure-as-code provider registry listing
+  type: marketplace
+  marketplace: terraform-registry
+  channel: partner-built
+  evidence: https://registry.terraform.io/providers/infobloxopen/infoblox
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: infoblox-cisco-meraki-own
+  label: Cisco Meraki (own)
+  partner: cisco-meraki
+  partner_name: Cisco Meraki (own)
+  category: IT Asset Management
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.cisco.com/en-US/apps/742469
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: infoblox-ansible-ansible-galaxy
+  label: Ansible (ansible-galaxy)
+  partner: ansible
+  partner_name: Ansible (ansible-galaxy)
+  category: configuration-management content listing (Ansible collection)
+  type: marketplace
+  marketplace: ansible-galaxy
+  channel: partner-built
+  evidence: https://galaxy.ansible.com/ui/repo/published/infoblox/nios_modules/
+  source: edge
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
