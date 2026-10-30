@@ -1,4 +1,4 @@
-# Infoblox (infoblox)
+# Infoblox
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,417 +66,205 @@
 
 Infoblox is a networking and cybersecurity company providing DDI (DNS, DHCP, and IPAM) solutions and protective DNS-layer security services. Its product portfolio spans the Universal DDI suite for unified hybrid and multi-cloud network services, NIOS DDI for on-premises deployments, NIOS-X as a Service, Threat Defense for DNS-layer security, threat intelligence (TIDE) and research (Dossier), and NetMRI for network change and configuration management.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/infoblox/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/infoblox/refs/heads/main/apis.yml)
+**Areas:** Cloud · DDI · DHCP · DNS · IPAM · Network Management · Security · Threat Intelligence
+
+## Infoblox on APIs.io
+
+Everything profiled for Infoblox is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/infoblox/](https://apis.io/providers/infoblox/)** — or go straight to one of the APIs or properties below.
+
+### APIs (21)
+
+- [Infoblox BloxOne DNS Configuration API](https://apis.io/apis/infoblox/infoblox-bloxone-dns-configuration-api/) — API for configuring DNS settings within the BloxOne platform. Manages DNS server configurations, views, ACLs, forwarding rules, and other DNS infrastructure…
+- [Infoblox BloxOne DNS Data API](https://apis.io/apis/infoblox/infoblox-bloxone-dns-data-api/) — API for managing DNS data records within the BloxOne platform. Provides endpoints for creating, reading, updating, and deleting DNS resource records…
+- [Infoblox BloxOne IPAM/DHCP API](https://apis.io/apis/infoblox/infoblox-bloxone-ipamdhcp-api/) — API for IP address management and DHCP protocol features within the BloxOne platform. Provides visibility and provisioning tools to manage networking…
+- [Infoblox BloxOne DDI Keys API](https://apis.io/apis/infoblox/infoblox-bloxone-ddi-keys-api/) — API for managing TSIG and other keys used in DDI operations within the BloxOne platform. Handles creation and management of authentication keys used for…
+- [Infoblox BloxOne Anycast Configuration API](https://apis.io/apis/infoblox/infoblox-bloxone-anycast-configuration-api/) — API for managing anycast configurations within the BloxOne platform. Enables high availability configuration of Infoblox applications running on customer…
+- [Infoblox BloxOne Infrastructure Management API](https://apis.io/apis/infoblox/infoblox-bloxone-infrastructure-management-api/) — API for managing BloxOne Cloud infrastructure components. Provides endpoints for managing on-premises hosts, service configurations, and infrastructure…
+- [Infoblox BloxOne Host Activation API](https://apis.io/apis/infoblox/infoblox-bloxone-host-activation-api/) — API for provisioning and activating on-premises hosts within the BloxOne platform. Handles the host activation workflow including zero touch provisioning…
+- [Infoblox BloxOne DNS Forwarding Proxy API](https://apis.io/apis/infoblox/infoblox-bloxone-dns-forwarding-proxy-api/) — API for managing DNS Forwarding Proxy (DFP) configurations within BloxOne Threat Defense. Enforces DNS client-based security policies at remote sites by…
+- [Infoblox BloxOne Firewall API](https://apis.io/apis/infoblox/infoblox-bloxone-firewall-api/) — API for managing BloxOne Threat Defense Cloud firewall policies and security lists. Provides visibility into infected and compromised devices on the network…
+- [Infoblox BloxOne Redirect API](https://apis.io/apis/infoblox/infoblox-bloxone-redirect-api/) — API for configuring BloxOne Threat Defense Cloud redirect behavior. Allows configuring traffic redirection to the Infoblox server or custom destinations…
+- [Infoblox BloxOne Upgrade Policy API](https://apis.io/apis/infoblox/infoblox-bloxone-upgrade-policy-api/) — API for managing software upgrade policies for BloxOne on-premises hosts. Allows scheduling and configuring software and configuration updates for deployed…
+- [Infoblox Threat Defense API](https://apis.io/apis/infoblox/infoblox-threat-defense-api/) — API for threat intelligence, security analytics, and DNS firewall capabilities. Provides programmatic access to BloxOne Threat Defense features including…
+- [Infoblox TIDE API](https://apis.io/apis/infoblox/infoblox-tide-api/) — Threat Intelligence Data Exchange (TIDE) API for submitting and retrieving threat indicators. Provides access to indicators of compromise in the TIDE…
+- [Infoblox Dossier API](https://apis.io/apis/infoblox/infoblox-dossier-api/) — Threat research API that provides contextual information from multiple sources simultaneously for a given indicator. Supports lookups on IPs, URLs, domains,…
+- [Infoblox NetMRI API](https://apis.io/apis/infoblox/infoblox-netmri-api/) — RESTful API for the Infoblox NetMRI network change and configuration management platform. Enables automation of network device provisioning, security…
+- [Infoblox DHCP API](https://apis.io/apis/infoblox/infoblox-dhcp-api/) — Operations for managing DHCP ranges, fixed addresses, leases, and DHCP option configurations.
+- [Infoblox DNS Records API](https://apis.io/apis/infoblox/infoblox-dns-records-api/) — Operations for managing DNS resource records including A, AAAA, CNAME, MX, PTR, TXT, SRV, and NS records.
+- [Infoblox DNS Zones API](https://apis.io/apis/infoblox/infoblox-dns-zones-api/) — Operations for managing authoritative DNS zones, delegated zones, forward zones, and stub zones.
+- [Infoblox Grid API](https://apis.io/apis/infoblox/infoblox-grid-api/) — Operations for managing Grid members, properties, and services.
+- [Infoblox IP Address Management API](https://apis.io/apis/infoblox/infoblox-ip-address-management-api/) — Operations for managing IP addresses, querying address utilization, and performing next available IP lookups.
+- [Infoblox Networks API](https://apis.io/apis/infoblox/infoblox-networks-api/) — Operations for managing IPv4 and IPv6 networks, network containers, and network views.
 
-## Scope
+### Published properties
 
-- **Position:** Consuming
-- **Access:** 3rd-Party
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## Tags
+#### Agentic access (1)
 
-- Cloud
-- DDI
-- DHCP
-- DNS
-- IPAM
-- Network Management
-- Security
-- Threat Intelligence
+Which operations an agent can call, which act, and which need a human in the loop.
 
-## Timestamps
+- [Infoblox Agentic Access](https://apis.io/agentic-access/infoblox/infoblox-agentic-access/)
 
-- **Created:** 2024-01-15
-- **Modified:** 2026-05-19
+#### JSON Schema (30)
 
-## APIs
+The data models the API reads and writes.
 
-### Infoblox WAPI (Web API)
+- [DHCPLease](https://apis.io/schemas/infoblox/infoblox-dhcplease/)
+- [DHCPRange](https://apis.io/schemas/infoblox/infoblox-dhcprange/)
+- [DHCPRangeCreate](https://apis.io/schemas/infoblox/infoblox-dhcprangecreate/)
+- [Error](https://apis.io/schemas/infoblox/infoblox-error/)
+- [FixedAddress](https://apis.io/schemas/infoblox/infoblox-fixedaddress/)
+- [FixedAddressCreate](https://apis.io/schemas/infoblox/infoblox-fixedaddresscreate/)
+- [Grid](https://apis.io/schemas/infoblox/infoblox-grid/)
+- [IPv4Address](https://apis.io/schemas/infoblox/infoblox-ipv4address/)
+- [Member](https://apis.io/schemas/infoblox/infoblox-member/)
+- [Network](https://apis.io/schemas/infoblox/infoblox-network/)
+- [NetworkCreate](https://apis.io/schemas/infoblox/infoblox-networkcreate/)
+- [NetworkView](https://apis.io/schemas/infoblox/infoblox-networkview/)
+- [RecordA](https://apis.io/schemas/infoblox/infoblox-recorda/)
+- [RecordAAAA](https://apis.io/schemas/infoblox/infoblox-recordaaaa/)
+- [RecordAAAACreate](https://apis.io/schemas/infoblox/infoblox-recordaaaacreate/)
+- [RecordACreate](https://apis.io/schemas/infoblox/infoblox-recordacreate/)
+- [RecordAUpdate](https://apis.io/schemas/infoblox/infoblox-recordaupdate/)
+- [RecordCNAME](https://apis.io/schemas/infoblox/infoblox-recordcname/)
+- [RecordCNAMECreate](https://apis.io/schemas/infoblox/infoblox-recordcnamecreate/)
+- [RecordHost](https://apis.io/schemas/infoblox/infoblox-recordhost/)
+- [RecordHostCreate](https://apis.io/schemas/infoblox/infoblox-recordhostcreate/)
+- [RecordMX](https://apis.io/schemas/infoblox/infoblox-recordmx/)
+- [RecordMXCreate](https://apis.io/schemas/infoblox/infoblox-recordmxcreate/)
+- [RecordPTR](https://apis.io/schemas/infoblox/infoblox-recordptr/)
+- [RecordPTRCreate](https://apis.io/schemas/infoblox/infoblox-recordptrcreate/)
+- …and 5 more published on APIs.io
 
-RESTful API for managing Infoblox NIOS DDI (DNS, DHCP, IPAM) services, network objects, and configuration. The WAPI uses standard HTTP methods for CRUD operations and supports JSON and XML input and output formats.
+#### JSON Structure (1)
 
-- **Human URL:** [https://www.infoblox.com/products/ddi/](https://www.infoblox.com/products/ddi/)
-- **Base URL:** `https://{grid-master}/wapi/v2.12`
+Data models expressed in JSON Structure.
 
-#### Tags
+- [Infoblox Structure](https://apis.io/json-structure/infoblox/infoblox-structure/)
 
-- DDI
-- DHCP
-- DNS
-- IPAM
-- Network Management
+#### Vocabulary (1)
 
-#### Properties
+The provider's domain terms, defined.
 
-- [Documentation](https://docs.infoblox.com/)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/infoblox/refs/heads/main/openapi/infoblox-wapi-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Reference](https://docs.infoblox.com/space/niosapi/)
-- [Authentication](https://docs.infoblox.com/space/niosapi/22644231/WAPI+Authentication)
-- [Swagger](https://{grid-master}/wapidoc/)
-- [Reference](https://docs.infoblox.com/space/nios90/156664532/Using+NIOS+APIs)
-- [Changelog](https://docs.infoblox.com/space/nios90/318210347/What's+New)
-- [Client  Libraries](https://github.com/infobloxopen/infoblox-go-client)
-- [Postman Collection](collections/infoblox-wapi.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/infoblox-wapi.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Infoblox Domain Vocabulary](https://apis.io/vocabularies/infoblox/infoblox-vocabulary/)
 
-### Infoblox BloxOne API
+#### Collections (13)
 
-Cloud-native API for Infoblox BloxOne DDI and Threat Defense services. Provides RESTful web services for interacting with the Infoblox Cloud Service Platform (CSP) to manage and automate DDI services in the cloud.
+Postman and Open Collection request collections.
 
-- **Human URL:** [https://www.infoblox.com/products/bloxone-ddi/](https://www.infoblox.com/products/bloxone-ddi/)
-- **Base URL:** `https://csp.infoblox.com/api`
+- [Infoblox WAPI (Web API) DHCP API](https://apis.io/collections/infoblox/open-infoblox-dhcp-api/)
+- [Infoblox WAPI (Web API) DHCP DNS Records API](https://apis.io/collections/infoblox/open-infoblox-dns-records-api/)
+- [Infoblox WAPI (Web API) DHCP DNS Zones API](https://apis.io/collections/infoblox/open-infoblox-dns-zones-api/)
+- [Infoblox WAPI (Web API) DHCP Grid API](https://apis.io/collections/infoblox/open-infoblox-grid-api/)
+- [Infoblox WAPI (Web API) DHCP IP Address Management API](https://apis.io/collections/infoblox/open-infoblox-ip-address-management-api/)
+- [Infoblox WAPI (Web API) DHCP Networks API](https://apis.io/collections/infoblox/open-infoblox-networks-api/)
+- [Infoblox WAPI (Web API)](https://apis.io/collections/infoblox/open-infoblox-wapi/)
+- [Infoblox WAPI (Web API) DHCP API](https://apis.io/collections/infoblox/postman-infoblox-dhcp-api/)
+- [Infoblox WAPI (Web API) DHCP DNS Records API](https://apis.io/collections/infoblox/postman-infoblox-dns-records-api/)
+- [Infoblox WAPI (Web API) DHCP DNS Zones API](https://apis.io/collections/infoblox/postman-infoblox-dns-zones-api/)
+- [Infoblox WAPI (Web API) DHCP Grid API](https://apis.io/collections/infoblox/postman-infoblox-grid-api/)
+- [Infoblox WAPI (Web API) DHCP IP Address Management API](https://apis.io/collections/infoblox/postman-infoblox-ip-address-management-api/)
+- [Infoblox WAPI (Web API) DHCP Networks API](https://apis.io/collections/infoblox/postman-infoblox-networks-api/)
 
-#### Tags
+#### Governance rules (1)
 
-- Cloud
-- DHCP
-- DNS
-- IPAM
-- Security
-- Threat Defense
+Spectral rulesets for the provider's contracts.
 
-#### Properties
+- [Infoblox — jsonschema rules](https://apis.io/rules/infoblox/infoblox-jsonschema-spectral-rules/)
 
-- [Documentation](https://docs.infoblox.com/space/BloxOneDDI/)
-- [OpenAPI](https://csp.infoblox.com/apidoc/) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [A P I  Portal](https://csp.infoblox.com/)
-- [Authentication](https://docs.infoblox.com/space/BloxOneDDI/35430405/Authentication)
-- [Getting Started](https://www.infoblox.com/developer-portal/getting-started/)
-- [Reference](https://docs.infoblox.com/space/BloxOneDDI/186745633/Universal+DDI+API+Guide)
-- [Changelog](https://docs.infoblox.com/space/BloxOneInfrastructure/332366018/BloxOne+Release+Notes)
-- [Postman Collection](collections/infoblox-wapi.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/infoblox-wapi.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Security (3)
 
-### Infoblox BloxOne DNS Configuration API
+Authentication, trust centre, and vulnerability disclosure.
 
-API for configuring DNS settings within the BloxOne platform. Manages DNS server configurations, views, ACLs, forwarding rules, and other DNS infrastructure settings through the Cloud Service Platform.
+- [Infoblox Authentication](https://apis.io/security/infoblox/infoblox-authentication/)
+- [Infoblox Domain Security](https://apis.io/security/infoblox/infoblox-domain-security/)
+- [Infoblox Trust Center](https://apis.io/security/infoblox/infoblox-trust-center/)
 
-- **Human URL:** [https://csp.infoblox.com/apidoc/?url=https%3A%2F%2Fcsp.infoblox.com%2Fapidoc%2Fdocs%2FDnsConfig](https://csp.infoblox.com/apidoc/?url=https%3A%2F%2Fcsp.infoblox.com%2Fapidoc%2Fdocs%2FDnsConfig)
-- **Base URL:** `https://csp.infoblox.com/api/ddi/v1`
+#### Plans and pricing (1)
 
-#### Tags
+Published plans, tiers and prices.
 
-- Cloud
-- Configuration
-- DNS
+- [Infoblox Plans Pricing](https://apis.io/plans/infoblox/infoblox-plans-pricing/)
 
-#### Properties
+#### Rate limits (1)
 
-- [Documentation](https://csp.infoblox.com/apidoc/?url=https%3A%2F%2Fcsp.infoblox.com%2Fapidoc%2Fdocs%2FDnsConfig)
-- [Authentication](https://docs.infoblox.com/space/BloxOneDDI/35430405/Authentication)
-- [Postman Collection](collections/infoblox-wapi.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/infoblox-wapi.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Published request limits.
 
-### Infoblox BloxOne DNS Data API
+- [Infoblox Rate Limits](https://apis.io/rate-limits/infoblox/infoblox-rate-limits/)
 
-API for managing DNS data records within the BloxOne platform. Provides endpoints for creating, reading, updating, and deleting DNS resource records including A, AAAA, CNAME, MX, TXT, and other record types.
+#### FinOps (1)
 
-- **Human URL:** [https://csp.infoblox.com/apidoc/?url=https%3A%2F%2Fcsp.infoblox.com%2Fapidoc%2Fdocs%2FDnsData](https://csp.infoblox.com/apidoc/?url=https%3A%2F%2Fcsp.infoblox.com%2Fapidoc%2Fdocs%2FDnsData)
-- **Base URL:** `https://csp.infoblox.com/api/ddi/v1`
+What the API costs to run, by operation.
 
-#### Tags
+- [Infoblox Finops](https://apis.io/finops/infoblox/infoblox-finops/)
 
-- Cloud
-- DNS
-- Records
+## Where to find this API
 
-#### Properties
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-- [Documentation](https://csp.infoblox.com/apidoc/?url=https%3A%2F%2Fcsp.infoblox.com%2Fapidoc%2Fdocs%2FDnsData)
-- [Authentication](https://docs.infoblox.com/space/BloxOneDDI/35430405/Authentication)
-- [Postman Collection](collections/infoblox-wapi.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/infoblox-wapi.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Infoblox BloxOne IPAM/DHCP API
-
-API for IP address management and DHCP protocol features within the BloxOne platform. Provides visibility and provisioning tools to manage networking spaces, monitoring and reporting of IP address infrastructures, and integration with DNS and DHCP protocols.
-
-- **Human URL:** [https://csp.infoblox.com/apidoc/?url=https%3A%2F%2Fcsp.infoblox.com%2Fapidoc%2Fdocs%2FIpamDhcp](https://csp.infoblox.com/apidoc/?url=https%3A%2F%2Fcsp.infoblox.com%2Fapidoc%2Fdocs%2FIpamDhcp)
-- **Base URL:** `https://csp.infoblox.com/api/ddi/v1`
-
-#### Tags
-
-- Cloud
-- DHCP
-- IPAM
-- Network Management
-
-#### Properties
-
-- [Documentation](https://csp.infoblox.com/apidoc/?url=https%3A%2F%2Fcsp.infoblox.com%2Fapidoc%2Fdocs%2FIpamDhcp)
-- [Reference](https://docs.infoblox.com/space/BloxOneDDI/186843385)
-- [Authentication](https://docs.infoblox.com/space/BloxOneDDI/35430405/Authentication)
-- [Postman Collection](collections/infoblox-wapi.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/infoblox-wapi.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Infoblox BloxOne DDI Keys API
-
-API for managing TSIG and other keys used in DDI operations within the BloxOne platform. Handles creation and management of authentication keys used for securing DNS zone transfers and dynamic updates.
-
-- **Human URL:** [https://csp.infoblox.com/apidoc/?url=https%3A%2F%2Fcsp.infoblox.com%2Fapidoc%2Fdocs%2FDDIKeys](https://csp.infoblox.com/apidoc/?url=https%3A%2F%2Fcsp.infoblox.com%2Fapidoc%2Fdocs%2FDDIKeys)
-- **Base URL:** `https://csp.infoblox.com/api/ddi/v1`
-
-#### Tags
-
-- Authentication
-- DNS Security
-- Keys
-
-#### Properties
-
-- [Documentation](https://csp.infoblox.com/apidoc/?url=https%3A%2F%2Fcsp.infoblox.com%2Fapidoc%2Fdocs%2FDDIKeys)
-- [Authentication](https://docs.infoblox.com/space/BloxOneDDI/35430405/Authentication)
-- [Postman Collection](collections/infoblox-wapi.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/infoblox-wapi.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Infoblox BloxOne Anycast Configuration API
-
-API for managing anycast configurations within the BloxOne platform. Enables high availability configuration of Infoblox applications running on customer premises by managing anycast addressing and routing.
-
-- **Human URL:** [https://docs.infoblox.com/space/BloxOneDDI/186466502](https://docs.infoblox.com/space/BloxOneDDI/186466502)
-- **Base URL:** `https://csp.infoblox.com/api/anycast/v1`
-
-#### Tags
-
-- Anycast
-- High Availability
-- Network Management
-
-#### Properties
-
-- [Documentation](https://docs.infoblox.com/space/BloxOneDDI/186466502)
-- [Reference](https://docs.infoblox.com/space/BloxOneDDI/186745670)
-- [Authentication](https://docs.infoblox.com/space/BloxOneDDI/35430405/Authentication)
-- [Postman Collection](collections/infoblox-wapi.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/infoblox-wapi.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Infoblox BloxOne Infrastructure Management API
-
-API for managing BloxOne Cloud infrastructure components. Provides endpoints for managing on-premises hosts, service configurations, and infrastructure resources within the Infoblox Cloud Service Platform.
-
-- **Human URL:** [https://csp.infoblox.com/apidoc/](https://csp.infoblox.com/apidoc/)
-- **Base URL:** `https://csp.infoblox.com/api/infra/v1`
-
-#### Tags
-
-- Cloud
-- Infrastructure
-- Management
-
-#### Properties
-
-- [Documentation](https://docs.infoblox.com/space/BloxOneInfrastructure/)
-- [Authentication](https://docs.infoblox.com/space/BloxOneDDI/35430405/Authentication)
-- [Postman Collection](collections/infoblox-wapi.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/infoblox-wapi.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Infoblox BloxOne Host Activation API
-
-API for provisioning and activating on-premises hosts within the BloxOne platform. Handles the host activation workflow including zero touch provisioning and bootstrap configuration for on-prem deployments.
-
-- **Human URL:** [https://csp.infoblox.com/apidoc/](https://csp.infoblox.com/apidoc/)
-- **Base URL:** `https://csp.infoblox.com/api/host_app/v1`
-
-#### Tags
-
-- Host Activation
-- Infrastructure
-- Provisioning
-
-#### Properties
-
-- [Documentation](https://docs.infoblox.com/space/BloxOneInfrastructure/)
-- [Authentication](https://docs.infoblox.com/space/BloxOneDDI/35430405/Authentication)
-- [Postman Collection](collections/infoblox-wapi.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/infoblox-wapi.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Infoblox BloxOne DNS Forwarding Proxy API
-
-API for managing DNS Forwarding Proxy (DFP) configurations within BloxOne Threat Defense. Enforces DNS client-based security policies at remote sites by forwarding DNS queries through the Infoblox cloud for threat inspection and policy enforcement.
-
-- **Human URL:** [https://csp.infoblox.com/apidoc/](https://csp.infoblox.com/apidoc/)
-- **Base URL:** `https://csp.infoblox.com/api/atcdfp/v1`
-
-#### Tags
-
-- DNS
-- Forwarding Proxy
-- Security
-
-#### Properties
-
-- [Documentation](https://docs.infoblox.com/space/BloxOneThreatDefense/)
-- [Authentication](https://docs.infoblox.com/space/BloxOneDDI/35430405/Authentication)
-- [Postman Collection](collections/infoblox-wapi.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/infoblox-wapi.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Infoblox BloxOne Firewall API
-
-API for managing BloxOne Threat Defense Cloud firewall policies and security lists. Provides visibility into infected and compromised devices on the network and allows management of security policies, custom lists, and named lists for DNS-based threat defense.
-
-- **Human URL:** [https://csp.infoblox.com/apidoc/](https://csp.infoblox.com/apidoc/)
-- **Base URL:** `https://csp.infoblox.com/api/atcfw/v1`
-
-#### Tags
-
-- Firewall
-- Security
-- Threat Defense
-
-#### Properties
-
-- [Documentation](https://docs.infoblox.com/space/BloxOneThreatDefense/)
-- [Reference](https://docs.infoblox.com/space/BloxOneThreatDefense/35406336)
-- [Authentication](https://docs.infoblox.com/space/BloxOneDDI/35430405/Authentication)
-- [Postman Collection](collections/infoblox-wapi.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/infoblox-wapi.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Infoblox BloxOne Redirect API
-
-API for configuring BloxOne Threat Defense Cloud redirect behavior. Allows configuring traffic redirection to the Infoblox server or custom destinations when threats are detected, and manages redirect pages and custom URL filtering rules.
-
-- **Human URL:** [https://csp.infoblox.com/apidoc/docs/Redirect](https://csp.infoblox.com/apidoc/docs/Redirect)
-- **Base URL:** `https://csp.infoblox.com/api/atcfw/v1`
-
-#### Tags
-
-- Redirect
-- Security
-- Threat Defense
-
-#### Properties
-
-- [Documentation](https://csp.infoblox.com/apidoc/docs/Redirect)
-- [Authentication](https://docs.infoblox.com/space/BloxOneDDI/35430405/Authentication)
-- [Postman Collection](collections/infoblox-wapi.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/infoblox-wapi.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Infoblox BloxOne Upgrade Policy API
-
-API for managing software upgrade policies for BloxOne on-premises hosts. Allows scheduling and configuring software and configuration updates for deployed BloxOne infrastructure components.
-
-- **Human URL:** [https://csp.infoblox.com/apidoc/](https://csp.infoblox.com/apidoc/)
-- **Base URL:** `https://csp.infoblox.com/api/upgrade_policy/v1`
-
-#### Tags
-
-- Infrastructure
-- Policy
-- Upgrade
-
-#### Properties
-
-- [Documentation](https://docs.infoblox.com/space/BloxOneInfrastructure/)
-- [Authentication](https://docs.infoblox.com/space/BloxOneDDI/35430405/Authentication)
-- [Postman Collection](collections/infoblox-wapi.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/infoblox-wapi.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Infoblox Threat Defense API
-
-API for threat intelligence, security analytics, and DNS firewall capabilities. Provides programmatic access to BloxOne Threat Defense features including security policy management, threat feeds, and DNS-layer security controls.
-
-- **Human URL:** [https://www.infoblox.com/products/threat-defense/](https://www.infoblox.com/products/threat-defense/)
-- **Base URL:** `https://csp.infoblox.com/tide/api`
-
-#### Tags
-
-- DNS Security
-- Firewall
-- Security
-- Threat Intelligence
-
-#### Properties
-
-- [Documentation](https://docs.infoblox.com/space/BloxOneThreatDefense/)
-- [API Reference](https://docs.infoblox.com/space/BloxOneThreatDefense/35389219/Threat+Defense+API)
-- [Getting Started](https://docs.infoblox.com/space/BloxOneThreatDefense/35369274)
-- [Changelog](https://docs.infoblox.com/display/BloxOneThreatDefense/What's+New+in+Infoblox+Threat+Defense)
-- [Postman Collection](collections/infoblox-wapi.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/infoblox-wapi.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Infoblox TIDE API
-
-Threat Intelligence Data Exchange (TIDE) API for submitting and retrieving threat indicators. Provides access to indicators of compromise in the TIDE database in multiple formats including JSON, XML, STIX, CEF, and CSV. Used for threat intelligence sharing and enrichment workflows.
-
-- **Human URL:** [https://docs.infoblox.com/space/BloxOneThreatDefense/230394127](https://docs.infoblox.com/space/BloxOneThreatDefense/230394127)
-- **Base URL:** `https://csp.infoblox.com/tide/api`
-
-#### Tags
-
-- Indicators
-- Security
-- Threat Intelligence
-- TIDE
-
-#### Properties
-
-- [Documentation](https://csp.infoblox.com/apidoc/?url=https%3A%2F%2Fcsp.infoblox.com%2Fapidoc%2Fdocs%2FTIDEData)
-- [Getting Started](https://docs.infoblox.com/display/BloxOneThreatDefense/Infoblox+Quick+Start+Guide+for++Dossier+and+TIDE)
-- [Reference](https://docs.infoblox.com/space/BloxOneThreatDefense/230394127/Infoblox+TIDE+API+FAQs+Guide)
-- [Postman Collection](collections/infoblox-wapi.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/infoblox-wapi.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Infoblox Dossier API
-
-Threat research API that provides contextual information from multiple sources simultaneously for a given indicator. Supports lookups on IPs, URLs, domains, hostnames, email addresses, and file hashes (MD5, SHA1, SHA256) to enrich SIEM and security tool data.
-
-- **Human URL:** [https://docs.infoblox.com/display/BloxOneThreatDefense/Dossier+Threat+Research+Portal](https://docs.infoblox.com/display/BloxOneThreatDefense/Dossier+Threat+Research+Portal)
-- **Base URL:** `https://csp.infoblox.com/tide/api`
-
-#### Tags
-
-- Dossier
-- Research
-- Security
-- Threat Intelligence
-
-#### Properties
-
-- [Documentation](https://docs.infoblox.com/display/BloxOneThreatDefense/Infoblox+Dossier+User+Guide)
-- [Getting Started](https://docs.infoblox.com/display/BloxOneThreatDefense/Infoblox+Quick+Start+Guide+for++Dossier+and+TIDE)
-- [Postman Collection](collections/infoblox-wapi.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/infoblox-wapi.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Infoblox NetMRI API
-
-RESTful API for the Infoblox NetMRI network change and configuration management platform. Enables automation of network device provisioning, security compliance checks, configuration management, and network discovery workflows.
-
-- **Human URL:** [https://www.infoblox.com/products/netmri/](https://www.infoblox.com/products/netmri/)
-- **Base URL:** `https://{netmri-server}/api`
-
-#### Tags
-
-- Compliance
-- Configuration Management
-- Network Automation
-
-#### Properties
-
-- [Documentation](https://docs.infoblox.com/space/APIDeveloperGuide/43025615/)
-- [Client  Libraries](https://github.com/infobloxopen/infoblox-netmri)
-- [Postman Collection](collections/infoblox-wapi.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/infoblox-wapi.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [LinkedIn](https://www.linkedin.com/company/infoblox)
-- [Portal](https://www.infoblox.com/developer-portal/)
-- [Getting Started](https://www.infoblox.com/developer-portal/getting-started/)
-- [Documentation](https://docs.infoblox.com/)
-- [Blog](https://blogs.infoblox.com/)
-- [Community](https://community.infoblox.com/)
-- [Status Page](https://status.infoblox.com/)
-- [Support](https://www.infoblox.com/support/)
 - [Website](https://www.infoblox.com/)
-- [Privacy Policy](https://www.infoblox.com/company/legal/privacy-policy/)
-- [Terms of Service](https://www.infoblox.com/company/legal/website-terms-and-conditions/)
-- [GitHub Organization](https://github.com/infobloxopen)
+- [Documentation](https://docs.infoblox.com/)
+- [Getting started](https://www.infoblox.com/developer-portal/getting-started/)
+- [Support](https://www.infoblox.com/support/)
 - [Changelog](https://docs.infoblox.com/space/BloxOneInfrastructure/332366018/BloxOne+Release+Notes)
-- [Console](https://csp.infoblox.com/)
-- [Integrations](https://www.infoblox.com/partners/)
-- [L L Ms Txt](https://infoblox.com/llms.txt)
+- [Blog](https://blogs.infoblox.com/)
+- [Terms of service](https://www.infoblox.com/company/legal/website-terms-and-conditions/)
+- [Privacy policy](https://www.infoblox.com/company/legal/privacy-policy/)
+- [GitHub](https://github.com/infobloxopen)
+- [Status](https://status.infoblox.com/)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 47.3** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 49.9 |
+| Contract governance | 9.8 |
+| Operational transparency | 39.5 |
+| Developer ergonomics | 65.5 |
+| Access clarity | 36.8 |
+
+**Agent readiness 19.0** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 24.5** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/infoblox/](https://apis.io/providers/infoblox/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Infoblox: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/infoblox/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
